@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C42743196F259D008E68EA /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C42742196F259D008E68EA /* Line.m */; };
 		01C8D741196B270800C51AAA /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C8D740196B270800C51AAA /* Gameplay.m */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01C42741196F259D008E68EA /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = Source/Line.h; sourceTree = "<group>"; };
+		01C42742196F259D008E68EA /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = Source/Line.m; sourceTree = "<group>"; };
 		01C8D73F196B270800C51AAA /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
 		01C8D740196B270800C51AAA /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 				B7378993180767190076A88C /* MainScene.m */,
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
+				01C42741196F259D008E68EA /* Line.h */,
+				01C42742196F259D008E68EA /* Line.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C42743196F259D008E68EA /* Line.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				01C8D741196B270800C51AAA /* Gameplay.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,

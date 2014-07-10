@@ -7,11 +7,99 @@
 //
 
 #import "Gameplay.h"
+#import "Line.h"
+
+static const int kFallVelocity = -300;
+static const double kSpawnSpeed = .5f;
 
 @implementation Gameplay {
     
+    NSMutableArray *_lines; //keeps track of all the lines running through the screen
+    CCNode *_background; //used to add the line directly to the background so that the box is behind the
+                         //    line
+    
 }
 
+//When the Gameplay is initialized initialize the _lines array
+- (id)init
+{
+    //Conventional crap
+    self = [super init];
+    if (self) {
+        //Initialize the _lines array
+        //NOTE TO SELF: [NSMutableArray array] is the same as [[alloc]init] for an array
+        _lines = [NSMutableArray array];
+        
+    }
+    return self;
+}
 
+//As soon as the file is loaded
+-(void) didLoadFromCCB {
+    
+    //Start by spawning a line so that we don't have to wait for the interval that comes next
+    [self spawnNewLine];
+    //Slpawn anew line every 1 and a half frames/seconds
+    [self schedule: @selector(spawnNewLine) interval:kSpawnSpeed];
+    
+    
+}
+
+- (void) onEnter {
+    
+    [super onEnter];
+    
+    self.userInteractionEnabled = YES;
+    self.multipleTouchEnabled = YES;
+}
+
+//This method puts in a new line at the top of the screen to be scrolled down
+- (void) spawnNewLine {
+    
+    //initialize a new line
+    Line *newLine = (Line*)[CCBReader load:@"Line"];
+    
+    //Randomly changes the color of the line
+    [newLine changeColor];
+    
+    //add the new line to the array of lines to be scrolled through
+    [_lines addObject:newLine];
+    //add the line to the sceen
+    [_background addChild:newLine];
+    //get the size of the current screen
+    CGSize screenSize = [[CCDirector sharedDirector] viewSize];
+    //poistion the new line at half of the screen width at the very top of the screen
+    newLine.position = ccp(screenSize.width/2, screenSize.height);
+
+}
+
+//calls every frame
+- (void) update:(CCTime)delta {
+    
+    //Goes through every line in the array of lines to scroll them down the screen
+    for (Line *line in _lines) {
+        //update the lines position to keep the same x axis position and scroll down the screen
+        line.position = ccp(line.position.x, line.position.y + kFallVelocity * delta);
+    }
+    
+    NSMutableArray *removeFromLines = [NSMutableArray array];
+    
+    for (Line *line in _lines) {
+        if (line.position.y < -(line.boundingBox.size.height)) {
+            [removeFromLines addObject:line];
+        }
+    }
+    
+    for (Line *removeLine in removeFromLines) {
+        [_lines removeObject:removeLine];
+        [removeLine removeFromParent];
+    }
+
+    
+    CCLOG(@"%d", _lines.count);
+    
+    
+    
+}
 
 @end
