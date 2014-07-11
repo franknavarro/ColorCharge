@@ -55,7 +55,7 @@ static CCColor *previousColor;
     
     //Black Line
     else if (randomNumber == 15) {
-        previousColor = [CCColor colorWithRed:0.f green:0.f blue:0.f];
+        previousColor = [CCColor colorWithRed:1.f green:1.f blue:1.f];
         [_color setColor:previousColor];
     }
     

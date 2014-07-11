@@ -8,6 +8,7 @@
 
 #import "Gameplay.h"
 #import "Line.h"
+#import "Playbar.h"
 
 static const int kFallVelocity = -300;
 static const double kSpawnSpeed = .5f;
@@ -17,6 +18,8 @@ static const double kSpawnSpeed = .5f;
     NSMutableArray *_lines; //keeps track of all the lines running through the screen
     CCNode *_background; //used to add the line directly to the background so that the box is behind the
                          //    line
+    PlayBar *_playBarLeft;
+    PlayBar  *_playBarRight;
     
 }
 
@@ -82,21 +85,27 @@ static const double kSpawnSpeed = .5f;
         line.position = ccp(line.position.x, line.position.y + kFallVelocity * delta);
     }
     
+    //An array to keep track of which lines we now have to remove from the game
     NSMutableArray *removeFromLines = [NSMutableArray array];
     
+    //Goes through the lines in the array and adds them to another array to be deleted
     for (Line *line in _lines) {
+        //If the line is completely outside the screen add it to the array of lines to be taken out
         if (line.position.y < -(line.boundingBox.size.height)) {
             [removeFromLines addObject:line];
         }
     }
     
+    //delete the line from _lines array by going through the array of lines we want to get rid of
     for (Line *removeLine in removeFromLines) {
+        //Remove the line
         [_lines removeObject:removeLine];
+        //Delete it from the scene
         [removeLine removeFromParent];
     }
 
-    
-    CCLOG(@"%d", _lines.count);
+    //Keep track of how many exisiting lines there are
+    //CCLOG(@"%d", _lines.count);
     
     
     
