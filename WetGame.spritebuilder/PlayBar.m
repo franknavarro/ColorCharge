@@ -47,15 +47,15 @@
     CGPoint touchLocation = [touch locationInNode:self];
     
     //If the touch is within the red's area set _redTouched to YES
-    if (CGRectContainsPoint([_redBox boundingBox], touchLocation)) {
+    if (CGRectContainsPoint(_redBox.boundingBox, touchLocation)) {
         self.currentColorPressed = ActiveColorRed;
     }
     //If the touch is within the blue's area set _blueTouched to YES
-    else if (CGRectContainsPoint([_blueBox boundingBox], touchLocation )) {
+    else if (CGRectContainsPoint(_blueBox.boundingBox, touchLocation )) {
         self.currentColorPressed = ActiveColorBlue;
     }
     //If the touch is within the yellow's area set _yellowTouched to YES
-    else if (CGRectContainsPoint([_yellowBox boundingBox], touchLocation)) {
+    else if (CGRectContainsPoint(_yellowBox.boundingBox, touchLocation)) {
         self.currentColorPressed = ActiveColorYellow;
     }
     //If the touch is within none of the PlayBars set that no colors are being touched

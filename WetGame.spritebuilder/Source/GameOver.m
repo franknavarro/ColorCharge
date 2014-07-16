@@ -12,7 +12,6 @@
 @implementation GameOver {
     
     CCLabelTTF *_finalScoreLabel;
-    CCLabelTTF *_messageLabel;
     
 }
 
@@ -22,19 +21,6 @@
     
     _finalScoreLabel.string = [NSString stringWithFormat:@"%i", finalScore];
     
-    if (finalScore <= 7) {
-        _messageLabel.string = [NSString stringWithFormat:@"Try Harder\nNext Time"];
-    } else if (finalScore <= 20) {
-        _messageLabel.string = [NSString stringWithFormat:@"Not Bad, But\nYou Can Do Better"];
-    } else if (finalScore <= 50) {
-         _messageLabel.string = [NSString stringWithFormat:@"Wow, Good Job!"];
-    } else if (finalScore <= 100) {
-        _messageLabel.string = [NSString stringWithFormat:@"Your score is unreal!"];
-    } else {
-        _messageLabel.string = [NSString stringWithFormat:@"You're cheating aren't\nyou?"];
-    }
-    
-    
     
 }
 
@@ -43,7 +29,7 @@
     //Save the Gameplay scene
     CCScene *newScene = [CCBReader loadAsScene:@"Gameplay"];
     //Set up the transition
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:0.5f];
     //Begin the tranistion made to go to Gameplay
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
     

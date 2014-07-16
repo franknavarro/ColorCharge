@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, ActiveColor) {
+typedef NS_ENUM(int, ActiveColor) {
     
     ActiveColorNone,
     ActiveColorBlue,

@@ -10,6 +10,7 @@
 #import "Line.h"
 #import "Playbar.h"
 #import "Color.h"
+#import "HitBox.h"
 
 //Defines how fast the lines will fall down the screen and how quickly they will appear at the top of the screen
 struct LineSpeed {
@@ -35,7 +36,7 @@ static int score;
     PlayBar *_playBarLeft;
     PlayBar  *_playBarRight;
     
-    CCSprite *_hitBox; //Used for target area of hitting colors
+    HitBox *_hitBox; //Used for target area of hitting colors
     
     ActiveColor currentColorBeingPressed; //used to keep track of the current color being pressed
     
@@ -88,7 +89,7 @@ static int score;
     
     [super onEnter];
     
-    //Reset the score and game difficulty every time the gameplay scene loads in
+    //Reset the score and game difficulty every time the gameplay scene is entered
     score = 0;
     currentGameDifficulty = GameEasy;
 }
@@ -103,9 +104,8 @@ static int score;
     //Start playing the already preloaded Background music audio
     //[[OALSimpleAudio sharedInstance]playBg:@"GameSong.m4a"];
     
-    //Start by spawning a line so that we don't have to wait for the interval that comes next
+    //Start by spawning a line that calls its self again with a delay
     [self spawnNewLine];
-    //Spawn a new line with the delay of the spawn time
     [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
@@ -115,20 +115,36 @@ static int score;
 //calls every frame
 - (void) update:(CCTime)delta {
     
-    //Goes through every line in the array of lines to scroll them down the screen
-    for (Line *line in _lines) {
-        line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
-    }
-    
-    //An array to keep track of which lines we now have to remove from the game
+    //An array to keep track of which lines we now have to remove from the game once it i outside of the scene
     NSMutableArray *removeFromLines = [NSMutableArray array];
     
-    //Goes through the lines in the array and adds them to another array to be deleted
+    //Run through the lines to check if the line's color is being pressed
     for (Line *line in _lines) {
+        
+        //make the lines scroll down the screen
+        line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
+        
+        //If the bottom of the line has passed the bottom of the hitbox and the top of the line has not reached the top of the hit box yet
+        //  check to see if the right color is being pressed
+        if (line.position.y <= CGRectGetMinY(_hitBox.boundingBox) && CGRectGetMaxY(_hitBox.boundingBox) < CGRectGetMaxY(line.boundingBox))
+        {
+            if (line.linesColor != currentColorBeingPressed) {
+                //Stop the update method
+                self.paused = YES;
+                //Stop updating the color so player can se the last color they pressed
+                [self unschedule:@selector(updatePressedColor)];
+                //call in the gameover scene with a slight delay
+                [self looser];
+            }
+        }
+    
         //If the line is completely outside the screen add it to the array of lines to be taken out
         if (line.position.y < -(line.boundingBox.size.height)) {
             [removeFromLines addObject:line];
         }
+        
+        //Keep track of how many exisiting lines there are
+        //CCLOG(@"%d", _lines.count);
     }
     
     //delete the line from _lines array by going through the array of lines we want to get rid of
@@ -146,7 +162,7 @@ static int score;
         //Saves the current line into a variable of the object Line
         Line *line = _lines[i];
         //If the top of the line is less than or equal to the middle of the hit box then go onto next check
-        if (CGRectGetMaxY([line boundingBox]) <= _hitBox.position.y) {
+        if (CGRectGetMaxY(line.boundingBox) <= _hitBox.position.y) {
             //Make sure the score for this line has not yet been counted
             if (!line.scoreCounted) {
                 //Check to see if another after exists
@@ -193,22 +209,6 @@ static int score;
         //            }
         //
         //        }
-    }
-    
-    //Run through the lines to check if the line's color is being pressed
-    for (Line *line in _lines) {
-    
-        //If the bottom of the line has passed the bottom of the hitbox and the top of the line has not reached the top of the hit box yet
-        //  check to see if the right color is being pressed
-        if (line.position.y <= CGRectGetMinY([_hitBox boundingBox]) && CGRectGetMaxY([_hitBox boundingBox]) < CGRectGetMaxY([line boundingBox]))
-        {
-            if (line.linesColor != currentColorBeingPressed) {
-                [self looser];
-            }
-        }
-    
-            //Keep track of how many exisiting lines there are
-            //CCLOG(@"%d", _lines.count);
     }
 }
 
@@ -262,6 +262,12 @@ static int score;
         
     }
     
+    //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
+    if (_hitBox.currentBoxColor != currentColorBeingPressed) {
+        [_hitBox updateBoxColor:currentColorBeingPressed];
+    }
+    
+    
 }
 
 //This method puts in a new line at the top of the screen to be scrolled down
@@ -306,10 +312,9 @@ static int score;
         currentGameDifficulty = GameHowAreYouStillPlaying;
     }
 
+    //Update the spawn time and velocity for a line
     [self updateLineSpeed];
-    //[self schedule:@selector(spawnNewLine) interval:currentLineSpeed.spawnSpeed];
     [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
-    
 }
 
 -(void) updateLineSpeed {
@@ -317,8 +322,7 @@ static int score;
     currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 2.5f);
     //Get the SpawnSpeed by dividing the distance of the line length by the velocity
     // and giving the spawn speed a little buffer time of 0.02 second
-    currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity)) - 0.0255f;
-    
+    currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity) - 0.0255f);
 }
 
 
@@ -329,8 +333,14 @@ static int score;
     [[OALSimpleAudio sharedInstance] stopBg];
     //Save the Gameplay scene
     CCScene *newScene = [CCBReader loadAsScene:@"GameOver"];
-    //Begin the tranistion made to go to Gameplay
-    [[CCDirector sharedDirector] presentScene:newScene];
+    
+    //Clean up the scene and free the cluter
+    [self removeChild:_scoreLabel];
+    [self removeChild:_playBarLeft];
+    [self removeChild:_playBarRight];
+    
+    //Display gameover box on top of the current scene
+    [self addChild: newScene];
     
     
 }

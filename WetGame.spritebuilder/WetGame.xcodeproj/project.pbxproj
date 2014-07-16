@@ -10,6 +10,7 @@
 		01066CF01970624F002FE039 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 01066CEF1970624F002FE039 /* GameOver.m */; };
 		01066CF31970D847002FE039 /* GameSong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF21970D847002FE039 /* GameSong.m4a */; };
 		01066CF719710183002FE039 /* 1Snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF619710183002FE039 /* 1Snare.m4a */; };
+		014E3AAB1976E3620045E55F /* HitBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E3AAA1976E3620045E55F /* HitBox.m */; };
 		01A740BF19746E5000D9CD62 /* 2Kick.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BD19746E5000D9CD62 /* 2Kick.m4a */; };
 		01A740C019746E5000D9CD62 /* 3HiHat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BE19746E5000D9CD62 /* 3HiHat.m4a */; };
 		01C42743196F259D008E68EA /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C42742196F259D008E68EA /* Line.m */; };
@@ -69,6 +70,8 @@
 		01066CEF1970624F002FE039 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		01066CF21970D847002FE039 /* GameSong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameSong.m4a; sourceTree = "<group>"; };
 		01066CF619710183002FE039 /* 1Snare.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Snare.m4a; sourceTree = "<group>"; };
+		014E3AA91976E3620045E55F /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitBox.h; path = Source/HitBox.h; sourceTree = "<group>"; };
+		014E3AAA1976E3620045E55F /* HitBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HitBox.m; path = Source/HitBox.m; sourceTree = "<group>"; };
 		01A740BD19746E5000D9CD62 /* 2Kick.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2Kick.m4a; sourceTree = "<group>"; };
 		01A740BE19746E5000D9CD62 /* 3HiHat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3HiHat.m4a; sourceTree = "<group>"; };
 		01C42741196F259D008E68EA /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = Source/Line.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				B7378993180767190076A88C /* MainScene.m */,
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
+				014E3AA91976E3620045E55F /* HitBox.h */,
+				014E3AAA1976E3620045E55F /* HitBox.m */,
 				01C42741196F259D008E68EA /* Line.h */,
 				01C42742196F259D008E68EA /* Line.m */,
 				01F9E42B196F6FA2004D0475 /* PlayBar.h */,
@@ -284,7 +289,7 @@
 		B77F1B2617B978D7009739AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
 					B77F1B2D17B978D7009739AE = {
@@ -386,6 +391,7 @@
 				01C8D741196B270800C51AAA /* Gameplay.m in Sources */,
 				01066CF01970624F002FE039 /* GameOver.m in Sources */,
 				01F9E42D196F6FA2004D0475 /* PlayBar.m in Sources */,
+				014E3AAB1976E3620045E55F /* HitBox.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				01F2F124197050CE00F07E9D /* Color.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
@@ -406,7 +412,12 @@
 		B77F1CDC17B978D8009739AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -416,9 +427,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,7 +443,12 @@
 		B77F1CDD17B978D8009739AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -435,7 +456,11 @@
 					"NS_BLOCK_ASSERTIONS=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
@@ -447,7 +472,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -481,7 +505,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

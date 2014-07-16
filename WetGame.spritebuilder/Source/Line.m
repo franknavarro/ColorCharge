@@ -42,8 +42,8 @@ static BOOL firstLineDone;
 }
 
 -(void)spawnOnEasy {
-    //Get a random integer from 0-8
-    int randomNumber = arc4random()%9;
+    //Get a random integer from 0-7
+    int randomNumber = arc4random()%8;
     
     //Set Red Line if the integer is between 0-2
     if(randomNumber <= 1) {
@@ -82,8 +82,8 @@ static BOOL firstLineDone;
 
 -(void) spawnOnMediumAndHard {
     
-    //Get a random integer from 0-18
-    int randomNumber = arc4random()%19;
+    //Get a random integer from 0-17
+    int randomNumber = arc4random()%18;
     
     //Set Red Line if the integer is between 0-2
     if(randomNumber <= 2) {
