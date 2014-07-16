@@ -12,6 +12,12 @@
 
 - (void) didLoadFromCCB {
     
+    [[OALSimpleAudio sharedInstance] preloadBg:@"GameSong.m4a"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"1Snare.m4a"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"2Kick.m4a"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"3HiHat.m4a"];
+    
+    
     self.userInteractionEnabled = YES;
     
 }

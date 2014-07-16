@@ -48,18 +48,15 @@
     
     //If the touch is within the red's area set _redTouched to YES
     if (CGRectContainsPoint([_redBox boundingBox], touchLocation)) {
-        self.redTouched = YES;
-        CCLOG(@"Red touched");
+        self.currentColorPressed = ActiveColorRed;
     }
     //If the touch is within the blue's area set _blueTouched to YES
     else if (CGRectContainsPoint([_blueBox boundingBox], touchLocation )) {
-        self.blueTouched = YES;
-        CCLOG(@"Blue touched");
+        self.currentColorPressed = ActiveColorBlue;
     }
     //If the touch is within the yellow's area set _yellowTouched to YES
     else if (CGRectContainsPoint([_yellowBox boundingBox], touchLocation)) {
-        self.yellowTouched = YES;
-        CCLOG(@"Yellow touched");
+        self.currentColorPressed = ActiveColorYellow;
     }
     //If the touch is within none of the PlayBars set that no colors are being touched
     //This is more of a check for the touchMoved method to make sure that the color changes if it is dragged out side the PlayBar
@@ -71,11 +68,9 @@
 
 //No colors where touched so set all values to NO
 -(void) noColorsAreBeingTouched {
-    self.redTouched = NO;
-    self. blueTouched = NO;
-    self.yellowTouched = NO;
     
-    CCLOG(@"Let go of color");
+    self.currentColorPressed = ActiveColorNone;
+
 }
 
 

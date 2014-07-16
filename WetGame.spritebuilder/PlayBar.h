@@ -7,12 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "Color.h"
 
 @interface PlayBar : CCNode
 
-//Keep track of what buttons are touched
-@property (assign) BOOL redTouched;
-@property (assign) BOOL blueTouched;
-@property (assign) BOOL yellowTouched;
+@property (nonatomic, assign) ActiveColor currentColorPressed;
 
 @end

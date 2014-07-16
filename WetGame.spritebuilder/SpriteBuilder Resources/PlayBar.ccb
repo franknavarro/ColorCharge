@@ -97,7 +97,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>1</real>
+							<real>1.1000000238418579</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -253,9 +253,9 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>94.571998596191406</real>
+							<real>0.33000001311302185</real>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -331,9 +331,9 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>189.19999694824219</real>
+							<real>0.33000001311302185</real>
 							<integer>2</integer>
-							<integer>3</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -361,6 +361,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -403,7 +405,7 @@
 				<key>value</key>
 				<array>
 					<real>80</real>
-					<real>284</real>
+					<real>312.39999389648438</real>
 					<integer>0</integer>
 					<integer>0</integer>
 				</array>

@@ -234,7 +234,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Title of game</string>
+							<string>Color Charge</string>
 							<false/>
 						</array>
 					</dict>
@@ -370,6 +370,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

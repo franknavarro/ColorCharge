@@ -8,6 +8,18 @@
 
 #import "CCNode.h"
 
+typedef NS_ENUM(NSInteger, GameDifficulty) {
+    GameEasy,
+    GameMedium,
+    GameHard,
+    GameExpert,
+    GameIntense,
+    GameHowAreYouStillPlaying
+};
+
 @interface Gameplay : CCNode
+
++(GameDifficulty) getGameDifficulty;
++(int) getScore;
 
 @end
