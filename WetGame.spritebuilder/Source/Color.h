@@ -22,4 +22,6 @@ typedef NS_ENUM(int, ActiveColor) {
 
 @interface Color : NSObject
 
++ (void) changeObject: (id) objectToChange withColor: (ActiveColor) newColor;
+
 @end

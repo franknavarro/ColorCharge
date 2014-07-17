@@ -17,36 +17,8 @@
 
 - (void) updateBoxColor: (ActiveColor) newColor {
     
-    //Change the color of the box
-    switch (newColor) {
-        case ActiveColorRed:
-            [_boxColor setColor:[CCColor colorWithRed:1.f green:0.f blue:0.f]];
-            break;
-            
-        case ActiveColorBlue:
-            [_boxColor setColor:[CCColor colorWithRed:0.f green:0.f blue:1.f]];
-            break;
-            
-        case ActiveColorYellow:
-            [_boxColor setColor:[CCColor colorWithRed:1.f green:1.f blue:0.f]];
-            break;
-            
-        case ActiveColorGreen:
-            [_boxColor setColor:[CCColor colorWithRed:0.f green:1.f blue:0.f]];
-            break;
-            
-        case ActiveColorPurple:
-            [_boxColor setColor:[CCColor colorWithRed:0.4f green:0.17f blue:0.56f]];
-            break;
-            
-        case ActiveColorOrange:
-            [_boxColor setColor:[CCColor colorWithRed:1.f green:0.58f blue:0.11f]];
-            break;
-            
-        case ActiveColorNone:
-            [_boxColor setColor:[CCColor colorWithRed:1.f green:1.f blue:1.f]];
-            break;
-    }
+    //call the color change method in order to change to color of the box
+    [Color changeObject:_boxColor withColor:newColor];
     
     //set the boxes current color to the newly assinged color
     self.currentBoxColor = newColor;

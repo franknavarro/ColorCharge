@@ -238,50 +238,8 @@ static BOOL firstLineDone;
 
 - (void) changeToNewColor: (ActiveColor) newColor {
     
-    switch (newColor) {
-            
-        case ActiveColorBlue: {
-            //Set the lines color to blue
-            [_color setColor:[CCColor colorWithRed:0.f green:0.f blue:1.f]];
-        }
-            break;
-    
-        case ActiveColorRed: {
-            //Set the current color to Red
-            [_color setColor:[CCColor colorWithRed:1.f green:0.f blue:0.f]];
-        }
-            break;
-    
-        case ActiveColorYellow: {
-            //Set the current color to yellow
-            [_color setColor:[CCColor colorWithRed:1.f green:1.f blue:0.f]];
-        }
-            break;
-    
-        case ActiveColorPurple: {
-            //Set the current color to purple
-            [_color setColor:[CCColor colorWithRed:0.4f green:0.17f blue:0.56f]];
-        }
-            break;
-    
-        case ActiveColorGreen: {
-            //Set the current color to green
-            [_color setColor:[CCColor colorWithRed:0.f green:1.f blue:0.f]];
-        }
-            break;
-            
-        case ActiveColorOrange: {
-            //Set the current color to orange
-            [_color setColor:[CCColor colorWithRed:1.f green:0.58f blue:0.11f]];
-        }
-            break;
-            
-        case ActiveColorNone: {
-            //Set the current color to white
-            [_color setColor:[CCColor colorWithRed:1.f green:1.f blue:1.f]];
-        }
-            break;
-    }
+    //change the color of the object to the new color
+    [Color changeObject:_color withColor:newColor];
     
     //Save what the lines current color is
     self.linesColor = newColor;

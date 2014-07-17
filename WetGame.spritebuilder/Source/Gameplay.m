@@ -29,14 +29,15 @@ static int score;
 @implementation Gameplay {
     
     NSMutableArray *_lines; //keeps track of all the lines running through the screen
-    CCNode *_background; //used to add the line directly to the background so that the box is behind the
-                         //    line
+
+    CCNode *_lineSpawner; //Add the lines to the scene onto the scene through this node that encompases the screen size
     
     //Both touch bars for checking the color the user is touching
     PlayBar *_playBarLeft;
     PlayBar  *_playBarRight;
     
     HitBox *_hitBox; //Used for target area of hitting colors
+    CCSprite *_bottomHitBox;
     
     ActiveColor currentColorBeingPressed; //used to keep track of the current color being pressed
     
@@ -52,6 +53,8 @@ static int score;
     CCNode* oldTestBlock; //block the helps keep time with line
     BOOL rightPosition; //Used to tell position in relation to oldBlock
     BOOL leftTestPosition; //Used to tell position in relation to oldTestBlock
+    
+    BOOL linePassedTopScreen;
     
 }
 
@@ -107,6 +110,7 @@ static int score;
     //Start by spawning a line that calls its self again with a delay
     [self spawnNewLine];
     [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
+    
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
     
@@ -264,6 +268,7 @@ static int score;
     
     //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
     if (_hitBox.currentBoxColor != currentColorBeingPressed) {
+        [Color changeObject:_bottomHitBox withColor:currentColorBeingPressed];
         [_hitBox updateBoxColor:currentColorBeingPressed];
     }
     
@@ -282,7 +287,7 @@ static int score;
     //add the new line to the array of lines to be scrolled through
     [_lines addObject:newLine];
     //add the line to the sceen
-    [_background addChild:newLine];
+    [_lineSpawner addChild:newLine];
     //get the size of the current screen
     CGSize screenSize = [[CCDirector sharedDirector] viewSize];
     //poistion the new line at half of the screen width at the very top of the screen
@@ -318,6 +323,7 @@ static int score;
 }
 
 -(void) updateLineSpeed {
+    
     //Increase the velocity downwards by 2.5
     currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 2.5f);
     //Get the SpawnSpeed by dividing the distance of the line length by the velocity
