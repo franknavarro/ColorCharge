@@ -32,6 +32,8 @@ static int score;
 
     CCNode *_lineSpawner; //Add the lines to the scene onto the scene through this node that encompases the screen size
     
+    CCScene *_pauseMenu; //hold the pause menu
+    
     //Both touch bars for checking the color the user is touching
     PlayBar *_playBarLeft;
     PlayBar  *_playBarRight;
@@ -42,8 +44,11 @@ static int score;
     ActiveColor currentColorBeingPressed; //used to keep track of the current color being pressed
     
     CCLabelTTF *_scoreLabel; //shows the current score on the screen
+    CCLabelTTF *_countDownLabel; //count down timer when paused
+    CCButton *_pauseButton; //pause button to add or remobe from scene
     
     int _addToScore; //used for when encountering a longer line the amount of points added for the length of the line
+    int countDownNumber; //How much we count down from on countdowns
     
     //Game speeds are a fall velocity with a respawn time of whatever second
     struct LineSpeed currentLineSpeed;
@@ -317,8 +322,10 @@ static int score;
         currentGameDifficulty = GameHowAreYouStillPlaying;
     }
 
-    //Update the spawn time and velocity for a line
-    [self updateLineSpeed];
+    //Update the spawn time and velocity for a line as long as we are below a speed of 320
+    if (currentLineSpeed.fallVelocity < 320) {
+        [self updateLineSpeed];
+    }
     [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
 }
 
@@ -344,9 +351,54 @@ static int score;
     [self removeChild:_scoreLabel];
     [self removeChild:_playBarLeft];
     [self removeChild:_playBarRight];
+    [self removeChild:_pauseButton];
     
     //Display gameover box on top of the current scene
     [self addChild: newScene];
+    
+    
+}
+
+- (void) pause {
+    
+    //pause the whole game
+    self.paused = TRUE;
+    
+    //Save the Gameplay scene
+    _pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
+    //Display pause box on top of the current scene
+    [self addChild: _pauseMenu];
+}
+
+- (void) resume {
+    
+    //rmemove the pause screen to resume to the game
+    [self removeChild: _pauseMenu];
+    
+    //set our countdown number to 3
+    countDownNumber = 3;
+    
+    //Start counting down with a delay to give a fluid start
+    [self scheduleOnce:@selector(countDown) delay:0.5f];
+    
+}
+
+- (void) countDown {
+    
+    //if we still have numbers to count down to update the countdown label
+    if (countDownNumber > 0) {
+        //Update count down label to show new number
+        _countDownLabel.string = [NSString stringWithFormat:@"%i", countDownNumber];
+        //Decrease the count down number
+        countDownNumber--;
+        //count down to next number after a second
+        [self scheduleOnce:@selector(countDown) delay:1.f];
+    } else {
+        //Set the countdown label to be noting
+        _countDownLabel.string = @"";
+        //resume the game
+        self.paused = FALSE;
+    }
     
     
 }
