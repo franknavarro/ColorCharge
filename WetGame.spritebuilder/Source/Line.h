@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Apportable. All rights reserved.
 //
 
+#import "Gameplay.h"
 #import "CCNodeColor.h"
 #import "Color.h"
 
@@ -22,6 +23,6 @@
 @property (assign) BOOL passedMidBox;
 
 //Used to set the color of the line to a random color
-- (void) setRandomColor;
+- (void) setRandomColor: (GameDifficulty) currentGameDifficulty;
 
 @end

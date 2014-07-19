@@ -11,6 +11,7 @@
 		01066CF31970D847002FE039 /* GameSong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF21970D847002FE039 /* GameSong.m4a */; };
 		01066CF719710183002FE039 /* 1Snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF619710183002FE039 /* 1Snare.m4a */; };
 		014E3AAB1976E3620045E55F /* HitBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E3AAA1976E3620045E55F /* HitBox.m */; };
+		01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A66E97197997B70048A2F7 /* GameplayTutorial.m */; };
 		01A740BF19746E5000D9CD62 /* 2Kick.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BD19746E5000D9CD62 /* 2Kick.m4a */; };
 		01A740C019746E5000D9CD62 /* 3HiHat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BE19746E5000D9CD62 /* 3HiHat.m4a */; };
 		01C42743196F259D008E68EA /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C42742196F259D008E68EA /* Line.m */; };
@@ -72,6 +73,9 @@
 		01066CF619710183002FE039 /* 1Snare.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Snare.m4a; sourceTree = "<group>"; };
 		014E3AA91976E3620045E55F /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitBox.h; path = Source/HitBox.h; sourceTree = "<group>"; };
 		014E3AAA1976E3620045E55F /* HitBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HitBox.m; path = Source/HitBox.m; sourceTree = "<group>"; };
+		01A66E96197997B70048A2F7 /* GameplayTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayTutorial.h; path = Source/GameplayTutorial.h; sourceTree = "<group>"; };
+		01A66E97197997B70048A2F7 /* GameplayTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameplayTutorial.m; path = Source/GameplayTutorial.m; sourceTree = "<group>"; };
+		01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gameplay_Protected.h; path = Source/Gameplay_Protected.h; sourceTree = "<group>"; };
 		01A740BD19746E5000D9CD62 /* 2Kick.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2Kick.m4a; sourceTree = "<group>"; };
 		01A740BE19746E5000D9CD62 /* 3HiHat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3HiHat.m4a; sourceTree = "<group>"; };
 		01C42741196F259D008E68EA /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = Source/Line.h; sourceTree = "<group>"; };
@@ -156,7 +160,10 @@
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
+				01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
+				01A66E96197997B70048A2F7 /* GameplayTutorial.h */,
+				01A66E97197997B70048A2F7 /* GameplayTutorial.m */,
 				014E3AA91976E3620045E55F /* HitBox.h */,
 				014E3AAA1976E3620045E55F /* HitBox.m */,
 				01C42741196F259D008E68EA /* Line.h */,
@@ -389,6 +396,7 @@
 				01C42743196F259D008E68EA /* Line.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				01C8D741196B270800C51AAA /* Gameplay.m in Sources */,
+				01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */,
 				01066CF01970624F002FE039 /* GameOver.m in Sources */,
 				01F9E42D196F6FA2004D0475 /* PlayBar.m in Sources */,
 				014E3AAB1976E3620045E55F /* HitBox.m in Sources */,

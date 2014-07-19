@@ -22,6 +22,7 @@
 
 //Check to see which color was initially touched
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CCLOG(@"Touch Started");
     [self whichColorWasTouched:touch];
 }
 
@@ -30,13 +31,16 @@
     [self whichColorWasTouched:touch];
 }
 
-//If the touch is dragged off the screen than no colors are being touched
--(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self noColorsAreBeingTouched];
-}
+////If the touch is dragged off the screen than no colors are being touched
+//-(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+//    CCLOG(@"Touch Cancelled");
+//    CGPoint  akjshd = [touch locationInNode:self];
+//    [self noColorsAreBeingTouched];
+//}
 
 //If the touch ended than no colors are being touched
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CCLOG(@"Touch Ended");
     [self noColorsAreBeingTouched];
 }
 

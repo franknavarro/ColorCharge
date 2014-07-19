@@ -15,11 +15,11 @@
     
 }
 
--(void) didLoadFromCCB {
+-(void) onEnter {
     
-    int finalScore = [Gameplay getScore];
+    [super onEnter];
     
-    _finalScoreLabel.string = [NSString stringWithFormat:@"%i", finalScore];
+    _finalScoreLabel.string = [NSString stringWithFormat:@"%i", self.finalScore];
     
     
 }
