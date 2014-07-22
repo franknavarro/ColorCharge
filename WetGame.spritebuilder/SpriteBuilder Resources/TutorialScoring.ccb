@@ -71,9 +71,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>36.583847045898438</real>
-							<real>512.6234130859375</real>
-							<integer>0</integer>
+							<real>34</real>
+							<real>62</real>
+							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -123,7 +123,7 @@
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -179,8 +179,11 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>For every line that passes fully 
-through the box you get a point!</string>
+							<string>Good Job! You got your first point!
+For every color that passes fully 
+through the box you get a point!
+Longer colors will give more points!
+Touch Anywhere To Continue</string>
 							<false/>
 						</array>
 					</dict>
@@ -230,7 +233,7 @@ through the box you get a point!</string>
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -238,7 +241,7 @@ through the box you get a point!</string>
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -349,10 +352,10 @@ through the box you get a point!</string>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>228.52067565917969</real>
-							<real>36.116378784179688</real>
+							<real>0.54000002145767212</real>
+							<real>85</real>
 							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -519,7 +522,7 @@ through the box you get a point!</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.1333334445953369</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

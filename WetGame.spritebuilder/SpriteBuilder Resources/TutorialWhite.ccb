@@ -172,7 +172,8 @@
 						<key>value</key>
 						<array>
 							<string>When a white line reaches the box
-you let go of everything!</string>
+you let go of everything!
+Touch anywhere to continue.</string>
 							<false/>
 						</array>
 					</dict>

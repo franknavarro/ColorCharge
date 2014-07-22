@@ -6,13 +6,9 @@
 //  Copyright (c) 2014 Apportable. All rights reserved.
 //
 
-#import "PlayBar.h"
+#import "PlayBar_Protected.h"
 
-@implementation PlayBar {
-    CCNode *_redBox;
-    CCNode *_blueBox;
-    CCNode *_yellowBox;
-}
+@implementation PlayBar
 
 - (void) onEnter {
     [super onEnter];
@@ -22,7 +18,6 @@
 
 //Check to see which color was initially touched
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CCLOG(@"Touch Started");
     [self whichColorWasTouched:touch];
 }
 
@@ -40,7 +35,6 @@
 
 //If the touch ended than no colors are being touched
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    CCLOG(@"Touch Ended");
     [self noColorsAreBeingTouched];
 }
 
@@ -51,15 +45,15 @@
     CGPoint touchLocation = [touch locationInNode:self];
     
     //If the touch is within the red's area set _redTouched to YES
-    if (CGRectContainsPoint(_redBox.boundingBox, touchLocation)) {
+    if (CGRectContainsPoint(self.redBox.boundingBox, touchLocation)) {
         self.currentColorPressed = ActiveColorRed;
     }
     //If the touch is within the blue's area set _blueTouched to YES
-    else if (CGRectContainsPoint(_blueBox.boundingBox, touchLocation )) {
+    else if (CGRectContainsPoint(self.blueBox.boundingBox, touchLocation )) {
         self.currentColorPressed = ActiveColorBlue;
     }
     //If the touch is within the yellow's area set _yellowTouched to YES
-    else if (CGRectContainsPoint(_yellowBox.boundingBox, touchLocation)) {
+    else if (CGRectContainsPoint(self.yellowBox.boundingBox, touchLocation)) {
         self.currentColorPressed = ActiveColorYellow;
     }
     //If the touch is within none of the PlayBars set that no colors are being touched
@@ -67,13 +61,20 @@
     else {
         [self noColorsAreBeingTouched];
     }
+    
+    //call update pressed Color so we know the new color
+    [self.colorSelectionDelegate updatePressedColor];
 
 }
 
-//No colors where touched so set all values to NO
+//No colors where touched so set the active color to nothing
 -(void) noColorsAreBeingTouched {
     
     self.currentColorPressed = ActiveColorNone;
+    
+    //Call update Pressed color so we know the new color
+    [self.colorSelectionDelegate updatePressedColor];
+    
 
 }
 

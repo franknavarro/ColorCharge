@@ -10,6 +10,7 @@
 		01066CF01970624F002FE039 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 01066CEF1970624F002FE039 /* GameOver.m */; };
 		01066CF31970D847002FE039 /* GameSong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF21970D847002FE039 /* GameSong.m4a */; };
 		01066CF719710183002FE039 /* 1Snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF619710183002FE039 /* 1Snare.m4a */; };
+		01067226197DD09A0031D8B6 /* NSUserDefaults+Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */; };
 		014E3AAB1976E3620045E55F /* HitBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E3AAA1976E3620045E55F /* HitBox.m */; };
 		01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A66E97197997B70048A2F7 /* GameplayTutorial.m */; };
 		01A740BF19746E5000D9CD62 /* 2Kick.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BD19746E5000D9CD62 /* 2Kick.m4a */; };
@@ -67,10 +68,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01041E79197B06B10076D2F3 /* ColorSelectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColorSelectionDelegate.h; path = Source/ColorSelectionDelegate.h; sourceTree = "<group>"; };
+		01041E7A197B168B0076D2F3 /* PlayBar_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayBar_Protected.h; path = Source/PlayBar_Protected.h; sourceTree = "<group>"; };
 		01066CEE1970624F002FE039 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOver.h; path = Source/GameOver.h; sourceTree = "<group>"; };
 		01066CEF1970624F002FE039 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		01066CF21970D847002FE039 /* GameSong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameSong.m4a; sourceTree = "<group>"; };
 		01066CF619710183002FE039 /* 1Snare.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Snare.m4a; sourceTree = "<group>"; };
+		01067224197DD09A0031D8B6 /* NSUserDefaults+Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Encryption.h"; sourceTree = "<group>"; };
+		01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Encryption.m"; sourceTree = "<group>"; };
 		014E3AA91976E3620045E55F /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitBox.h; path = Source/HitBox.h; sourceTree = "<group>"; };
 		014E3AAA1976E3620045E55F /* HitBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HitBox.m; path = Source/HitBox.m; sourceTree = "<group>"; };
 		01A66E96197997B70048A2F7 /* GameplayTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayTutorial.h; path = Source/GameplayTutorial.h; sourceTree = "<group>"; };
@@ -162,6 +167,7 @@
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
 				01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
+				01041E79197B06B10076D2F3 /* ColorSelectionDelegate.h */,
 				01A66E96197997B70048A2F7 /* GameplayTutorial.h */,
 				01A66E97197997B70048A2F7 /* GameplayTutorial.m */,
 				014E3AA91976E3620045E55F /* HitBox.h */,
@@ -169,11 +175,14 @@
 				01C42741196F259D008E68EA /* Line.h */,
 				01C42742196F259D008E68EA /* Line.m */,
 				01F9E42B196F6FA2004D0475 /* PlayBar.h */,
+				01041E7A197B168B0076D2F3 /* PlayBar_Protected.h */,
 				01F9E42C196F6FA2004D0475 /* PlayBar.m */,
 				01F2F122197050CE00F07E9D /* Color.h */,
 				01F2F123197050CE00F07E9D /* Color.m */,
 				01066CEE1970624F002FE039 /* GameOver.h */,
 				01066CEF1970624F002FE039 /* GameOver.m */,
+				01067224197DD09A0031D8B6 /* NSUserDefaults+Encryption.h */,
+				01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -398,6 +407,7 @@
 				01C8D741196B270800C51AAA /* Gameplay.m in Sources */,
 				01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */,
 				01066CF01970624F002FE039 /* GameOver.m in Sources */,
+				01067226197DD09A0031D8B6 /* NSUserDefaults+Encryption.m in Sources */,
 				01F9E42D196F6FA2004D0475 /* PlayBar.m in Sources */,
 				014E3AAB1976E3620045E55F /* HitBox.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,

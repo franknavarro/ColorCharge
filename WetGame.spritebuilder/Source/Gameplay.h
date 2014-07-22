@@ -7,6 +7,7 @@
 //
 
 #import "CCNode.h"
+#import "ColorSelectionDelegate.h"
 
 typedef NS_ENUM(NSInteger, GameDifficulty) {
     //Actual Game Difficulties
@@ -19,10 +20,11 @@ typedef NS_ENUM(NSInteger, GameDifficulty) {
     //Game Tutorials
     GameTutorialPrimaryColors,
     GameTutorialWhite,
-    GameTutorialMixingColors,
-    GameTutorialLongerLines
+    GameTutorialMixingColors
 };
 
-@interface Gameplay : CCNode
+@interface Gameplay : CCNode <ColorSelectionDelegate>
+
+- (void) pause;
 
 @end

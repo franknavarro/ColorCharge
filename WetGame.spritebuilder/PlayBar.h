@@ -8,9 +8,13 @@
 
 #import "CCNode.h"
 #import "Color.h"
+#import "ColorSelectionDelegate.h"
 
 @interface PlayBar : CCNode
 
 @property (nonatomic, assign) ActiveColor currentColorPressed;
+
+//used to call updatePressedColor in Gameplay
+@property (nonatomic, weak) NSObject <ColorSelectionDelegate> *colorSelectionDelegate;
 
 @end

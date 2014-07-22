@@ -25,9 +25,12 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "Gameplay.h"
 
 @interface AppController : CCAppDelegate
 {
 }
+
+@property (nonatomic, weak) Gameplay *gameplayScene;
 
 @end

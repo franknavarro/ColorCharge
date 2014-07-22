@@ -57,6 +57,15 @@
     return YES;
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [super applicationWillResignActive:application];
+    
+    CCLOG(@"App will resign Active");
+    if (!self.gameplayScene.paused) {
+        [self.gameplayScene pause];
+    }
+}
+
 - (CCScene*) startScene
 {
     return [CCBReader loadAsScene:@"MainScene"];

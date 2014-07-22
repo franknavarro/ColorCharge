@@ -7,10 +7,9 @@
 //
 
 #import "Gameplay_Protected.h"
-#import "Line.h"
 #import "Color.h"
-#import "HitBox.h"
 #import "GameOver.h"
+#import "AppDelegate.h"
 
 //Defines how fast the lines will fall down the screen and how quickly they will appear at the top of the screen
 struct LineSpeed {
@@ -21,49 +20,43 @@ struct LineSpeed {
 };
 
 @implementation Gameplay {
-    
-    NSMutableArray *_lines; //keeps track of all the lines running through the screen
 
     CCNode *_lineSpawner; //Add the lines to the scene onto the scene through this node that encompases the screen size
     
     CCScene *_pauseMenu; //hold the pause menu
-    
-    HitBox *_hitBox; //Used for target area of hitting colors
+
     CCSprite *_bottomHitBox;
     
-    ActiveColor currentColorBeingPressed; //used to keep track of the current color being pressed
-    
-    CCLabelTTF *_scoreLabel; //shows the current score on the screen
     CCLabelTTF *_countDownLabel; //count down timer when paused
-    CCButton *_pauseButton; //pause button to add or remobe from scene
     
     int _addToScore; //used for when encountering a longer line the amount of points added for the length of the line
-    int countDownNumber; //How much we count down from on countdowns
     
     //Game speeds are a fall velocity with a respawn time of whatever second
     struct LineSpeed currentLineSpeed;
     
     //Used to test time signature and wether the timing of the lines crossing the hit box was on beat
-    CCNode* oldBlock; //block that help keeps time with music
-    CCNode* oldTestBlock; //block the helps keep time with line
+    CCNode *oldBlock; //block that help keeps time with music
+    CCNode *oldTestBlock; //block the helps keep time with line
     BOOL rightPosition; //Used to tell position in relation to oldBlock
     BOOL leftTestPosition; //Used to tell position in relation to oldTestBlock
     
     BOOL linePassedTopScreen;
     
+    BOOL isGameOver;
+    
 }
 
 #pragma mark - Setting Up the Start
 
-//When the Gameplay is initialized initialize the _lines array
+//When the Gameplay is initialized initialize the self.lines array
 - (id)init
 {
     //Conventional crap
     self = [super init];
     if (self) {
-        //Initialize the _lines array
+        //Initialize the self.lines array
         //NOTE TO SELF: [NSMutableArray array] is the same as [[alloc]init] for an array
-        _lines = [NSMutableArray array];
+        self.lines = [NSMutableArray array];
         
         //PreLoad Audio for Snare Testing
         //[[OALSimpleAudio sharedInstance] preloadEffect:@"1Snare.m4a"];
@@ -81,7 +74,14 @@ struct LineSpeed {
     currentLineSpeed.fallVelocity = -150.f;
     currentLineSpeed. spawnSpeed = 1.31f;
     
-    [self schedule: @selector(updatePressedColor) interval:0.1f];
+    //set the color Selection Delagte to call the updatePressedColor method within Gameplay(self)
+    self.playBarRight.colorSelectionDelegate = self;
+    self.playBarLeft.colorSelectionDelegate = self;
+    
+    AppController *appDelegate = (AppController *)[[UIApplication sharedApplication] delegate];
+    appDelegate.gameplayScene = self;
+    
+    //[self schedule: @selector(updatePressedColor) interval:0.1f];
     
 }
 
@@ -90,6 +90,7 @@ struct LineSpeed {
     [super onEnter];
     
     [self resetScoreDifficulty];
+
 }
 
 - (void)onEnterTransitionDidFinish {
@@ -101,7 +102,6 @@ struct LineSpeed {
     
     //Start by spawning a line that calls its self again with a delay
     [self spawnNewLine];
-    [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
     
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
@@ -125,7 +125,7 @@ struct LineSpeed {
     NSMutableArray *removeFromLines = [NSMutableArray array];
     
     //Run through the lines to check if the line's color is being pressed
-    for (Line *line in _lines) {
+    for (Line *line in self.lines) {
         
         //make the lines scroll down the screen
         line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
@@ -139,31 +139,31 @@ struct LineSpeed {
         }
         
         //Keep track of how many exisiting lines there are
-        //CCLOG(@"%d", _lines.count);
+        //CCLOG(@"%d", self.lines.count);
     }
     
-    //delete the line from _lines array by going through the array of lines we want to get rid of
+    //delete the line from self.lines array by going through the array of lines we want to get rid of
     for (Line *removeLine in removeFromLines) {
         //Remove the line
-        [_lines removeObject:removeLine];
+        [self.lines removeObject:removeLine];
         //Delete it from the scene
         [removeLine removeFromParent];
     }
     
     //Keep count of how many objects are in lines
-    int n = (int)[_lines count];
-    //Iterate through every object in the array _lines in order to add up score
+    int n = (int)[self.lines count];
+    //Iterate through every object in the array self.lines in order to add up score
     for (int i=0; i<n; i++) {
         //Saves the current line into a variable of the object Line
-        Line *line = _lines[i];
+        Line *line = self.lines[i];
         //If the top of the line is less than or equal to the middle of the hit box then go onto next check
-        if (CGRectGetMaxY(line.boundingBox) <= _hitBox.position.y) {
+        if (CGRectGetMaxY(line.boundingBox) <= self.hitBox.position.y) {
             //Make sure the score for this line has not yet been counted
             if (!line.scoreCounted) {
-                //Check to see if another after exists
-                if (_lines[i+1]) {
+                //Check to see if another line after exists within the array
+                if ([self.lines count] > 1) {
                     //Save the line after the current one being checked into a variable
-                    Line *lineAfter = _lines[i+1];
+                    Line *lineAfter = self.lines[i+1];
                     //Make sure that the cuurent lines color and the color of the line after arent the same
                     if (line.linesColor != lineAfter.linesColor) {
                         //If so update the score and let the game know that the score has been counted for this line
@@ -175,26 +175,33 @@ struct LineSpeed {
                         //Reset the value for adding to score for longer lines
                         _addToScore = 0;
                         //Update the score value
-                        _scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+                        self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
                     } else {
                         //If so update the score and let the game know that the score has been counted for this line
                         line.scoreCounted = YES;
                         _addToScore++;
                     }
+                } else {
+                    line.scoreCounted = YES;
+                    //Increment the score by one for the line that  was scored
+                    self.score++;
+                    //Update the score value
+                    self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+
                 }
             }
         }
         
-        //        //Use visuals and audio to check the beat at which a line hits the middle of the _hitBox
-        //        //Check to see if the line is at or a little bellow the middle of _hitBox
-        //        if (line.position.y <= _hitBox.position.y && !line.passedMidBox) {
+        //        //Use visuals and audio to check the beat at which a line hits the middle of the self.hitBox
+        //        //Check to see if the line is at or a little bellow the middle of self.hitBox
+        //        if (line.position.y <= self.hitBox.position.y && !line.passedMidBox) {
         //            //Check to see if another after exists
-        //            if (_lines[i+1]) {
+        //            if (self.lines[i+1]) {
         //                //Save the line after the current one being checked into a variable
-        //                Line *lineAfter = _lines[i+1];
+        //                Line *lineAfter = self.lines[i+1];
         //                //Make sure that the cuurent lines color and the color of the line after arent the same
         //                if (line.linesColor != lineAfter.linesColor) {
-        //                    //Set the line has already passed the middle of the _hitBox
+        //                    //Set the line has already passed the middle of the self.hitBox
         //                    line.passedMidBox = TRUE;
         //                    //Test the beat that the line is going at with a visual
         //                    [self displayTestTimeBlock];
@@ -210,59 +217,62 @@ struct LineSpeed {
 
 -(void) updatePressedColor {
     
-
+    //if we hit a gameOver dont update the color just stop
+    if (isGameOver) {
+        return;
+    }
     
     //If one button pressed is red and one button pressed is blue than set the current color being pressed to purple
     if ((self.playBarLeft.currentColorPressed == ActiveColorRed && self.playBarRight.currentColorPressed == ActiveColorBlue) ||
         (self.playBarLeft.currentColorPressed == ActiveColorBlue && self.playBarRight.currentColorPressed == ActiveColorRed)) {
         
-        currentColorBeingPressed = ActiveColorPurple;
+        self.currentColorBeingPressed = ActiveColorPurple;
         CCLOG(@"Current Color pressed is Purple");
         
     //If one button pressed is red and one button pressed is yellow than set the current color being pressed to orange
     } else if ((self.playBarLeft.currentColorPressed == ActiveColorRed && self.playBarRight.currentColorPressed == ActiveColorYellow) ||
                (self.playBarLeft.currentColorPressed == ActiveColorYellow && self.playBarRight.currentColorPressed == ActiveColorRed)) {
         
-        currentColorBeingPressed = ActiveColorOrange;
+        self.currentColorBeingPressed = ActiveColorOrange;
         CCLOG(@"Current Color pressed is Orange.");
         
     //If one button pressed is blue and one button pressed is yellow than set the current color being pressed to green
     } else if ((self.playBarLeft.currentColorPressed == ActiveColorBlue && self.playBarRight.currentColorPressed == ActiveColorYellow) ||
                (self.playBarLeft.currentColorPressed == ActiveColorYellow && self.playBarRight.currentColorPressed == ActiveColorBlue)) {
         
-        currentColorBeingPressed = ActiveColorGreen;
+        self.currentColorBeingPressed = ActiveColorGreen;
         CCLOG(@"Current Color pressed is Green");
         
     //If one of the buttons being pressed is red and none of the above are true than set the current color being pressed to red
     } else if (self.playBarLeft.currentColorPressed == ActiveColorRed || self.playBarRight.currentColorPressed == ActiveColorRed) {
         
-        currentColorBeingPressed = ActiveColorRed;
+        self.currentColorBeingPressed = ActiveColorRed;
         CCLOG(@"Current Color pressed is Red");
         
     //If one of the buttons being pressed is blue and none of the above are true than set the current color being pressed to blue
     } else if (self.playBarLeft.currentColorPressed == ActiveColorBlue || self.playBarRight.currentColorPressed == ActiveColorBlue) {
         
-        currentColorBeingPressed = ActiveColorBlue;
+        self.currentColorBeingPressed = ActiveColorBlue;
         CCLOG(@"Current Color pressed is Blue");
         
     //If one of the buttons being pressed is yellow and none of the above are true than set the current color being pressed to yellow
     } else if (self.playBarLeft.currentColorPressed == ActiveColorYellow || self.playBarRight.currentColorPressed == ActiveColorYellow) {
         
-        currentColorBeingPressed = ActiveColorYellow;
+        self.currentColorBeingPressed = ActiveColorYellow;
         CCLOG(@"Current Color pressed is Yellow");
         
     //If none of the above are true than no colors are being pressed
     } else {
         
-        currentColorBeingPressed = ActiveColorNone;
+        self.currentColorBeingPressed = ActiveColorNone;
         CCLOG(@"Current Color pressed is White");
         
     }
     
     //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
-    if (_hitBox.currentBoxColor != currentColorBeingPressed) {
-        [Color changeObject:_bottomHitBox withColor:currentColorBeingPressed];
-        [_hitBox updateBoxColor:currentColorBeingPressed];
+    if (self.hitBox.currentBoxColor != self.currentColorBeingPressed) {
+        [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
+        [self.hitBox updateBoxColor:self.currentColorBeingPressed];
     }
     
     
@@ -320,7 +330,7 @@ struct LineSpeed {
     [newLine setRandomColor:self.currentGameDifficulty];
     
     //add the new line to the array of lines to be scrolled through
-    [_lines addObject:newLine];
+    [self.lines addObject:newLine];
     //add the line to the sceen
     [_lineSpawner addChild:newLine];
     //get the size of the current screen
@@ -328,12 +338,24 @@ struct LineSpeed {
     //poistion the new line at half of the screen width at the very top of the screen
     newLine.position = ccp(screenSize.width/2, screenSize.height);
 
+    //Check to see if the Difficulty needs to go up
     [self updateGameDifficulty];
     
+    //update the speed the line moves
     [self updateLineSpeed];
     
+    //Spawn a new line
+    [self keepSpawningNewLine];
+    
+}
+
+//Schedules spawnNewLine again
+- (void) keepSpawningNewLine {
+    
+    //unschedule and then reschedule spawnNewLine with a delay
     [self unschedule:@selector(spawnNewLine)];
     [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
+    
 }
 
 #pragma mark - Losing
@@ -342,36 +364,38 @@ struct LineSpeed {
     
     //If the bottom of the line has passed the bottom of the hitbox and the top of the line has not reached the top of the hit box yet
     //  check to see if the right color is being pressed
-    if (line.position.y <= CGRectGetMinY(_hitBox.boundingBox) && CGRectGetMaxY(_hitBox.boundingBox) < CGRectGetMaxY(line.boundingBox))
+    if (line.position.y < CGRectGetMinY(self.hitBox.boundingBox) && CGRectGetMaxY(self.hitBox.boundingBox) < CGRectGetMaxY(line.boundingBox))
     {
-        if (line.linesColor != currentColorBeingPressed && !self.paused) {
-            //Stop updating the color so player can see the last color they pressed
+        if (line.linesColor != self.currentColorBeingPressed) {
             CCLOG(@"Player Lost");
-            [self unschedule:@selector(updatePressedColor)];
-            //call in the gameover scene with a slight delay
-            [self looser];
+            //call in the gameover scene
+            [self looser:line];
         }
     }
     
 }
 
 //Switches to the Gameover scene
-- (void) looser {
+- (void) looser: (Line *) loosingLine {
     
+    //We've reached the end friends
+    isGameOver = YES;
+    
+    //stop the scene from moving
     self.paused = YES;
     
     //Stop music
     [[OALSimpleAudio sharedInstance] stopBg];
     //Save the Gameplay scene
     GameOver *newScene = (GameOver *)[CCBReader load:@"GameOver"];
-    
+    //Set the final score in the gameOver Scene to be the users current score
     newScene.finalScore = self.score;
     
     //Clean up the scene and free the cluter
-    [self removeChild:_scoreLabel];
+    [self removeChild:self.scoreLabel];
     [self removeChild:self.playBarLeft];
     [self removeChild:self.playBarRight];
-    [self removeChild:_pauseButton];
+    [self removeChild:self.pauseButton];
     
     //Display gameover box on top of the current scene
     [self addChild: newScene];
@@ -391,15 +415,15 @@ struct LineSpeed {
     //Reset the colors being pressed because they never get cancelled when paused is pressed
     self.playBarLeft.currentColorPressed = ActiveColorNone;
     self.playBarRight.currentColorPressed = ActiveColorNone;
-    currentColorBeingPressed = ActiveColorNone;
+    self.currentColorBeingPressed = ActiveColorNone;
     
     //update the hit box to be the new color being pressed (aka white)
-    [Color changeObject:_bottomHitBox withColor:currentColorBeingPressed];
-    [_hitBox updateBoxColor:currentColorBeingPressed];
+    [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
+    [self.hitBox updateBoxColor:self.currentColorBeingPressed];
 
     
     
-    _pauseButton.userInteractionEnabled = NO;
+    self.pauseButton.userInteractionEnabled = NO;
     
     //Save the Gameplay scene
     _pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
@@ -409,11 +433,10 @@ struct LineSpeed {
 
 - (void) resume {
     
-    //rmemove the pause screen to resume to the game
-    [self removeChild: _pauseMenu];
+    [self removeSceneBeforeCountDownStarts];
     
     //set our countdown number to 3
-    countDownNumber = 3;
+    self.countDownNumber = 3;
     
     //Start counting down with a delay to give a fluid start
     [self scheduleOnce:@selector(countDown) delay:0.5f];
@@ -423,11 +446,11 @@ struct LineSpeed {
 - (void) countDown {
     
     //if we still have numbers to count down to update the countdown label
-    if (countDownNumber > 0) {
+    if (self.countDownNumber > 0) {
         //Update count down label to show new number
-        _countDownLabel.string = [NSString stringWithFormat:@"%i", countDownNumber];
+        _countDownLabel.string = [NSString stringWithFormat:@"%i", self.countDownNumber];
         //Decrease the count down number
-        countDownNumber--;
+        self.countDownNumber--;
         //count down to next number after a second
         [self unschedule:@selector(countDown)];
         [self scheduleOnce:@selector(countDown) delay:1.f];
@@ -435,11 +458,16 @@ struct LineSpeed {
         //Set the countdown label to be noting
         _countDownLabel.string = @"";
         //resume the game
-        _pauseButton.userInteractionEnabled = YES;
+        self.pauseButton.userInteractionEnabled = YES;
         self.paused = FALSE;
     }
     
     
+}
+
+- (void) removeSceneBeforeCountDownStarts {
+    //rmemove the pause screen to resume to the game
+    [_pauseMenu removeFromParent];
 }
 
 

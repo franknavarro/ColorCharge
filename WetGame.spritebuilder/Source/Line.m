@@ -40,13 +40,14 @@ static BOOL firstLineDone;
             
         case GameTutorialPrimaryColors:
             [self spawnOnTutorialPrimaryColors];
+            break;
             
         case GameTutorialWhite:
+            [self spawnOnTutorialWhite];
+            break;
             
         case GameTutorialMixingColors:
-            
-        case GameTutorialLongerLines:
-            
+            [self spawnOnTutorialMixingColors];
             break;
     }
     
@@ -254,21 +255,31 @@ static BOOL firstLineDone;
 - (void) spawnOnTutorialPrimaryColors {
     
     //Get a random integer from 0-5
-    int randomNumber = arc4random()%6;
+    int randomNumber = arc4random()%7;
     
     //Only set the three primary colors based on the number but never spawn
     //  the same color twice in a row
     //Spawn Red
-    if (randomNumber <= 1 && previousActiveColor != ActiveColorRed) {
+    if (randomNumber <= 1) {
         [self changeToNewColor:ActiveColorRed];
     }
     //Spawn Blue
-    else if (randomNumber <= 3 && previousActiveColor != ActiveColorBlue) {
+    else if (randomNumber <= 3) {
         [self changeToNewColor:ActiveColorBlue];
     }
     //Spawn Yellow
-    else if (randomNumber <= 5 && previousActiveColor != ActiveColorYellow) {
+    else if (randomNumber <= 5) {
         [self changeToNewColor:ActiveColorYellow];
+    }
+    //Default yellow if no other lines have spawned
+    else if (!firstLineDone) {
+        //Change the color to yellow
+        [self changeToNewColor:ActiveColorYellow];
+        firstLineDone = YES;
+    }
+    
+    else {
+        [self changeToNewColor:previousActiveColor];
     }
     
 }
@@ -276,55 +287,37 @@ static BOOL firstLineDone;
 - (void) spawnOnTutorialWhite {
     
     //Get a random integer from 0-7
-    int randomNumber = arc4random()%6;
+    int randomNumber = arc4random()%7;
     
     //Only set the three primary colors based on the number but never spawn
     //  the same color twice in a row
     //Spawn Red
-    if (randomNumber == 0 && previousActiveColor != ActiveColorRed) {
+    if (randomNumber == 0) {
         [self changeToNewColor:ActiveColorRed];
     }
     //Spawn Blue
-    else if (randomNumber == 1 && previousActiveColor != ActiveColorBlue) {
+    else if (randomNumber == 1) {
         [self changeToNewColor:ActiveColorBlue];
     }
     //Spawn Yellow
-    else if (randomNumber == 2 && previousActiveColor != ActiveColorYellow) {
+    else if (randomNumber == 2) {
         [self changeToNewColor:ActiveColorYellow];
     }
     //Spawn White
-    else if (randomNumber <= 5 && previousActiveColor != ActiveColorNone) {
+    else if (randomNumber <= 5) {
         [self changeToNewColor:ActiveColorNone];
+    }
+    //Try again if none of the condition are met
+    else {
+        [self changeToNewColor:previousActiveColor];
     }
     
 }
 
 - (void) spawnOnTutorialMixingColors {
     
-    //Get a random integer from 0-5
-    int randomNumber = arc4random()%6;
-    
-    //Only set the three primary colors based on the number but never spawn
-    //  the same color twice in a row
-    //Spawn Red
-    if (randomNumber <= 1 && previousActiveColor != ActiveColorGreen) {
-        [self changeToNewColor:ActiveColorGreen];
-    }
-    //Spawn Blue
-    else if (randomNumber <= 3 && previousActiveColor != ActiveColorOrange) {
-        [self changeToNewColor:ActiveColorOrange];
-    }
-    //Spawn Yellow
-    else if (randomNumber <= 5 && previousActiveColor != ActiveColorPurple) {
-        [self changeToNewColor:ActiveColorPurple];
-    }
-    
-}
-
-- (void) GameTutorialLongerLines {
-    
-    //Get a random integer from 0-16
-    int randomNumber = arc4random()%17;
+    //Get a random integer from 0-14
+    int randomNumber = arc4random()%18;
     
     //Set Red Line if the integer is between 0-2
     if(randomNumber <= 1) {
@@ -345,25 +338,25 @@ static BOOL firstLineDone;
     }
     
     //Set Purple Line
-    else if (randomNumber <= 7) {
+    else if (randomNumber <= 8) {
         //Change the color to purple
         [self changeToNewColor:ActiveColorPurple];
     }
     
     //Set Green Line
-    else if (randomNumber <= 9) {
+    else if (randomNumber <= 11) {
         //change the color to green
         [self changeToNewColor:ActiveColorGreen];
     }
     
     //Set Orange Line
-    else if (randomNumber <= 11) {
+    else if (randomNumber <= 14) {
         //change the color to orange
         [self changeToNewColor:ActiveColorOrange];
     }
     
     //Set White Line
-    else if (randomNumber <= 13) {
+    else if (randomNumber <= 16) {
         //Change the color to white
         [self changeToNewColor:ActiveColorNone];
     }
@@ -372,7 +365,6 @@ static BOOL firstLineDone;
     else {
         [self changeToNewColor:previousActiveColor];
     }
-    
 }
 
 #pragma mark - Change color
