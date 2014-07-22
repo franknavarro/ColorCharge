@@ -21,6 +21,7 @@
     CCScene *_missedColorScene; //Show the missed color scene in spritebuilder
     CCScene *_tutorialPrimaryColors; //the first tutorial scene for basic instructions
     CCScene *_tutorialScoring;   //explain scoring a point
+    CCScene *_tutorialHitBox; //explain that the hit box changes colors depending on the color pressed
     CCScene *_tutorialPractice; //Used to notify user of practice time
     CCScene *_tutorialWhites; //screne for explaining whites
     CCScene *_tutorialMixing; //scene for explaining color mixing
@@ -34,6 +35,7 @@
     BOOL didPrimaryColorsDisplay; //Check to see whether or not the first tutorial has been displayed yet
     BOOL isTheirFirstPoint; //Check to see wether or not the player has already gotten their first point
     BOOL didPracticeStart; //Checks whether the player has passed through on the next screen of the tutorial after scoring
+    BOOL didHitbox; //See's if the hitBox tutorial has ran
     BOOL isFirstWhiteLine; //Checks wether the white line tutorial has played
     BOOL isFirstMix; //Checks whether the mixing color tutorial has ran
     BOOL didWhitesStart; // Checks to see if the first white came out
@@ -159,12 +161,12 @@
     
     //Check if the lines array is empty
     if (!self.lines || !self.lines.count) {
-        //check if we havent ran the practice screen
-        if (!didPracticeStart) {
-            //We now started the practice
-            didPracticeStart = YES;
-            //Run the practice round scene
-            [self practiceRounds];
+        //check if we havent ran the hit box screen
+        if (!didHitbox) {
+            //We now started hit box tutorial
+            didHitbox = YES;
+            //Run the hitbox tutorial
+            [self tutorialHitBox];
         }
         //check to see if every color has been spawned
         else if (didPurple && didGreen && didOrange && !didFinalScreen) {
@@ -238,7 +240,8 @@
     [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
 }
 
-- (void) practiceRounds {
+- (void) tutorialHitBox {
+    
     //Stop the line from moving
     self.paused = YES;
     
@@ -246,6 +249,22 @@
     self.pauseButton.userInteractionEnabled = NO;
     self.pauseButton.visible = NO;
     self.scoreLabel.visible = NO;
+    
+    //Load in the scene for the tutorial
+    _tutorialHitBox = [CCBReader loadAsScene:@"TutorialHitBox" owner:self];
+    
+    //Add in the scene for scoring
+    [self addChild:_tutorialHitBox];
+    
+    //Enable user interaction so they can touch anywhere to continue
+    self.userInteractionEnabled = YES;
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    
+}
+
+- (void) practiceRounds {
+    //We are now going through the practice round
+    didPracticeStart = YES;
     
     //Load in the scene for the tutorial
     _tutorialPractice = [CCBReader loadAsScene:@"TutorialStartPractice" owner:self];
@@ -517,37 +536,24 @@
 
 #pragma mark - User Interactions
 
-- (void) startUpGameByPressingColor {
+- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
+    [self tutorialRemoval];
     
-    //Go through the lines to check if the player is now hitting the right color again
-    for (Line *line in self.lines) {
-        if (line.position.y < self.hitBox.position.y &&
-            CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
-            if (line.linesColor == self.currentColorBeingPressed) {
-                //resume the game
-                [self resume];
-                [self unschedule:@selector(startUpGameByPressingColor)];
-                self.pauseButton.visible = YES;
-                self.scoreLabel.visible = YES;
-                return;
-            }
-        }
-    }
-    [self unschedule:@selector(startUpGameByPressingColor)];
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
 }
 
 - (void) colorPressedInsteadOfScreen {
     switch (self.currentColorBeingPressed) {
+            //Check if a color was pressed
         case ActiveColorRed:
         case ActiveColorBlue:
         case ActiveColorYellow:
         case ActiveColorGreen:
         case ActiveColorOrange:
         case ActiveColorPurple:
+            //if so run tutorial removal
             [self tutorialRemoval];
-            [self unschedule:@selector(colorPressedInsteadOfScreen)];
+            //return method to stop it from rescheduling itself later
             return;
             break;
             
@@ -555,27 +561,57 @@
             break;
     }
     
+    //Reschedule this method to check again for color being pressed
     [self unschedule:@selector(colorPressedInsteadOfScreen)];
     [self schedule:@selector(colorPressedInsteadOfScreen) interval:0.1f];
 }
 
-- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+- (void) startUpGameByPressingColor {
     
-    [self tutorialRemoval];
-    
+    //Go through the lines to check if the player is now hitting the right color again
+    for (Line *line in self.lines) {
+        //check if the line is at half height and the top is above the hit box
+        if (line.position.y <= self.hitBox.position.y &&
+            CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
+            if (line.linesColor == self.currentColorBeingPressed) {
+                //resume the game
+                [self resume];
+                //unschedule itself if we have met the condition
+                [self unschedule:@selector(startUpGameByPressingColor)];
+                //reveal the pause button and what not again
+                self.pauseButton.visible = YES;
+                self.scoreLabel.visible = YES;
+                //stop running so we dont reschedule this method after
+                return;
+            }
+        }
+    }
+    //reschedule so we run this again
+    [self unschedule:@selector(startUpGameByPressingColor)];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
 }
 
 - (void) tutorialRemoval {
+    
+    //disable user interaction so screen presses wont
+    //  bug out
+    self.userInteractionEnabled = NO;
+    [self unschedule:@selector(colorPressedInsteadOfScreen)];
+    
+    //The first conditional is made to remove the last turorial ran
+    //  this method removes all the tutorials that activate user interaction
+    //  starting with last to first so that way the conditional statements exucte
+    //  starting with the first tutorial and when a newer tutorial comes, the program doesn't
+    //  try and remove the old one anymore
     if (didOrange && didGreen && didPurple) {
         [self returnToMenu];
     }
     
     //check if whites have started
-    if (didWhitesStart) {
+    else if (didWhitesStart) {
         //if so run the resume method to count down and remove the scene
         [self resume];
         //Add the stuff we removed in the whites tutorial
-        self.userInteractionEnabled = NO;
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
         //remove the white tutorial
@@ -584,30 +620,48 @@
         return;
     }
     
-    //remove these scenes to continue
-    [_tutorialStart removeFromParent];
-    [_tutorialScoring removeFromParent];
-    [_tutorialPractice removeFromParent];
-    //resume the game
-    self.paused = NO;
-    //disable user interaction so screen presses wont
-    //  bug out
-    self.userInteractionEnabled = NO;
-    
     //if the practice is now starting
-    if (didPracticeStart) {
+    else if (didPracticeStart) {
         //Show the HUD again
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
-        //spawn a new line to start
-        [self spawnNewLine];
-        //pause the game again so we can come in with a count down
-        self.paused = YES;
         //start the countdown with resume
         [self resume];
-    } else {
-        //Let he pause button  be active again
+        //spawn a new line to start with an delay so that it can
+        //  wait for the count down to finish
+        [self scheduleOnce:@selector(spawnNewLine) delay:4.f];
+        [_tutorialPractice removeFromParent];
+    }
+    
+    //Check if the Hitbox tutorial ran
+    else if (didHitbox) {
+        
+        //remove the hit box tutorial
+        [_tutorialHitBox removeFromParent];
+        //Let the user know we are now starting practice rounds
+        [self practiceRounds];
+        
+    }
+    
+    //Check if we are now within the first point tutorial
+    else if (isTheirFirstPoint) {
+        [_tutorialScoring removeFromParent];
+        //resume the game
+        self.paused = NO;
+        //Let the pause button  be active again
         self.pauseButton.userInteractionEnabled = YES;
+    }
+    
+    else {
+        //remove these scenes to continue
+        [_tutorialStart removeFromParent];
+        //Stop the line from moving
+        self.paused = NO;
+        
+        //Make it so the player can't hit the pause button because it wigs out
+        self.pauseButton.visible = YES;
+        self.scoreLabel.visible = YES;
+    
     }
     
 }

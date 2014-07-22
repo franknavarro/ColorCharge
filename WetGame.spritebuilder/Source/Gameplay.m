@@ -470,6 +470,16 @@ struct LineSpeed {
     [_pauseMenu removeFromParent];
 }
 
+- (void) runTutorial {
+    
+    CCScene *newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
+    //Set up the transition
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    //Begin the tranistion made to go to Gameplay
+    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+
+}
+
 
 ////Test the beats of the line
 //-(void) displayTestTimeBlock {
