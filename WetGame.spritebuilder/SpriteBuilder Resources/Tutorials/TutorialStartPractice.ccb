@@ -72,7 +72,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>70</real>
+							<real>10</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -86,7 +86,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -122,7 +122,7 @@ Touch Anywhere To Continue.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Molot/Molot.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -131,7 +131,7 @@ Touch Anywhere To Continue.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>19</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -248,6 +248,8 @@ Touch Anywhere To Continue.</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

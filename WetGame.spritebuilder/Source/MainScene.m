@@ -10,19 +10,7 @@
 
 @implementation MainScene
 
-- (void) didLoadFromCCB {
-    
-//    [[OALSimpleAudio sharedInstance] preloadBg:@"GameSong.m4a"];
-//    [[OALSimpleAudio sharedInstance] preloadEffect:@"1Snare.m4a"];
-//    [[OALSimpleAudio sharedInstance] preloadEffect:@"2Kick.m4a"];
-//    [[OALSimpleAudio sharedInstance] preloadEffect:@"3HiHat.m4a"];
-    
-    
-    self.userInteractionEnabled = YES;
-    
-}
-
--(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void) startPlay {
     
     NSNumber *tutorialHasRan = [[NSUserDefaults standardUserDefaults] objectForKey:@"TutroialHasRan"];
     CCScene *newScene;
@@ -39,6 +27,16 @@
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     //Begin the tranistion made to go to Gameplay
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+}
+
+- (void) tutorial {
+    
+    CCScene *newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
+    //Set up the transition
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    //Begin the tranistion made to go to Gameplay
+    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+    
 }
 
 @end

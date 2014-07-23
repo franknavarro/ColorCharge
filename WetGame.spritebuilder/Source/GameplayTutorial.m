@@ -56,6 +56,13 @@
     isRightBarOnScreen = NO;
     
     [self tutorialStarts];
+    
+}
+
+//Overwrite the this method to do nothing so we start spawning lines at a
+//  different time
+- (void) spawnNewLineForFirstTime {
+    return;
 }
 
 - (void) tutorialStarts {
@@ -68,7 +75,7 @@
     self.pauseButton.visible = NO;
     self.scoreLabel.visible = NO;
     
-    _tutorialStart = [CCBReader loadAsScene:@"TutorialStartUp" owner:self];
+    _tutorialStart = [CCBReader loadAsScene:@"Tutorials/TutorialStartUp" owner:self];
     
     [self addChild:_tutorialStart];
     
@@ -151,7 +158,7 @@
     //Check to see if the point tutorial has ran yet
     if (!isTheirFirstPoint) {
         //make sure that the score is only 1
-        if (self.score == 1) {
+        if (self.score >= 1) {
             //Let the program know that we ran the this already
             isTheirFirstPoint = YES;
             //run the tutorail for scoring
@@ -161,15 +168,15 @@
     
     //Check if the lines array is empty
     if (!self.lines || !self.lines.count) {
-        //check if we havent ran the hit box screen
-        if (!didHitbox) {
-            //We now started hit box tutorial
-            didHitbox = YES;
-            //Run the hitbox tutorial
-            [self tutorialHitBox];
-        }
+//        //check if we havent ran the hit box screen
+//        if (!didHitbox) {
+//            //We now started hit box tutorial
+//            didHitbox = YES;
+//            //Run the hitbox tutorial
+//            [self tutorialHitBox];
+//        }
         //check to see if every color has been spawned
-        else if (didPurple && didGreen && didOrange && !didFinalScreen) {
+        if (didPurple && didGreen && didOrange && !didFinalScreen) {
             didFinalScreen = YES;
             [self endTutorial];
         }
@@ -207,7 +214,7 @@
     self.pauseButton.visible = NO;
     self.scoreLabel.visible = NO;
     
-    _tutorialPrimaryColors = [CCBReader loadAsScene:@"TutorialPrimaryColors" owner:self];
+    _tutorialPrimaryColors = [CCBReader loadAsScene:@"Tutorials/TutorialPrimaryColors" owner:self];
     
     [self positionLeftButtonArrow:firstLine];
     
@@ -230,7 +237,7 @@
     self.pauseButton.userInteractionEnabled = NO;
     
     //Load in the scene for the tutorial
-    _tutorialScoring = [CCBReader loadAsScene:@"TutorialScoring" owner:self];
+    _tutorialScoring = [CCBReader loadAsScene:@"Tutorials/TutorialScoring" owner:self];
     
     //Add in the scene for scoring
     [self addChild:_tutorialScoring];
@@ -242,16 +249,16 @@
 
 - (void) tutorialHitBox {
     
+    didHitbox = YES;
+    
     //Stop the line from moving
     self.paused = YES;
     
-    //Make it so the player can't hit the pause button because it wigs out
-    self.pauseButton.userInteractionEnabled = NO;
     self.pauseButton.visible = NO;
     self.scoreLabel.visible = NO;
     
     //Load in the scene for the tutorial
-    _tutorialHitBox = [CCBReader loadAsScene:@"TutorialHitBox" owner:self];
+    _tutorialHitBox = [CCBReader loadAsScene:@"Tutorials/TutorialHitBox" owner:self];
     
     //Add in the scene for scoring
     [self addChild:_tutorialHitBox];
@@ -262,33 +269,30 @@
     
 }
 
-- (void) practiceRounds {
-    //We are now going through the practice round
-    didPracticeStart = YES;
-    
-    //Load in the scene for the tutorial
-    _tutorialPractice = [CCBReader loadAsScene:@"TutorialStartPractice" owner:self];
-    
-    //add in the tutorial for practicing
-    [self addChild:_tutorialPractice];
-    
-    //enable user interaction so that the player can press anywhere to continue
-    self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
-
-    
-}
+//- (void) practiceRounds {
+//    //We are now going through the practice round
+//    didPracticeStart = YES;
+//    
+//    //Load in the scene for the tutorial
+//    _tutorialPractice = [CCBReader loadAsScene:@"Tutorials/TutorialStartPractice" owner:self];
+//    
+//    //add in the tutorial for practicing
+//    [self addChild:_tutorialPractice];
+//    
+//    //enable user interaction so that the player can press anywhere to continue
+//    self.userInteractionEnabled = YES;
+//    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+//
+//    
+//}
 
 - (void) keepSpawningNewLine {
     
     //check to see if all the colors have now been spawned if not continue to next if
     if (!didGreen || !didOrange || !didPurple) {
         
-        //if practice has started spawn new line like normal
-        if (didPracticeStart) {
-            [super keepSpawningNewLine];
-        }
-        
+        [super keepSpawningNewLine];
+
     }
     
 }
@@ -310,7 +314,7 @@
 
     
     //load up the tutorial
-    _tutorialWhites = [CCBReader loadAsScene:@"TutorialWhite" owner:self];
+    _tutorialWhites = [CCBReader loadAsScene:@"Tutorials/TutorialWhite" owner:self];
     
     //position the line for the white line
     [self positionLineArrow:whiteLine];
@@ -334,7 +338,7 @@
     self.scoreLabel.visible = NO;
     
     //load up the tutorial
-    _tutorialMixing = [CCBReader loadAsScene:@"TutorialMixingColors" owner:self];
+    _tutorialMixing = [CCBReader loadAsScene:@"Tutorials/TutorialMixingColors" owner:self];
     
     //Add the playBar on the right
     [self addChild:self.playBarRight];
@@ -366,7 +370,7 @@
     self.scoreLabel.visible = NO;
     
     //Load the scene telling the player that they hit the wrong color
-    _missedColorScene = [CCBReader loadAsScene:@"TutorialMissedColor" owner:self];
+    _missedColorScene = [CCBReader loadAsScene:@"Tutorials/TutorialMissedColor" owner:self];
     
     //if the right Bar is on the screen add the arrows poistions
     if (isRightBarOnScreen) {
@@ -388,15 +392,6 @@
         [self scheduleOnce:@selector(startUpGameByPressingColor) delay:2.1f];
     }
     
-}
-
-- (void) removeSceneBeforeCountDownStarts {
-
-    [super removeSceneBeforeCountDownStarts];
-    
-    [_missedColorScene removeFromParent];
-    [_tutorialPrimaryColors removeFromParent];
-    [_tutorialMixing removeFromParent];
 }
 
 #pragma mark - Position Arrows
@@ -510,7 +505,7 @@
     self.pauseButton.userInteractionEnabled = NO;
     self.scoreLabel.visible = NO;
     
-    _tutorialDone = [CCBReader loadAsScene:@"TutorialDone"];
+    _tutorialDone = [CCBReader loadAsScene:@"Tutorials/TutorialDone"];
     
     [self addChild:_tutorialDone];
     
@@ -575,17 +570,23 @@
             CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
             if (line.linesColor == self.currentColorBeingPressed) {
                 //resume the game
-                [self resume];
-                //unschedule itself if we have met the condition
-                [self unschedule:@selector(startUpGameByPressingColor)];
+                self.paused = NO;
+                self.pauseButton.userInteractionEnabled = YES;
                 //reveal the pause button and what not again
                 self.pauseButton.visible = YES;
                 self.scoreLabel.visible = YES;
-                //stop running so we dont reschedule this method after
+                //unschedule itself if we have met the condition
+                [self unschedule:@selector(startUpGameByPressingColor)];
+                //scenes to remove after color is pressed
+                [_missedColorScene removeFromParent];
+                [_tutorialPrimaryColors removeFromParent];
+                [_tutorialMixing removeFromParent];
+                 //stop running so we dont reschedule this method after
                 return;
             }
         }
     }
+    
     //reschedule so we run this again
     [self unschedule:@selector(startUpGameByPressingColor)];
     [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
@@ -609,8 +610,9 @@
     
     //check if whites have started
     else if (didWhitesStart) {
-        //if so run the resume method to count down and remove the scene
-        [self resume];
+        //resume Game with pause activated
+        self.paused = NO;
+        self.pauseButton.userInteractionEnabled = YES;
         //Add the stuff we removed in the whites tutorial
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
@@ -620,36 +622,39 @@
         return;
     }
     
-    //if the practice is now starting
-    else if (didPracticeStart) {
-        //Show the HUD again
-        self.pauseButton.visible = YES;
-        self.scoreLabel.visible = YES;
-        //start the countdown with resume
-        [self resume];
-        //spawn a new line to start with an delay so that it can
-        //  wait for the count down to finish
-        [self scheduleOnce:@selector(spawnNewLine) delay:4.f];
-        [_tutorialPractice removeFromParent];
-    }
+//    //if the practice is now starting
+//    else if (didPracticeStart) {
+//        //Show the HUD again
+//        self.pauseButton.visible = YES;
+//        self.scoreLabel.visible = YES;
+//        self.paused = NO;
+//        self.pauseButton.userInteractionEnabled = YES;
+//        //spawn a new line to start with an delay so that it can
+//        //  wait for the count down to finish
+//        [self scheduleOnce:@selector(spawnNewLine) delay:4.f];
+//        [_tutorialPractice removeFromParent];
+//    }
     
     //Check if the Hitbox tutorial ran
     else if (didHitbox) {
         
         //remove the hit box tutorial
         [_tutorialHitBox removeFromParent];
-        //Let the user know we are now starting practice rounds
-        [self practiceRounds];
+        //Show the HUD again
+        self.pauseButton.visible = YES;
+        self.scoreLabel.visible = YES;
+        self.paused = NO;
+        self.pauseButton.userInteractionEnabled = YES;
+//        //Let the user know we are now starting practice rounds
+//        [self practiceRounds];
         
     }
     
     //Check if we are now within the first point tutorial
     else if (isTheirFirstPoint) {
         [_tutorialScoring removeFromParent];
-        //resume the game
-        self.paused = NO;
-        //Let the pause button  be active again
-        self.pauseButton.userInteractionEnabled = YES;
+        //resume the tutorial
+        [self tutorialHitBox];
     }
     
     else {
@@ -661,6 +666,8 @@
         //Make it so the player can't hit the pause button because it wigs out
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
+        
+        [self spawnNewLine];
     
     }
     

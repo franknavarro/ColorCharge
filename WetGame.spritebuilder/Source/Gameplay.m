@@ -1,3 +1,4 @@
+
 //
 //  Gameplay.m
 //  WetGame
@@ -100,12 +101,19 @@ struct LineSpeed {
     //Start playing the already preloaded Background music audio
     //[[OALSimpleAudio sharedInstance]playBg:@"GameSong.m4a"];
     
-    //Start by spawning a line that calls its self again with a delay
-    [self spawnNewLine];
+    [self spawnNewLineForFirstTime];
     
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
     
+}
+
+//The reason this is its own method is because in the tutorial we want the
+//  first line to spawn at a different time so we overwrite this in the tutorial
+//  to do nothing so we can start spawning lines when we want
+- (void) spawnNewLineForFirstTime {
+    //Start by spawning a line that calls its self again with a delay
+    [self spawnNewLine];
 }
 
 - (void) resetScoreDifficulty {
@@ -468,16 +476,6 @@ struct LineSpeed {
 - (void) removeSceneBeforeCountDownStarts {
     //rmemove the pause screen to resume to the game
     [_pauseMenu removeFromParent];
-}
-
-- (void) runTutorial {
-    
-    CCScene *newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
-    //Set up the transition
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
-    //Begin the tranistion made to go to Gameplay
-    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
-
 }
 
 

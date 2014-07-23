@@ -8,34 +8,74 @@
 
 #import "PlayBar_Protected.h"
 
-@implementation PlayBar
+@implementation PlayBar {
+    
+    //keeps track of the last touch
+    UITouch *activeTouch;
+    //holds in all the touches
+    NSMutableArray *playerTouches;
+    
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //initialize the array
+        playerTouches = [NSMutableArray array];
+    }
+    return self;
+}
 
 - (void) onEnter {
     [super onEnter];
     //Turn on user interaction
     self.userInteractionEnabled = YES;
+    //Use multiTouch for cleaner presses between buttons
+    self.multipleTouchEnabled = YES;
 }
 
 //Check to see which color was initially touched
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+    //the active touch is now the most recently pressed touch
+    activeTouch = touch;
+    //add this new touch to the array
+    [playerTouches addObject:touch];
+    //check which color was touched and assign it as the current color touched
     [self whichColorWasTouched:touch];
 }
 
 //Check to see where the new touch is and what color it is touching
 - (void) touchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self whichColorWasTouched:touch];
+    //Check to see if the touch moved is the current active touch
+    if ([touch isEqual:activeTouch]) {
+        //get the color of the touch that moved
+        [self whichColorWasTouched:touch];
+    }
 }
-
-////If the touch is dragged off the screen than no colors are being touched
-//-(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
-//    CCLOG(@"Touch Cancelled");
-//    CGPoint  akjshd = [touch locationInNode:self];
-//    [self noColorsAreBeingTouched];
-//}
 
 //If the touch ended than no colors are being touched
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self noColorsAreBeingTouched];
+    
+    //get the position in the array of saved touches for the current touch
+    //  let go
+    int objectPosition = [playerTouches indexOfObject:touch];
+    
+    //remove this touch from the array
+    [playerTouches removeObject:touch];
+    
+    //Check if the array is empty if so then no color is being touched
+    if (!playerTouches || !playerTouches.count) {
+        //Let program know that no color is being touched
+        [self noColorsAreBeingTouched];
+    }
+    //Check to make sure that touches position was not 0 in the array
+    else if (objectPosition) {
+        //give priority to the last touched color
+        [self whichColorWasTouched:[playerTouches objectAtIndex:(objectPosition-1)]];
+    }
+    
 }
 
 //Check to see which color was touched

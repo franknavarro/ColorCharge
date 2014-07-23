@@ -15,27 +15,27 @@
     //Change the color of the box
     switch (newColor) {
         case ActiveColorRed:
-            [objectToChange setColor:[CCColor colorWithRed:1.f green:0.f blue:0.f]];
+            [objectToChange setColor:[CCColor colorWithRed:(235.f/255.f) green:(45.f/255.f) blue:(24.f/255.f)]];
             break;
             
         case ActiveColorBlue:
-            [objectToChange setColor:[CCColor colorWithRed:0.f green:0.f blue:1.f]];
+            [objectToChange setColor:[CCColor colorWithRed:(0.f/255.f) green:(120.f/255.f) blue:(255.f/255.f)]];
             break;
             
         case ActiveColorYellow:
-            [objectToChange setColor:[CCColor colorWithRed:1.f green:1.f blue:0.f]];
+            [objectToChange setColor:[CCColor colorWithRed:(245.f/255.f) green:(241.f/255.f) blue:(54.f/255.f)]];
             break;
             
         case ActiveColorGreen:
-            [objectToChange setColor:[CCColor colorWithRed:0.f green:1.f blue:0.f]];
+            [objectToChange setColor:[CCColor colorWithRed:(40.f/255.f) green:(200.f/255.f) blue:(92.f/255.f)]];
             break;
             
         case ActiveColorPurple:
-            [objectToChange setColor:[CCColor colorWithRed:0.4f green:0.17f blue:0.56f]];
+            [objectToChange setColor:[CCColor colorWithRed:(171.f/255.f) green:(0.f/255.f) blue:(253.f/255.f)]];
             break;
             
         case ActiveColorOrange:
-            [objectToChange setColor:[CCColor colorWithRed:1.f green:0.58f blue:0.11f]];
+            [objectToChange setColor:[CCColor colorWithRed:(255.f/255.f) green:(163.f/255.f) blue:(54.f/255.f)]];
             break;
             
         case ActiveColorNone:
