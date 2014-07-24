@@ -134,12 +134,16 @@ struct LineSpeed {
     
     //Run through the lines to check if the line's color is being pressed
     for (Line *line in self.lines) {
+
         
-        //make the lines scroll down the screen
-        line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
-        
-        //check to see if the player has lost
-        [self checkLosingCondition:line];
+        //if it is gameOver dont move the line or chek if we lost already
+        if (!isGameOver) {
+            //check to see if the player has lost
+            [self checkLosingCondition:line];
+            
+            //make the lines scroll down the screen
+            line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
+        }
     
         //If the line is completely outside the screen add it to the array of lines to be taken out
         if (line.position.y < -(line.boundingBox.size.height)) {
@@ -360,9 +364,12 @@ struct LineSpeed {
 //Schedules spawnNewLine again
 - (void) keepSpawningNewLine {
     
-    //unschedule and then reschedule spawnNewLine with a delay
-    [self unschedule:@selector(spawnNewLine)];
-    [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
+    //if it isnt gameOver keep spawning dem lines
+    if (!isGameOver) {
+        //unschedule and then reschedule spawnNewLine with a delay
+        [self unschedule:@selector(spawnNewLine)];
+        [self scheduleOnce:@selector(spawnNewLine) delay:currentLineSpeed.spawnSpeed];
+    }
     
 }
 
@@ -389,36 +396,37 @@ struct LineSpeed {
     //We've reached the end friends
     isGameOver = YES;
     
-    //stop the scene from moving
-    self.paused = YES;
-    
     //Stop music
-    [[OALSimpleAudio sharedInstance] stopBg];
+    //[[OALSimpleAudio sharedInstance] stopBg];
+    
+    //make it so the user can't touch the pause button
+    self.pauseButton.userInteractionEnabled = NO;
+    
     //Save the Gameplay scene
-    GameOver *newScene = (GameOver *)[CCBReader load:@"GameOver"];
+    GameOver *newScene = (GameOver *)[CCBReader load:@"GameOver" owner:self];
     //Set the final score in the gameOver Scene to be the users current score
     newScene.finalScore = self.score;
+    newScene.loosingLine = loosingLine;
     
-    //Clean up the scene and free the cluter
-    [self removeChild:self.scoreLabel];
-    [self removeChild:self.playBarLeft];
-    [self removeChild:self.playBarRight];
-    [self removeChild:self.pauseButton];
-    
-    //Display gameover box on top of the current scene
+    //Display gameover scene on top of the current scene
     [self addChild: newScene];
     
-    
 }
+
 
 #pragma mark - Pausing
 
 - (void) pause {
     
-    CCLOG(@"Paused Prssed");
+    CCLOG(@"Paused Pressed");
     
     //pause the whole game
     self.paused = TRUE;
+    
+    if (self.paused) {
+        
+        [self unschedule:@selector(countDown)];
+    }
     
     //Reset the colors being pressed because they never get cancelled when paused is pressed
     self.playBarLeft.currentColorPressed = ActiveColorNone;
@@ -428,10 +436,6 @@ struct LineSpeed {
     //update the hit box to be the new color being pressed (aka white)
     [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
     [self.hitBox updateBoxColor:self.currentColorBeingPressed];
-
-    
-    
-    self.pauseButton.userInteractionEnabled = NO;
     
     //Save the Gameplay scene
     _pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
@@ -446,26 +450,27 @@ struct LineSpeed {
     //set our countdown number to 3
     self.countDownNumber = 3;
     
+    //Start the countdown number
+    _countDownLabel.string = [NSString stringWithFormat:@"%i", self.countDownNumber];
+    
     //Start counting down with a delay to give a fluid start
-    [self scheduleOnce:@selector(countDown) delay:0.5f];
+    [self schedule:@selector(countDown) interval:0.75f];
     
 }
 
 - (void) countDown {
     
     //if we still have numbers to count down to update the countdown label
-    if (self.countDownNumber > 0) {
-        //Update count down label to show new number
-        _countDownLabel.string = [NSString stringWithFormat:@"%i", self.countDownNumber];
+    if (self.countDownNumber > 1) {
         //Decrease the count down number
         self.countDownNumber--;
-        //count down to next number after a second
-        [self unschedule:@selector(countDown)];
-        [self scheduleOnce:@selector(countDown) delay:1.f];
+        //Update count down label to show new number
+        _countDownLabel.string = [NSString stringWithFormat:@"%i", self.countDownNumber];
     } else {
         //Set the countdown label to be noting
         _countDownLabel.string = @"";
         //resume the game
+        [self unschedule:@selector(countDown)];
         self.pauseButton.userInteractionEnabled = YES;
         self.paused = FALSE;
     }
@@ -478,6 +483,13 @@ struct LineSpeed {
     [_pauseMenu removeFromParent];
 }
 
+- (void) backToMenu {
+    
+    CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
+    
+}
 
 ////Test the beats of the line
 //-(void) displayTestTimeBlock {

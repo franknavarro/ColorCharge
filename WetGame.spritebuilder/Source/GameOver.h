@@ -7,9 +7,12 @@
 //
 
 #import "CCNode.h"
+#import "Line.h"
+#import "Color.h"
 
 @interface GameOver : CCNode
 
 @property (nonatomic, assign) int finalScore;
+@property (nonatomic, strong) Line *loosingLine;
 
 @end

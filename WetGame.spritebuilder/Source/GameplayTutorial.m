@@ -244,7 +244,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
 }
 
 - (void) tutorialHitBox {
@@ -265,7 +265,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
     
 }
 
@@ -281,7 +281,7 @@
 //    
 //    //enable user interaction so that the player can press anywhere to continue
 //    self.userInteractionEnabled = YES;
-//    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+//    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
 //
 //    
 //}
@@ -310,7 +310,7 @@
     self.scoreLabel.visible = NO;
     //let touches on the screen continue the game
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
 
     
     //load up the tutorial
@@ -510,7 +510,7 @@
     [self addChild:_tutorialDone];
     
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
 
     
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];
@@ -565,9 +565,10 @@
     
     //Go through the lines to check if the player is now hitting the right color again
     for (Line *line in self.lines) {
+        CGFloat lineMaxY = CGRectGetMaxY(line.boundingBox);
+        CGFloat hitBoxMaxY = CGRectGetMaxY(self.hitBox.boundingBox);
         //check if the line is at half height and the top is above the hit box
-        if (line.position.y <= self.hitBox.position.y &&
-            CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
+        if (line.position.y <= self.hitBox.position.y && (lineMaxY + 1) >= hitBoxMaxY ) {
             if (line.linesColor == self.currentColorBeingPressed) {
                 //resume the game
                 self.paused = NO;

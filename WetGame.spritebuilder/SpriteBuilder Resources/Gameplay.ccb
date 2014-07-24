@@ -10,11 +10,11 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>61</integer>
+	<integer>71</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -49,7 +49,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Background</string>
+				<string>CCNodeColor - Background</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -237,7 +237,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>LineSpawner</string>
+				<string>CCNode - LineSpawner</string>
 				<key>memberVarAssignmentName</key>
 				<string>_lineSpawner</string>
 				<key>memberVarAssignmentType</key>
@@ -315,7 +315,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>MaskLineRight</string>
+				<string>CCNodeColor - MaskLineRight</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -425,7 +425,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>MaskLineLeft</string>
+				<string>MaskLineLeft - MaskLineLeft</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -535,7 +535,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>PlayBarLeft</string>
+				<string>PlayBar - PlayBarLeft</string>
 				<key>memberVarAssignmentName</key>
 				<string>_playBarLeft</string>
 				<key>memberVarAssignmentType</key>
@@ -597,7 +597,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>PlayBarRight</string>
+				<string>PlayBar - PlayBarRight</string>
 				<key>memberVarAssignmentName</key>
 				<string>_playBarRight</string>
 				<key>memberVarAssignmentType</key>
@@ -655,38 +655,7 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
-					<dict>
-						<key>color</key>
-						<dict>
-							<key>keyframes</key>
-							<array>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>color</string>
-									<key>time</key>
-									<real>0.93333333730697632</real>
-									<key>type</key>
-									<integer>6</integer>
-									<key>value</key>
-									<array>
-										<real>0.0</real>
-										<real>0.0</real>
-										<real>0.0</real>
-										<real>1</real>
-									</array>
-								</dict>
-							</array>
-							<key>name</key>
-							<string>color</string>
-							<key>type</key>
-							<integer>6</integer>
-						</dict>
-					</dict>
+					<dict/>
 				</dict>
 				<key>baseClass</key>
 				<string>CCLabelTTF</string>
@@ -695,7 +664,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>CCLabelTTF - Score</string>
 				<key>memberVarAssignmentName</key>
 				<string>_scoreLabel</string>
 				<key>memberVarAssignmentType</key>
@@ -765,7 +734,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Molot/Molot.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -785,26 +754,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-					<dict>
-						<key>baseValue</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-						</array>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -858,7 +807,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -868,7 +817,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>5</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -882,7 +831,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -892,7 +841,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>3</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -922,7 +871,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>CCBFile - HitBox Top</string>
 				<key>memberVarAssignmentName</key>
 				<string>_hitBox</string>
 				<key>memberVarAssignmentType</key>
@@ -984,7 +933,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCButton</string>
+				<string>CCButton - Pause</string>
 				<key>memberVarAssignmentName</key>
 				<string>_pauseButton</string>
 				<key>memberVarAssignmentType</key>
@@ -1299,8 +1248,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1312,7 +1259,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>CCLabelTTF - CountDown</string>
 				<key>memberVarAssignmentName</key>
 				<string>_countDownLabel</string>
 				<key>memberVarAssignmentType</key>
@@ -1649,7 +1596,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.96666663885116577</real>
+			<real>0.89999997615814209</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
