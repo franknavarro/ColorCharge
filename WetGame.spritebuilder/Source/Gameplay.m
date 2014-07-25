@@ -35,15 +35,19 @@ struct LineSpeed {
     //Game speeds are a fall velocity with a respawn time of whatever second
     struct LineSpeed currentLineSpeed;
     
+    CCNodeColor *_background;
+    CCNodeColor *_leftMask;
+    CCNodeColor *_rightMask;
+    
     //Used to test time signature and wether the timing of the lines crossing the hit box was on beat
     CCNode *oldBlock; //block that help keeps time with music
     CCNode *oldTestBlock; //block the helps keep time with line
     BOOL rightPosition; //Used to tell position in relation to oldBlock
     BOOL leftTestPosition; //Used to tell position in relation to oldTestBlock
     
-    BOOL linePassedTopScreen;
+    BOOL isGameOver; // check to see if the game is over
     
-    BOOL isGameOver;
+    BOOL isBoxGrey; //used to make box flash between grey and currentColor
     
 }
 
@@ -58,9 +62,6 @@ struct LineSpeed {
         //Initialize the self.lines array
         //NOTE TO SELF: [NSMutableArray array] is the same as [[alloc]init] for an array
         self.lines = [NSMutableArray array];
-        
-        //PreLoad Audio for Snare Testing
-        //[[OALSimpleAudio sharedInstance] preloadEffect:@"1Snare.m4a"];
         
         
         
@@ -84,6 +85,11 @@ struct LineSpeed {
     
     //[self schedule: @selector(updatePressedColor) interval:0.1f];
     
+    //Set background to offset white
+    [Color changeObject:_background withOffSetColor:ActiveColorNone];
+    [Color changeObject:_leftMask withOffSetColor:ActiveColorNone];
+    [Color changeObject:_rightMask withOffSetColor:ActiveColorNone];
+    
 }
 
 - (void) onEnter {
@@ -91,17 +97,15 @@ struct LineSpeed {
     [super onEnter];
     
     [self resetScoreDifficulty];
-
 }
 
 - (void)onEnterTransitionDidFinish {
     
     [super onEnterTransitionDidFinish];
     
-    //Start playing the already preloaded Background music audio
-    //[[OALSimpleAudio sharedInstance]playBg:@"GameSong.m4a"];
-    
     [self spawnNewLineForFirstTime];
+    
+    [[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:0.1f pan:0.f loop:YES];
     
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
@@ -140,6 +144,8 @@ struct LineSpeed {
         if (!isGameOver) {
             //check to see if the player has lost
             [self checkLosingCondition:line];
+            
+            [self updateBackground];
             
             //make the lines scroll down the screen
             line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
@@ -330,6 +336,23 @@ struct LineSpeed {
     }
 }
 
+- (void) updateBackground {
+    
+    //Run through lines
+    for (Line *line in self.lines) {
+        //check if a line is passing through the middle of the hitBox
+        if (line.position.y  <= CGRectGetMaxY(self.hitBox.boundingBox) - 4 &&
+            CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
+            
+            [Color changeObject:_background withOffSetColor:line.linesColor];
+            [Color changeObject:_leftMask withOffSetColor:line.linesColor];
+            [Color changeObject:_rightMask withOffSetColor:line.linesColor];
+        
+        }
+    }
+    
+}
+
 #pragma mark - Spawning Line
 
 //This method puts in a new line at the top of the screen to be scrolled down
@@ -349,6 +372,12 @@ struct LineSpeed {
     CGSize screenSize = [[CCDirector sharedDirector] viewSize];
     //poistion the new line at half of the screen width at the very top of the screen
     newLine.position = ccp(screenSize.width/2, screenSize.height);
+    
+    //if the next line is the same color as that before it make the front black line
+    //  not visible on it
+    if (newLine.sameColorAsBefore) {
+        newLine.frontOfLine.opacity = 0.f;
+    }
 
     //Check to see if the Difficulty needs to go up
     [self updateGameDifficulty];
@@ -395,9 +424,7 @@ struct LineSpeed {
     
     //We've reached the end friends
     isGameOver = YES;
-    
-    //Stop music
-    //[[OALSimpleAudio sharedInstance] stopBg];
+
     
     //make it so the user can't touch the pause button
     self.pauseButton.userInteractionEnabled = NO;
@@ -408,8 +435,54 @@ struct LineSpeed {
     newScene.finalScore = self.score;
     newScene.loosingLine = loosingLine;
     
-    //Display gameover scene on top of the current scene
-    [self addChild: newScene];
+    //Make the box flash between grey and active color so player knows where they lost
+    [self schedule:@selector(makeBoxFlash) interval:0.2f];
+    
+    //run block of code after 1.5 seconds
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        //stop making the box flash
+        [self unschedule:@selector(makeBoxFlash)];
+        //add the new gameover scene
+        [self addChild:newScene];
+        
+    });
+    
+}
+
+- (void) makeBoxFlash {
+    
+    if (self.currentColorBeingPressed != ActiveColorNone) {
+        //check if the box is grey
+        if (isBoxGrey) {
+            //if it is make it the current color
+            [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
+            [self.hitBox updateBoxColor:self.currentColorBeingPressed];
+        } else {
+            //if not change the color to grey
+            [Color changeObject:_bottomHitBox withColor:ActiveColorGrey];
+            [self.hitBox updateBoxColor:ActiveColorGrey];
+            
+        }
+    } else {
+        
+        //check if the box is grey
+        if (isBoxGrey) {
+            //if it is make it the current color
+            [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
+            [self.hitBox updateBoxColor:self.currentColorBeingPressed];
+        } else {
+            //if not change the color to grey
+            [Color changeObject:_bottomHitBox withOffSetColor:ActiveColorGrey];
+            [self.hitBox updateWhiteBoxAtEnd];
+            
+        }
+        
+    }
+    
+    
+    //invert after the color is chnaged
+    isBoxGrey = !isBoxGrey;
     
 }
 
@@ -417,6 +490,11 @@ struct LineSpeed {
 #pragma mark - Pausing
 
 - (void) pause {
+    
+    //if it is gameOver dont display the pause menu
+    if (isGameOver) {
+        return;
+    }
     
     CCLOG(@"Paused Pressed");
     
@@ -441,6 +519,8 @@ struct LineSpeed {
     _pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
     //Display pause box on top of the current scene
     [self addChild: _pauseMenu];
+    
+    [[OALSimpleAudio sharedInstance] stopBg];
 }
 
 - (void) resume {
@@ -473,6 +553,7 @@ struct LineSpeed {
         [self unschedule:@selector(countDown)];
         self.pauseButton.userInteractionEnabled = YES;
         self.paused = FALSE;
+        [[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:0.05f pan:0.f loop:YES];
     }
     
     

@@ -15,6 +15,13 @@
     
 }
 
+- (void) updateWhiteBoxAtEnd {
+    
+    //call the color change method in order to change to color of the box
+    [Color changeObject:_boxColor withOffSetColor:ActiveColorGrey];
+    
+}
+
 - (void) updateBoxColor: (ActiveColor) newColor {
     
     //call the color change method in order to change to color of the box

@@ -243,7 +243,7 @@
 						<array>
 							<string>Press and hold the colored button 
 that is the same color of the line
-as it goes through the box. </string>
+once it is in the middle of the box.</string>
 							<false/>
 						</array>
 					</dict>
@@ -379,8 +379,6 @@ as it goes through the box. </string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

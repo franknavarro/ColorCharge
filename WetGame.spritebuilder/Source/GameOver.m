@@ -12,14 +12,14 @@
 
 @implementation GameOver {
     
-    CCLabelTTF *_finalScoreLabel;
     CCLabelTTF *_finalScoreNumber;
-    CCLabelTTF *_highScoreLabel;
     CCLabelTTF *_highScoreNumber;
     CCLabelTTF *_gameOverLabel;
     
     CCButton *_restartButton;
     CCButton *_menuButton;
+    CCButton *_leaderBoardButton;
+    CCButton *_shareButton;
     
     //All the lines that shoot up in the end
     CCNodeColor *_finishLine1;
@@ -43,13 +43,15 @@
 //    _restartButton.visible = NO;
 //    _menuButton.visible = NO;
     
-    _highScoreNumber.opacity = 0.f;
-    _highScoreLabel.opacity = 0.f;
-    _finalScoreNumber.opacity = 0.f;
-    _finalScoreLabel.opacity = 0.f;
+    _restartButton.opacity = 0.f;
+    _menuButton.opacity = 0.f;
+    _leaderBoardButton.opacity = 0.f;
+    _shareButton.opacity = 0.f;
     _gameOverLabel.opacity = 0.f;
     
     [super onEnter];
+    
+    [[OALSimpleAudio sharedInstance] stopBg];
 
     //Get the encrypted high score
     NSNumber *getHighScore = [[NSUserDefaults standardUserDefaults] objectEncryptedForKey:@"HighScore"];
@@ -87,8 +89,8 @@
     
     //change the color to the line that you lost on
     [self changeColorForFinishLines: self.loosingLine];
-    [self scheduleOnce:@selector(runFinishLines) delay:0.35f];
-    [self scheduleOnce:@selector(showLabels) delay:1.5f];
+    [self runFinishLines];
+    [self scheduleOnce:@selector(showLabels) delay:0.6f];
     
     
 }
@@ -130,6 +132,12 @@
         //make the line move with that action
         [currentFinishLine runAction:moveToWithEase];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav" volume:0.05f pitch:1.f pan:0.f loop:NO];
+            
+        });
+        
         //remove the line from the array so that we know which lines are left to move
         [_finishLines removeObject:currentFinishLine];
         
@@ -145,18 +153,21 @@
     
 }
 
-
 - (void) showLabels {
     
     CCActionFadeIn *fadeIn1 = [CCActionFadeIn actionWithDuration:0.5f];
     CCActionFadeIn *fadeIn2 = [CCActionFadeIn actionWithDuration:0.5f];
     CCActionFadeIn *fadeIn3 = [CCActionFadeIn actionWithDuration:0.5f];
     CCActionFadeIn *fadeIn4 = [CCActionFadeIn actionWithDuration:0.5f];
+
+    CCAnimationManager *fadeIn = self.animationManager;
     
-    [_finalScoreLabel runAction:fadeIn1];
-    [_finalScoreNumber runAction:fadeIn2];
-    [_highScoreLabel runAction:fadeIn3];
-    [_highScoreNumber runAction:fadeIn4];
+    [fadeIn runAnimationsForSequenceNamed:@"FadeIn"];
+    [_menuButton runAction:fadeIn1];
+    [_leaderBoardButton runAction:fadeIn2];
+    [_shareButton runAction:fadeIn3];
+    [_restartButton runAction:fadeIn4];
+    
     
     
 }

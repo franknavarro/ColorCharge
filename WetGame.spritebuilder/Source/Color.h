@@ -16,12 +16,14 @@ typedef NS_ENUM(int, ActiveColor) {
     ActiveColorYellow,
     ActiveColorGreen,
     ActiveColorPurple,
-    ActiveColorOrange
+    ActiveColorOrange,
+    ActiveColorGrey
     
 };
 
 @interface Color : NSObject
 
 + (void) changeObject: (id) objectToChange withColor: (ActiveColor) newColor;
++ (void) changeObject: (id) objectToChange withOffSetColor: (ActiveColor) newColor;
 
 @end

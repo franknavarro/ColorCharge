@@ -22,6 +22,8 @@
 //Used for testing time
 @property (assign) BOOL passedMidBox;
 
+@property (nonatomic, strong) CCNodeColor *frontOfLine;
+
 //Used to set the color of the line to a random color
 - (void) setRandomColor: (GameDifficulty) currentGameDifficulty;
 

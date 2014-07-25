@@ -12,6 +12,10 @@
 		01066CF719710183002FE039 /* 1Snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01066CF619710183002FE039 /* 1Snare.m4a */; };
 		01067226197DD09A0031D8B6 /* NSUserDefaults+Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */; };
 		014E3AAB1976E3620045E55F /* HitBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E3AAA1976E3620045E55F /* HitBox.m */; };
+		0155F8491981E48700082DB7 /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0155F8481981E48700082DB7 /* whoosh.wav */; };
+		0155F84C1982218700082DB7 /* ProjectGameSong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0155F84B1982218700082DB7 /* ProjectGameSong1.mp3 */; };
+		0194B9CD1982B98E00062B2D /* ProjectGame1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0194B9CC1982B98E00062B2D /* ProjectGame1.mp3 */; };
+		0194B9D01982F45700062B2D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194B9CF1982F45700062B2D /* Accounts.framework */; };
 		01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A66E97197997B70048A2F7 /* GameplayTutorial.m */; };
 		01A740BF19746E5000D9CD62 /* 2Kick.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BD19746E5000D9CD62 /* 2Kick.m4a */; };
 		01A740C019746E5000D9CD62 /* 3HiHat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 01A740BE19746E5000D9CD62 /* 3HiHat.m4a */; };
@@ -78,6 +82,10 @@
 		01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Encryption.m"; sourceTree = "<group>"; };
 		014E3AA91976E3620045E55F /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitBox.h; path = Source/HitBox.h; sourceTree = "<group>"; };
 		014E3AAA1976E3620045E55F /* HitBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HitBox.m; path = Source/HitBox.m; sourceTree = "<group>"; };
+		0155F8481981E48700082DB7 /* whoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoosh.wav; sourceTree = "<group>"; };
+		0155F84B1982218700082DB7 /* ProjectGameSong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ProjectGameSong1.mp3; sourceTree = "<group>"; };
+		0194B9CC1982B98E00062B2D /* ProjectGame1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ProjectGame1.mp3; sourceTree = "<group>"; };
+		0194B9CF1982F45700062B2D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		01A66E96197997B70048A2F7 /* GameplayTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayTutorial.h; path = Source/GameplayTutorial.h; sourceTree = "<group>"; };
 		01A66E97197997B70048A2F7 /* GameplayTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameplayTutorial.m; path = Source/GameplayTutorial.m; sourceTree = "<group>"; };
 		01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gameplay_Protected.h; path = Source/Gameplay_Protected.h; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0194B9D01982F45700062B2D /* Accounts.framework in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
 				B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
@@ -239,6 +248,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0194B9CF1982F45700062B2D /* Accounts.framework */,
 				8392007918EE8E3300B6C429 /* GLKit.framework */,
 				B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */,
 				B77F1B3117B978D7009739AE /* QuartzCore.framework */,
@@ -257,10 +267,13 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0155F84B1982218700082DB7 /* ProjectGameSong1.mp3 */,
+				0194B9CC1982B98E00062B2D /* ProjectGame1.mp3 */,
 				01066CF21970D847002FE039 /* GameSong.m4a */,
 				01066CF619710183002FE039 /* 1Snare.m4a */,
 				01A740BD19746E5000D9CD62 /* 2Kick.m4a */,
 				01A740BE19746E5000D9CD62 /* 3HiHat.m4a */,
+				0155F8481981E48700082DB7 /* whoosh.wav */,
 				B73789911807667A0076A88C /* Icons */,
 				B737893A180761570076A88C /* Published-iOS */,
 			);
@@ -364,12 +377,15 @@
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
+				0155F84C1982218700082DB7 /* ProjectGameSong1.mp3 in Resources */,
 				01A740C019746E5000D9CD62 /* 3HiHat.m4a in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
+				0155F8491981E48700082DB7 /* whoosh.wav in Resources */,
+				0194B9CD1982B98E00062B2D /* ProjectGame1.mp3 in Resources */,
 				01A740BF19746E5000D9CD62 /* 2Kick.m4a in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				01066CF31970D847002FE039 /* GameSong.m4a in Resources */,

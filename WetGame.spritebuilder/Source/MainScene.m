@@ -10,6 +10,15 @@
 
 @implementation MainScene
 
+- (void) onEnter {
+    
+    [super onEnter];
+    
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"whoosh.wav"];
+    [[OALSimpleAudio sharedInstance] preloadBg:@"ProjectGame1.mp3"];
+    
+}
+
 -(void) startPlay {
     
     NSNumber *tutorialHasRan = [[NSUserDefaults standardUserDefaults] objectForKey:@"TutroialHasRan"];

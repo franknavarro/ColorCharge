@@ -222,7 +222,7 @@
     
     [self addChild:_tutorialPrimaryColors];
     
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.f];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.5f];
 
 }
 
@@ -244,7 +244,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
 }
 
 - (void) tutorialHitBox {
@@ -265,7 +265,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
     
 }
 
@@ -310,7 +310,7 @@
     self.scoreLabel.visible = NO;
     //let touches on the screen continue the game
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.5f];
 
     
     //load up the tutorial
@@ -352,7 +352,7 @@
     //add the scene
     [self addChild:_tutorialMixing];
     
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.f];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.5f];
 
     
 }
@@ -387,9 +387,9 @@
     
     if (loosingLine.linesColor == ActiveColorNone) {
         _missedColorMessage.string = [NSString stringWithFormat:@"For White lines you let go of\neverything!"];
-        [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.f];
+        [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
     } else {
-        [self scheduleOnce:@selector(startUpGameByPressingColor) delay:2.1f];
+        [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
     }
     
 }
@@ -568,7 +568,7 @@
         CGFloat lineMaxY = CGRectGetMaxY(line.boundingBox);
         CGFloat hitBoxMaxY = CGRectGetMaxY(self.hitBox.boundingBox);
         //check if the line is at half height and the top is above the hit box
-        if (line.position.y <= self.hitBox.position.y && (lineMaxY + 1) >= hitBoxMaxY ) {
+        if (line.position.y <= self.hitBox.position.y && (lineMaxY + 4) >= hitBoxMaxY ) {
             if (line.linesColor == self.currentColorBeingPressed) {
                 //resume the game
                 self.paused = NO;

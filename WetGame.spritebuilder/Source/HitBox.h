@@ -14,5 +14,6 @@
 @property (assign) ActiveColor currentBoxColor;
 
 - (void) updateBoxColor: (ActiveColor) newColor;
+- (void) updateWhiteBoxAtEnd;
 
 @end

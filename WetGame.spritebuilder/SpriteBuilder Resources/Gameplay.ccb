@@ -10,11 +10,11 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>71</integer>
+	<integer>78</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -51,7 +51,7 @@
 				<key>displayName</key>
 				<string>CCNodeColor - Background</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_background</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -122,9 +122,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
+							<real>1</real>
+							<real>1</real>
+							<real>1</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -260,7 +260,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1.4885749816894531</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -317,7 +317,7 @@
 				<key>displayName</key>
 				<string>CCNodeColor - MaskLineRight</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_rightMask</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -338,7 +338,7 @@
 						<key>value</key>
 						<array>
 							<real>0.49000000953674316</real>
-							<real>-0.94012451171875</real>
+							<real>-2.1339111328125</real>
 							<integer>2</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -399,10 +399,10 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
 							<real>1</real>
+							<real>1</real>
+							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -411,7 +411,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.0</real>
 					</dict>
 				</array>
 			</dict>
@@ -425,9 +425,9 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>MaskLineLeft - MaskLineLeft</string>
+				<string>CCNodeColor - MaskLineLeft</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_leftMask</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -509,10 +509,10 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
-							<real>0.90196079015731812</real>
 							<real>1</real>
+							<real>1</real>
+							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -521,7 +521,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.0</real>
 					</dict>
 				</array>
 			</dict>
@@ -557,8 +557,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>55</real>
-							<real>0.39743268489837646</real>
+							<real>53</real>
+							<real>0.40000000596046448</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -619,7 +619,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>55</real>
+							<real>53</real>
 							<real>0.40000000596046448</real>
 							<integer>3</integer>
 							<integer>0</integer>
@@ -648,6 +648,8 @@
 						<string>PlayBar.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -687,7 +689,7 @@
 						<key>value</key>
 						<array>
 							<real>20</real>
-							<real>10</real>
+							<real>12.364990234375</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
