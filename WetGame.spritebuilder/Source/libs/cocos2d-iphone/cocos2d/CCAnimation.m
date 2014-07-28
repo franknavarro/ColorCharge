@@ -25,7 +25,7 @@
  *
  */
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CCAnimation.h"
 #import "CCSpriteFrame.h"
 #import "CCTexture.h"

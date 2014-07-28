@@ -62,8 +62,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import <Foundation/Foundation.h> //	for NSObject
 
-#import "ccTypes.h"
-#import "ccMacros.h"
+#import "CCTypes.h"
+#import "CCMacros.h"
 
 #import "Platforms/CCGL.h" // OpenGL stuff
 #import "Platforms/CCNS.h" // Next-Step stuff

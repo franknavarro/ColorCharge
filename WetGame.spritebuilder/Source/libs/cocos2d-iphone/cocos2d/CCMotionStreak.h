@@ -26,7 +26,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CCTexture.h"
-#import "ccTypes.h"
+#import "CCTypes.h"
 #import "CCNode.h"
 
 /**

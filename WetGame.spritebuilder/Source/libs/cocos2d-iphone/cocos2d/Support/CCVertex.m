@@ -24,7 +24,7 @@
 
 #import "CCVertex.h"
 #import "CGPointExtension.h"
-#import "../ccMacros.h"
+#import "../CCMacros.h"
 
 void CCVertexLineToPolygon(CGPoint *points, float stroke, ccVertex2F *vertices, NSUInteger offset, NSUInteger nuPoints)
 {

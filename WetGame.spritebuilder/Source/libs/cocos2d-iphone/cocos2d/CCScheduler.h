@@ -26,7 +26,7 @@
 
 
 
-#import "ccTypes.h"
+#import "CCTypes.h"
 
 @class CCScheduler;
 

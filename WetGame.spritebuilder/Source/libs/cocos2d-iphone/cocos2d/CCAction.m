@@ -27,7 +27,7 @@
 
 
 #import "CCDirector.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CCAction.h"
 #import "CCActionInterval.h"
 #import "Support/CGPointExtension.h"

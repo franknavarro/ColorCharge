@@ -511,21 +511,17 @@
     
     self.userInteractionEnabled = YES;
     [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
-
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
 
-- (void) returnToMenu {
- 
-    //Save the Gameplay scene
-    CCScene *newScene = [CCBReader loadAsScene:@"MainScene"];
-    //Set up the transition
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
-    //Begin the tranistion made to go to Gameplay
-    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+- (void) backToMenu {
+    
+    [super backToMenu];
+    
+    //Save that the tutorial has been done
+    [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     
 }
 
@@ -572,9 +568,9 @@
             if (line.linesColor == self.currentColorBeingPressed) {
                 //resume the game
                 self.paused = NO;
-                self.pauseButton.userInteractionEnabled = YES;
                 //reveal the pause button and what not again
                 self.pauseButton.visible = YES;
+                self.pauseButton.userInteractionEnabled = YES;
                 self.scoreLabel.visible = YES;
                 //unschedule itself if we have met the condition
                 [self unschedule:@selector(startUpGameByPressingColor)];
@@ -606,7 +602,7 @@
     //  starting with the first tutorial and when a newer tutorial comes, the program doesn't
     //  try and remove the old one anymore
     if (didOrange && didGreen && didPurple) {
-        [self returnToMenu];
+        [self backToMenu];
     }
     
     //check if whites have started
@@ -663,9 +659,9 @@
         [_tutorialStart removeFromParent];
         //Stop the line from moving
         self.paused = NO;
-        
         //Make it so the player can't hit the pause button because it wigs out
         self.pauseButton.visible = YES;
+        self.pauseButton.userInteractionEnabled = YES;
         self.scoreLabel.visible = YES;
         
         [self spawnNewLine];

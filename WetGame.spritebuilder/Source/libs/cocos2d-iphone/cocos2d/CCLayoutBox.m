@@ -24,7 +24,7 @@
  */
 
 #import "CCLayoutBox.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CGPointExtension.h"
 #import "CCNode_Private.h"
 

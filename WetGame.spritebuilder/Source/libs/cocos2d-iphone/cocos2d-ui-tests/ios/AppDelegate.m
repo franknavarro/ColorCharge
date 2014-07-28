@@ -22,13 +22,20 @@
  * THE SOFTWARE.
  */
 
+#ifndef USE_SIMPLE_TEST
+#define USE_SIMPLE_TEST 0 // Note: this is temporary - while testing out cocos2d with CCGLQueue
+#endif
+
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
 #import "MainMenu.h"
 #import "TestBase.h"
+#import "SimpleScene.h"
 
-@implementation AppController
+@implementation AppController {
+    SimpleScene* _simpleScene;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -63,12 +70,21 @@
 
 - (CCScene*) startScene
 {
+    
+    if(_simpleScene == nil) {
+        _simpleScene = [[SimpleScene alloc] init];
+    }
+    
 	const char *testName = getenv("Test");
 	
 	if(testName){
 		return [TestBase sceneWithTestName:[NSString stringWithCString:testName encoding:NSUTF8StringEncoding]];
 	} else {
+#if USE_SIMPLE_TEST
+        return _simpleScene;
+#else
 		return [MainMenu scene];
+#endif
 	}
 }
 

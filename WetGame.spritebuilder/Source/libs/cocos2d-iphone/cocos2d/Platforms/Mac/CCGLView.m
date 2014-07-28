@@ -30,14 +30,14 @@
 
 // Only compile this code on Mac. These files should not be included on your iOS project.
 // But in case they are included, it won't be compiled.
-#import "../../ccMacros.h"
-#ifdef __CC_PLATFORM_MAC
+#import "../../CCMacros.h"
+#if __CC_PLATFORM_MAC
 
 #import "../../Platforms/CCGL.h"
 #import "CCGLView.h"
 #import "CCDirectorMac.h"
-#import "../../ccConfig.h"
-#import "../../ccMacros.h"
+#import "../../CCConfig.h"
+#import "../../CCMacros.h"
 
 #import "CCDirector_Private.h"
 

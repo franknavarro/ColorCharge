@@ -28,8 +28,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ccTypes.h"
-#import "ccMacros.h"
+#import "CCTypes.h"
+#import "CCMacros.h"
 #import "Platforms/CCGL.h"
 
 /// Macro to embed GLSL source

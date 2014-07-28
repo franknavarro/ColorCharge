@@ -27,17 +27,17 @@
 
 // Only compile this code on iOS. These files should NOT be included on your Mac project.
 // But in case they are included, it won't be compiled.
-#import "../../ccMacros.h"
+#import "../../CCMacros.h"
 
-#ifdef __CC_PLATFORM_IOS
+#if __CC_PLATFORM_IOS
 
 #import "../../CCDirector.h"
 
 /** CCDirector extensions for iPhone
  */
 @interface CCDirector (iOSExtension)
-/** converts a UITouch to a GL point */
--(CGPoint)convertTouchToGL:(UITouch*)touch;
+/** converts a CCTouch to a GL point */
+-(CGPoint)convertTouchToGL:(CCTouch*)touch;
 @end
 
 #pragma mark -

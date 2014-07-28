@@ -21,6 +21,8 @@ struct LineSpeed {
 };
 
 @implementation Gameplay {
+    
+    NSMutableArray *_backgroundBoxes;
 
     CCNode *_lineSpawner; //Add the lines to the scene onto the scene through this node that encompases the screen size
     
@@ -35,9 +37,11 @@ struct LineSpeed {
     //Game speeds are a fall velocity with a respawn time of whatever second
     struct LineSpeed currentLineSpeed;
     
-    CCNodeColor *_background;
-    CCNodeColor *_leftMask;
-    CCNodeColor *_rightMask;
+    CCNode *_background;
+    CCNodeColor *_backgroundColor;
+    CCNodeColor *_hideParticlesColor;
+//    CCNodeColor *_leftMask;
+//    CCNodeColor *_rightMask;
     
     //Used to test time signature and wether the timing of the lines crossing the hit box was on beat
     CCNode *oldBlock; //block that help keeps time with music
@@ -63,7 +67,7 @@ struct LineSpeed {
         //NOTE TO SELF: [NSMutableArray array] is the same as [[alloc]init] for an array
         self.lines = [NSMutableArray array];
         
-        
+        _backgroundBoxes = [NSMutableArray array];
         
     }
     return self;
@@ -83,12 +87,13 @@ struct LineSpeed {
     AppController *appDelegate = (AppController *)[[UIApplication sharedApplication] delegate];
     appDelegate.gameplayScene = self;
     
-    //[self schedule: @selector(updatePressedColor) interval:0.1f];
-    
     //Set background to offset white
-    [Color changeObject:_background withOffSetColor:ActiveColorNone];
-    [Color changeObject:_leftMask withOffSetColor:ActiveColorNone];
-    [Color changeObject:_rightMask withOffSetColor:ActiveColorNone];
+    [Color changeObject:_backgroundColor withOffSetColor:ActiveColorNone];
+    [Color changeObject:_hideParticlesColor withOffSetColor:ActiveColorNone];
+//    [Color changeObject:_leftMask withOffSetColor:ActiveColorNone];
+//    [Color changeObject:_rightMask withOffSetColor:ActiveColorNone];
+    
+    [self resetScoreDifficulty];
     
 }
 
@@ -105,7 +110,9 @@ struct LineSpeed {
     
     [self spawnNewLineForFirstTime];
     
-    [[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:0.1f pan:0.f loop:YES];
+    //[[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:1.f pan:0.f loop:YES];
+    
+    [self spawnNewBackgroundBox];
     
 //    //This was used for test to see if block would stay in time
 //    [self schedule:@selector(displayBlock) interval:1.f];
@@ -126,6 +133,47 @@ struct LineSpeed {
     self.score = 0;
     self.currentGameDifficulty = GameEasy;
     
+}
+
+- (void) spawnNewBackgroundBox {
+    
+    //Check to make sure its not GameOver
+    if (!isGameOver) {
+        //Get the screensize
+        CGSize screenSize = [[CCDirector sharedDirector] viewSize];
+        
+        //Create a new box to spawn
+        CCNode *newBox = [CCBReader load:@"BackgroundBox"];
+        
+        //randomly get an x and y position on the screen to get a boxes position
+        int xPosition = arc4random() % (int)screenSize.width;
+        int yPosition = arc4random() % (int)screenSize.height;
+        
+        //set up the boxes position to the new random spot
+        newBox.position = ccp(xPosition, yPosition);
+        
+        //put the box on the screen
+        [_background addChild:newBox];
+        
+        //add the box to an array
+        [_backgroundBoxes addObject:newBox];
+        
+        //Check if there are 4 or more boxes remove the first
+        if ([_backgroundBoxes count] >= 4) {
+            [_backgroundBoxes removeObjectAtIndex:0];
+        }
+        
+        CCLOG(@"%i", [_backgroundBoxes count]);
+        
+        //Unschedule and schedule to make a new box
+        [self unschedule:@selector(spawnNewBackgroundBox)];
+        [self scheduleOnce:@selector(spawnNewBackgroundBox) delay:2.f];
+    }
+
+    //If it is gameOver get rid of all the background boxes
+    else {
+        [_backgroundBoxes removeAllObjects];
+    }
 }
 
 #pragma mark - Update Methods
@@ -344,9 +392,10 @@ struct LineSpeed {
         if (line.position.y  <= CGRectGetMaxY(self.hitBox.boundingBox) - 4 &&
             CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox)) {
             
-            [Color changeObject:_background withOffSetColor:line.linesColor];
-            [Color changeObject:_leftMask withOffSetColor:line.linesColor];
-            [Color changeObject:_rightMask withOffSetColor:line.linesColor];
+            [Color changeObject:_backgroundColor withOffSetColor:line.linesColor];
+            [Color changeObject:_hideParticlesColor withOffSetColor:line.linesColor];
+//            [Color changeObject:_leftMask withOffSetColor:line.linesColor];
+//            [Color changeObject:_rightMask withOffSetColor:line.linesColor];
         
         }
     }
@@ -374,9 +423,11 @@ struct LineSpeed {
     newLine.position = ccp(screenSize.width/2, screenSize.height);
     
     //if the next line is the same color as that before it make the front black line
-    //  not visible on it
-    if (newLine.sameColorAsBefore) {
-        newLine.frontOfLine.opacity = 0.f;
+    //  not visible on it and make sure that we already past the first line
+    if ([Line isFirstLineDone]) {
+        if (newLine.sameColorAsBefore) {
+            newLine.frontOfLine.opacity = 0.f;
+        }
     }
 
     //Check to see if the Difficulty needs to go up
@@ -408,7 +459,7 @@ struct LineSpeed {
     
     //If the bottom of the line has passed the bottom of the hitbox and the top of the line has not reached the top of the hit box yet
     //  check to see if the right color is being pressed
-    if (line.position.y < CGRectGetMinY(self.hitBox.boundingBox) && CGRectGetMaxY(self.hitBox.boundingBox) < CGRectGetMaxY(line.boundingBox))
+    if (line.position.y < CGRectGetMinY(self.hitBox.boundingBox) && CGRectGetMaxY(self.hitBox.boundingBox)+5 < CGRectGetMaxY(line.boundingBox))
     {
         if (line.linesColor != self.currentColorBeingPressed) {
             CCLOG(@"Player Lost");
@@ -553,7 +604,7 @@ struct LineSpeed {
         [self unschedule:@selector(countDown)];
         self.pauseButton.userInteractionEnabled = YES;
         self.paused = FALSE;
-        [[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:0.05f pan:0.f loop:YES];
+        //[[OALSimpleAudio sharedInstance] playBg:@"ProjectGame1.mp3" volume:1.f pan:0.f loop:YES];
     }
     
     

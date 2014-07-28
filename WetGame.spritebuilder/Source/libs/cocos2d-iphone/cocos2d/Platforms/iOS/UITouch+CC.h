@@ -24,14 +24,14 @@
  * THE SOFTWARE.
  */
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 
-#ifdef __CC_PLATFORM_IOS
+#if __CC_PLATFORM_IOS
 
 #import "cocos2d.h"
 #import <UIKit/UIKit.h>
 
-@interface UITouch (CC)
+@interface PlatformTouch (CC)
 
 - (CGPoint) locationInNode:(CCNode*) node;
 - (CGPoint) locationInWorld;

@@ -23,9 +23,9 @@
  * THE SOFTWARE.
  */
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 
-#ifdef __CC_PLATFORM_MAC
+#if __CC_PLATFORM_MAC
 
 #import "NSEvent+CC.h"
 #import "CCDirectorMac.h"

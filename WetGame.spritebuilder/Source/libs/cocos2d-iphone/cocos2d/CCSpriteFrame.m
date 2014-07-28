@@ -29,7 +29,7 @@
 #import "CCTextureCache.h"
 #import "CCSpriteFrame.h"
 #import "CCTexture.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CCSpriteFrameCache.h"
 #import "CCTexture_Private.h"
 

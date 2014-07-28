@@ -27,7 +27,9 @@
 #import "CCButton.h"
 #import "CCScrollView.h"
 #import "CCTableView.h"
+#if !__CC_PLATFORM_ANDROID
 #import "CCTextField.h"
+#endif
 #import "CCSlider.h"
 
 // CCBReader

@@ -27,6 +27,8 @@
 // Attribution is not required, but appreciated :)
 //
 
+#import "CCMacros.h"
+
 #import "ALSoundSource.h"
 #import "ALSoundSourcePool.h"
 #import "ALContext.h"

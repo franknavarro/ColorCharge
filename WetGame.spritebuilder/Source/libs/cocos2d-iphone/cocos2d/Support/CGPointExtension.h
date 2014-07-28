@@ -44,11 +44,11 @@
   - cpvadd( CGPointMake(1,1), CGPointMake(2,2) ); // mixing chipmunk and CG (avoid)
  */
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 
-#ifdef __CC_PLATFORM_IOS
+#if __CC_PLATFORM_IOS || __CC_PLATFORM_ANDROID
 #import <CoreGraphics/CGGeometry.h>
-#elif defined(__CC_PLATFORM_MAC)
+#elif __CC_PLATFORM_MAC
 #import <Foundation/Foundation.h>
 #endif
 
@@ -307,7 +307,21 @@ BOOL ccpSegmentIntersect(CGPoint A, CGPoint B, CGPoint C, CGPoint D);
  ccpIntersectPoint returns the intersection point of line A-B, C-D
  */
 CGPoint ccpIntersectPoint(CGPoint A, CGPoint B, CGPoint C, CGPoint D);
+    
+@interface CCValue : NSValue
 
++ (NSValue *)valueWithCGPoint:(CGPoint)point;
++ (NSValue *)valueWithCGSize:(CGSize)size;
++ (NSValue *)valueWithCGRect:(CGRect)rect;
++ (NSValue *)valueWithCGAffineTransform:(CGAffineTransform)transform;
+
+- (CGPoint)CGPointValue;
+- (CGSize)CGSizeValue;
+- (CGRect)CGRectValue;
+- (CGAffineTransform)CGAffineTransformValue;
+
+@end
+    
 #ifdef __cplusplus
 }
 #endif

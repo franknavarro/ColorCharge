@@ -29,7 +29,7 @@
 
 #import "CCActionManager.h"
 #import "CCActionManager_Private.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 
 @interface CCActionManager (Private)
 -(void) removeActionAtIndex:(NSUInteger)index hashElement:(tHashElement*)element;

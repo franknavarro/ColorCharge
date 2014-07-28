@@ -29,13 +29,14 @@
 
 // Only compile this code on iOS. These files should NOT be included on your Mac project.
 // But in case they are included, it won't be compiled.
-#import "../../ccMacros.h"
-#ifdef __CC_PLATFORM_IOS
+#import "../../CCMacros.h"
+#if __CC_PLATFORM_IOS
 
 #import "CCES2Renderer.h"
+#import "CCGLQueue.h"
 
 #import "../CCGL.h"
-#import "../../ccMacros.h"
+#import "../../CCMacros.h"
 
 @implementation CCES2Renderer
 
@@ -51,6 +52,44 @@
     self = [super init];
     if (self)
     {
+        
+#if __CC_USE_GL_QUEUE
+        [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES2] start];
+        [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES2] addOperation:^(EAGLContext *ctx) {
+            _depthFormat = depthFormat;
+            _pixelFormat = pixelFormat;
+            _multiSampling = multiSampling;
+            
+            // Create default framebuffer object. The backing will be allocated for the current layer in -resizeFromLayer
+            glGenFramebuffers(1, &_defaultFramebuffer);
+            NSAssert( _defaultFramebuffer, @"Can't create default frame buffer");
+            
+            glGenRenderbuffers(1, &_colorRenderbuffer);
+            NSAssert( _colorRenderbuffer, @"Can't create default render buffer");
+            
+            glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
+            glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderbuffer);
+            
+            if (_multiSampling)
+            {
+                GLint maxSamplesAllowed;
+                glGetIntegerv(GL_MAX_SAMPLES_APPLE, &maxSamplesAllowed);
+                _samplesToUse = MIN(maxSamplesAllowed,requestedSamples);
+                
+                /* Create the MSAA framebuffer (offscreen) */
+                glGenFramebuffers(1, &_msaaFramebuffer);
+                NSAssert( _msaaFramebuffer, @"Can't create default MSAA frame buffer");
+                glBindFramebuffer(GL_FRAMEBUFFER, _msaaFramebuffer);
+                
+            }
+            
+            CC_CHECK_GL_ERROR_DEBUG();
+        }];
+        
+        //[[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES2] flush];
+        
+#else
 		if( ! sharegroup )
 			_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 		else
@@ -60,7 +99,7 @@
         {
             return nil;
         }
-		
+        
 		_depthFormat = depthFormat;
 		_pixelFormat = pixelFormat;
 		_multiSampling = multiSampling;
@@ -87,9 +126,87 @@
 		}
 
 		CC_CHECK_GL_ERROR_DEBUG();
+#endif
     }
 
     return self;
+}
+
+- (void)resizeFromLayer:(CAEAGLLayer *)layer ctx:(EAGLContext *)ctx
+{
+    // Allocate color buffer backing based on the current layer size
+    glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+    
+    if( ! [ctx renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer] )
+        CCLOG(@"failed to call context");
+    
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
+    
+    CCLOG(@"cocos2d: surface size: %dx%d", (int)_backingWidth, (int)_backingHeight);
+    
+    if (_multiSampling)
+    {
+        if ( _msaaColorbuffer) {
+            glDeleteRenderbuffers(1, &_msaaColorbuffer);
+            _msaaColorbuffer = 0;
+        }
+        
+        /* Create the offscreen MSAA color buffer.
+         After rendering, the contents of this will be blitted into ColorRenderbuffer */
+        
+        //msaaFrameBuffer needs to be binded
+        glBindFramebuffer(GL_FRAMEBUFFER, _msaaFramebuffer);
+        glGenRenderbuffers(1, &_msaaColorbuffer);
+        NSAssert(_msaaFramebuffer, @"Can't create MSAA color buffer");
+        
+        glBindRenderbuffer(GL_RENDERBUFFER, _msaaColorbuffer);
+        
+        glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, _samplesToUse, _pixelFormat , _backingWidth, _backingHeight);
+        
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _msaaColorbuffer);
+        
+        GLenum error;
+        if ( (error=glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE)
+        {
+            CCLOG(@"Failed to make complete framebuffer object 0x%X", error);
+        }
+    }
+    
+    CC_CHECK_GL_ERROR_DEBUG();
+    
+    if (_depthFormat)
+    {
+        if( ! _depthBuffer ) {
+            glGenRenderbuffers(1, &_depthBuffer);
+            NSAssert(_depthBuffer, @"Can't create depth buffer");
+        }
+        
+        glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+        
+        if( _multiSampling )
+            glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, _samplesToUse, _depthFormat,_backingWidth, _backingHeight);
+        else
+            glRenderbufferStorage(GL_RENDERBUFFER, _depthFormat, _backingWidth, _backingHeight);
+        
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
+        
+        if (_depthFormat == GL_DEPTH24_STENCIL8_OES) {
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
+        }
+        
+        // bind color buffer
+        glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+    }
+    
+    CC_CHECK_GL_ERROR_DEBUG();
+    
+    GLenum error;
+    if( (error=glCheckFramebufferStatus(GL_FRAMEBUFFER)) != GL_FRAMEBUFFER_COMPLETE)
+    {
+        CCLOG(@"Failed to make complete framebuffer object 0x%X", error);
+    }
+
 }
 
 - (BOOL)resizeFromLayer:(CAEAGLLayer *)layer
@@ -166,7 +283,7 @@
 		CCLOG(@"Failed to make complete framebuffer object 0x%X", error);
 		return NO;
 	}
-
+    
 	return YES;
 }
 
@@ -204,6 +321,7 @@
 {
 	CCLOGINFO(@"cocos2d: deallocing %@", self);
 
+    // add this to an operation if __CC_USE_GL_QUEUE
     // Tear down GL
     if (_defaultFramebuffer) {
         glDeleteFramebuffers(1, &_defaultFramebuffer);
@@ -232,11 +350,13 @@
 		_msaaFramebuffer = 0;
 	}
 
+#if __CC_USE_GL_QUEUE
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES2] cancel];
+#else
     // Tear down context
     if ([EAGLContext currentContext] == _context)
         [EAGLContext setCurrentContext:nil];
-
-
+#endif
 }
 
 @end

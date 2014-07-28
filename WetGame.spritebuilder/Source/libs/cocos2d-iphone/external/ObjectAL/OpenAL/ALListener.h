@@ -27,6 +27,9 @@
 // Attribution is not required, but appreciated :)
 //
 
+
+#import "CCMacros.h"
+
 #import <Foundation/Foundation.h>
 #import "ALTypes.h"
 #import "OALSuspendHandler.h"

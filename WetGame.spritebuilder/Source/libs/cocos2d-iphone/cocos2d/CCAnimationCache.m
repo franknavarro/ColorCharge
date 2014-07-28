@@ -28,7 +28,7 @@
  */
 
 #import "CCAnimationCache.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CCSpriteFrameCache.h"
 #import "CCAnimation.h"
 #import "CCSprite.h"

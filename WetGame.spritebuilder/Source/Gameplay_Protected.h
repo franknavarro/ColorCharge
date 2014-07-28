@@ -42,5 +42,6 @@
 - (void) spawnNewLine;
 - (void) keepSpawningNewLine;
 - (void) removeSceneBeforeCountDownStarts;
+- (void) backToMenu;
 
 @end

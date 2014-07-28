@@ -26,11 +26,10 @@
  */
 
 #import <Foundation/Foundation.h>
-
-@interface NSAttributedString (CCAdditions)
-
-- (BOOL) hasAttribute:(NSString*)attr;
-- (NSAttributedString*) copyAdjustedForContentScaleFactor;
-- (float) singleFontSize;
-- (NSAttributedString*) copyWithNewFontSize:(float) size;
-@end
+@class CCColor;
+#import "CCTypes.h"
+BOOL NSAttributedStringHasAttribute(NSAttributedString *attrString, NSString*attr);
+NSAttributedString* NSAttributedStringCopyAdjustedForContentScaleFactor(NSAttributedString *attrString);
+float NSAttributedStringSingleFontSize(NSAttributedString *attrString);
+NSAttributedString*  NSAttributedStringCopyWithNewFontSize(NSAttributedString *attrString, float fontSize);
+BOOL NSMutableAttributedStringFixPlatformSpecificAttributes(NSMutableAttributedString* string, CCColor* defaultColor, NSString* defaultFontName, CGFloat defaultFontSize, CCTextAlignment defaultHorizontalAlighment);

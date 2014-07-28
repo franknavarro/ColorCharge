@@ -35,8 +35,8 @@
  *   http://www.angelcode.com/products/bmfont/ (Free, Windows only)
  */
 
-#import "ccConfig.h"
-#import "ccMacros.h"
+#import "CCConfig.h"
+#import "CCMacros.h"
 #import "CCLabelBMFont.h"
 #import "CCSprite.h"
 #import "CCConfiguration.h"

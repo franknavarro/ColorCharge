@@ -16,10 +16,13 @@
     CCLabelTTF *_highScoreNumber;
     CCLabelTTF *_gameOverLabel;
     
+    CCSprite *_scoreBox;
+    
     CCButton *_restartButton;
     CCButton *_menuButton;
     CCButton *_leaderBoardButton;
     CCButton *_shareButton;
+
     
     //All the lines that shoot up in the end
     CCNodeColor *_finishLine1;
@@ -35,6 +38,7 @@
     
     //initialize the array of finish lines with the finish lines
     _finishLines = [NSMutableArray arrayWithObjects:_finishLine1, _finishLine2, _finishLine3, _finishLine4, _finishLine5,  nil];
+    
     
 }
 
@@ -92,6 +96,8 @@
     [self runFinishLines];
     [self scheduleOnce:@selector(showLabels) delay:0.6f];
     
+    //reset the first line to not finished
+    [Line resetFirstLineDone];
     
 }
 
@@ -101,6 +107,9 @@
         currentFinishLine.cascadeColorEnabled = YES;
         [Color changeObject:currentFinishLine withColor:loosingLine.linesColor];
     }
+    
+    [Color changeObject:_scoreBox withOffSetColor:loosingLine.linesColor];
+
     
 }
 
@@ -128,13 +137,13 @@
         CCActionMoveTo *moveTo = [CCActionMoveTo actionWithDuration:1.f position:ccp(currentFinishLine.position.x, 1.0f)];
         //add an elastic effect to the move
         CCActionEase *moveToWithEase = [CCActionEaseIn actionWithAction:moveTo rate:10.f];
-        
+
         //make the line move with that action
         [currentFinishLine runAction:moveToWithEase];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav" volume:0.05f pitch:1.f pan:0.f loop:NO];
+            [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav" volume:0.5f pitch:1.f pan:0.f loop:NO];
             
         });
         

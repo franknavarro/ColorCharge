@@ -11,7 +11,7 @@
 @implementation Color
 
 + (void) changeObject: (id) objectToChange withColor: (ActiveColor) newColor {
-
+    
     //Change the color of the box
     switch (newColor) {
         case ActiveColorRed:
@@ -144,33 +144,33 @@
 
 + (CCColor *) offSetRed {
     
-    return [CCColor colorWithRed:(255.f/255.f) green:(231.f/255.f) blue:(255.f/255.f)];
+    return [CCColor colorWithRed:(255.f/255.f) green:(102.f/255.f) blue:(102.f/255.f)];
 }
 
 + (CCColor *) offSetBlue {
     
-    return [CCColor colorWithRed:(231.f/255.f) green:(255.f/255.f) blue:(255.f/255.f)];
+    return [CCColor colorWithRed:(102.f/255.f) green:(204.f/255.f) blue:(255.f/255.f)];
 }
 
 + (CCColor *) offSetYellow {
     
-    return [CCColor colorWithRed:(255.f/255.f) green:(255.f/255.f) blue:(167.f/255.f)];
+    return [CCColor colorWithRed:(255.f/255.f) green:(255.f/255.f) blue:(102.f/255.f)];
 }
 
 + (CCColor *) offSetGreen {
     
-    return [CCColor colorWithRed:(223.f/255.f) green:(255.f/255.f) blue:(166.f/255.f)];
+    return [CCColor colorWithRed:(102.f/255.f) green:(255.f/255.f) blue:(102.f/255.f)];
 }
 
 + (CCColor *) offSetPurple {
     
-    return [CCColor colorWithRed:(231.f/255.f) green:(227.f/255.f) blue:(255.f/255.f)];
+    return [CCColor colorWithRed:(204.f/255.f) green:(127.f/255.f) blue:(255.f/255.f)];
 }
 
 
 + (CCColor *) offSetOrange {
     
-    return [CCColor colorWithRed:(255.f/255.f) green:(217.f/255.f) blue:(176.f/255.f)];
+    return [CCColor colorWithRed:(255.f/255.f) green:(204.f/255.f) blue:(102.f/255.f)];
 }
 
 + (CCColor *) offSetWhite {

@@ -21,7 +21,7 @@
 
 #import "ZipUtils.h"
 #import "CCFileUtils.h"
-#import "../ccMacros.h"
+#import "../CCMacros.h"
 
 // memory in iPhone is precious
 // Should buffer factor be 1.5 instead of 2 ?

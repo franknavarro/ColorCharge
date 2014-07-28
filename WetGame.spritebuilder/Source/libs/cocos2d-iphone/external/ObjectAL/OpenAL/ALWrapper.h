@@ -27,6 +27,8 @@
 // Attribution is not required, but appreciated :)
 //
 
+#import "CCMacros.h"
+
 #import <Foundation/Foundation.h>
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>

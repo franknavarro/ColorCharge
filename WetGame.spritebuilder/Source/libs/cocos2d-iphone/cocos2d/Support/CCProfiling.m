@@ -23,8 +23,8 @@
  *
  */
 
-#import "../ccConfig.h"
-#import "../ccMacros.h"
+#import "../CCConfig.h"
+#import "../CCMacros.h"
 
 #import "CCProfiling.h"
 

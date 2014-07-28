@@ -27,7 +27,7 @@
  */
 
 #import "CCParticleSystemBase.h"
-#import "ccConfig.h"
+#import "CCConfig.h"
 
 @class CCSpriteFrame;
 

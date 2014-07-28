@@ -22,11 +22,22 @@
  * THE SOFTWARE.
  */
 
+
+//#import "cocos2d.h"
+//
+//@interface AppController : NSObject
+//{
+//}
+//
+//#else
+
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 
 @interface AppController : CCAppDelegate
 {
 }
+
+//#endif
 
 @end

@@ -28,7 +28,7 @@
  */
 
 #import "CCAction.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "Support/uthash.h"
 #import "CCScheduler.h"
 

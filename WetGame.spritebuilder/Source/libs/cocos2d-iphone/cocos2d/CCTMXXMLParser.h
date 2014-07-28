@@ -26,7 +26,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "ccMacros.h"
+#import "CCMacros.h"
 
 enum {
 	TMXLayerAttribNone = 1 << 0,

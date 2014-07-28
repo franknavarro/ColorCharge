@@ -15,7 +15,7 @@
     [super onEnter];
     
     [[OALSimpleAudio sharedInstance] preloadEffect:@"whoosh.wav"];
-    [[OALSimpleAudio sharedInstance] preloadBg:@"ProjectGame1.mp3"];
+    //[[OALSimpleAudio sharedInstance] preloadBg:@"ProjectGame1.mp3"];
     
 }
 

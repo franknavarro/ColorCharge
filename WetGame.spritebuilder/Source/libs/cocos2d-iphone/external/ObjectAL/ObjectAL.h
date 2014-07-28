@@ -27,6 +27,9 @@
 // Attribution is not required, but appreciated :)
 //
 
+#import "CCMacros.h"
+
+
 // Actions
 #import "OALAction.h"
 #import "OALAudioActions.h"

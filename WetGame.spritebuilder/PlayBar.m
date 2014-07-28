@@ -36,7 +36,7 @@
 }
 
 //Check to see which color was initially touched
-- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+- (void) touchBegan:(CCTouch *)touch withEvent:(UIEvent *)event {
     
     //the active touch is now the most recently pressed touch
     activeTouch = touch;
@@ -56,7 +56,7 @@
 }
 
 //If the touch ended than no colors are being touched
-- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+- (void) touchEnded:(CCTouch *)touch withEvent:(UIEvent *)event {
     
     //get the position in the array of saved touches for the current touch
     //  let go
@@ -79,7 +79,7 @@
 }
 
 //Check to see which color was touched
--(void) whichColorWasTouched:(UITouch *) touch {
+-(void) whichColorWasTouched:(CCTouch *) touch {
     
     //Get the location of the touch within the PlayBar
     CGPoint touchLocation = [touch locationInNode:self];

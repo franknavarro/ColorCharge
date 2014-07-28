@@ -23,8 +23,8 @@
  *
  */
 
-#import "../../ccMacros.h"
-#ifdef __CC_PLATFORM_IOS
+#import "../../CCMacros.h"
+#if __CC_PLATFORM_IOS
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

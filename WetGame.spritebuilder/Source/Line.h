@@ -27,4 +27,7 @@
 //Used to set the color of the line to a random color
 - (void) setRandomColor: (GameDifficulty) currentGameDifficulty;
 
++ (void) resetFirstLineDone;
++ (BOOL) isFirstLineDone;
+
 @end

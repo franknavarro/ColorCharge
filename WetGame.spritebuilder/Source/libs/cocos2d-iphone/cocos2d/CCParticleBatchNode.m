@@ -29,8 +29,8 @@
 
 #import "CCParticleBatchNode.h"
 #import "CCTextureCache.h"
-#import "ccConfig.h"
-#import "ccMacros.h"
+#import "CCConfig.h"
+#import "CCMacros.h"
 #import "Support/CGPointExtension.h"
 #import "CCParticleSystemBase.h"
 #import "CCShader.h"

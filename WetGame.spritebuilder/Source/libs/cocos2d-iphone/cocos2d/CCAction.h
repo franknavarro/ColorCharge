@@ -28,7 +28,7 @@
 #include <sys/time.h>
 #import <Foundation/Foundation.h>
 
-#import "ccTypes.h"
+#import "CCTypes.h"
 
 enum {
 	//! Default tag

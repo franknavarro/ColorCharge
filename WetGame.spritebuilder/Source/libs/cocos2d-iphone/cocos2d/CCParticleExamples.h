@@ -25,7 +25,7 @@
  *
  */
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "CCParticleSystem.h"
 
 @interface CCParticleFire: CCParticleSystem

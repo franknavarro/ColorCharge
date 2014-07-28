@@ -33,7 +33,7 @@
 #import <Foundation/Foundation.h>
 #include <zlib.h>
 
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "Support/CGPointExtension.h"
 #import "CCTMXXMLParser.h"
 #import "CCTiledMap.h"

@@ -32,7 +32,7 @@
 
 #import "CCTiledMapObjectGroup.h"
 #import "CCTMXXMLParser.h"
-#import "ccMacros.h"
+#import "CCMacros.h"
 #import "Support/CGPointExtension.h"
 
 

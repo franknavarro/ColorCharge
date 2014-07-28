@@ -237,9 +237,9 @@ static NSInteger ccbAnimationManagerID = 0;
             // Get relative position
             float x = [[value objectAtIndex:0] floatValue];
             float y = [[value objectAtIndex:1] floatValue];
-#ifdef __CC_PLATFORM_IOS
-            [node setValue:[NSValue valueWithCGPoint:ccp(x,y)] forKey:name];
-#elif defined (__CC_PLATFORM_MAC)
+#if __CC_PLATFORM_IOS || __CC_PLATFORM_ANDROID
+            [node setValue:[CCValue valueWithCGPoint:ccp(x,y)] forKey:name];
+#elif __CC_PLATFORM_MAC
             [node setValue:[NSValue valueWithPoint:ccp(x,y)] forKey:name];
 #endif
         } else if ([name isEqualToString:@"scale"]) {

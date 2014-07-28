@@ -11,14 +11,19 @@
 
 //Saves in the last Active color of the line
 static ActiveColor *previousActiveColor;
+static int sameLineCount;
 static BOOL firstLineDone;
+static GameDifficulty gameDifficulty;
 
 @implementation Line {
     //A code connnection for the ColorNode of the line in Spritebuilder
     CCNodeColor *_color;
+    CCNodeColor *_shadow;
 }
 
 - (void) setRandomColor: (GameDifficulty) currentGameDifficulty {
+    
+    gameDifficulty = currentGameDifficulty;
     
     switch (currentGameDifficulty) {
             
@@ -58,7 +63,7 @@ static BOOL firstLineDone;
 -(void)spawnOnEasy {
     //Get a random integer from 0-7
     int randomNumber = arc4random()%8;
-    
+
     //Set Red Line if the integer is between 0-2
     if(randomNumber <= 1) {
         //Change the lines color to red
@@ -80,7 +85,6 @@ static BOOL firstLineDone;
     else if (!firstLineDone) {
         //Change the color to yellow
         [self changeToNewColor:ActiveColorYellow];
-        firstLineDone = YES;
     }
     //Set White Line
     else if (randomNumber == 6) {
@@ -91,6 +95,7 @@ static BOOL firstLineDone;
     //Set the color to the previous color
     else {
         [self changeToNewColor:previousActiveColor];
+        sameLineCount++;
     }
 }
 
@@ -144,6 +149,7 @@ static BOOL firstLineDone;
     //Set the color to the previous color
     else {
         [self changeToNewColor:previousActiveColor];
+        sameLineCount++;
     }
 }
 
@@ -197,6 +203,7 @@ static BOOL firstLineDone;
     //Set the color to the previous color
     else {
         [self changeToNewColor:previousActiveColor];
+        sameLineCount++;
     }
 
     
@@ -247,6 +254,7 @@ static BOOL firstLineDone;
         //Change the color to white
         [self changeToNewColor:ActiveColorNone];
     }
+    
 
 }
 
@@ -371,8 +379,42 @@ static BOOL firstLineDone;
 
 - (void) changeToNewColor: (ActiveColor) newColor {
     
+    //since we are now changing the color of the line the first line has
+    // to be done
+    if (!firstLineDone) {
+        firstLineDone = YES;
+    }
+    
+    //if the same color line has now repeated more than 2 times then set
+    //  the line instead to the the next color in the enum
+    if (sameLineCount >= 2) {
+        //check to see if we are on easy
+        if (gameDifficulty == GameEasy) {
+            //if the new color is greater than yellow than set it to red
+            if (newColor >= ActiveColorYellow) {
+                newColor = ActiveColorRed;
+            }
+            //otherwise set to the next color
+            else {
+                newColor++;
+            }
+        //if we are on anything other than easy just increment the line color
+        } else {
+            if (newColor == ActiveColorOrange) {
+                newColor--;
+            } else {
+                newColor++;
+            }
+        }
+        
+        //reset the same Line Count
+        sameLineCount = 0;
+        
+    }
+    
     //change the color of the object to the new color
     [Color changeObject:_color withColor:newColor];
+    [Color changeObject:_shadow withOffSetColor:newColor];
     
     //Save what the lines current color is
     self.linesColor = newColor;
@@ -381,6 +423,7 @@ static BOOL firstLineDone;
     if (self.linesColor == previousActiveColor) {
         //if so set the same color as before varible to true
         self.sameColorAsBefore = YES;
+        sameLineCount++;
     } else {
         //if not set the same color as before variable to false
         self.sameColorAsBefore = NO;
@@ -388,6 +431,18 @@ static BOOL firstLineDone;
     
     //the previous color is now the new lines color
     previousActiveColor = self.linesColor;
+    
+}
+
++ (void) resetFirstLineDone {
+    
+    firstLineDone = NO;
+    
+}
+
++ (BOOL) isFirstLineDone {
+    
+    return firstLineDone;
     
 }
 
