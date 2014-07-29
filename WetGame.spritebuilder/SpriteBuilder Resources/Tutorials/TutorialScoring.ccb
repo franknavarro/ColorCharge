@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>34</real>
-							<real>62</real>
+							<real>70</real>
+							<real>60</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -180,9 +180,7 @@
 						<key>value</key>
 						<array>
 							<string>Good Job! You got your first point!
-For every color that passes fully 
-through the box you get a point!
-Longer colors will give more points!
+You get points for every line.
 Touch Anywhere To Continue</string>
 							<false/>
 						</array>
@@ -193,7 +191,7 @@ Touch Anywhere To Continue</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -300,7 +298,7 @@ Touch Anywhere To Continue</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -352,7 +350,7 @@ Touch Anywhere To Continue</string>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.54000002145767212</real>
+							<real>0.5</real>
 							<real>85</real>
 							<integer>0</integer>
 							<integer>2</integer>

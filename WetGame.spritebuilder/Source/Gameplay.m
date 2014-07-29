@@ -90,8 +90,6 @@ struct LineSpeed {
     //Set background to offset white
     [Color changeObject:_backgroundColor withOffSetColor:ActiveColorNone];
     [Color changeObject:_hideParticlesColor withOffSetColor:ActiveColorNone];
-//    [Color changeObject:_leftMask withOffSetColor:ActiveColorNone];
-//    [Color changeObject:_rightMask withOffSetColor:ActiveColorNone];
     
     [self resetScoreDifficulty];
     
@@ -380,7 +378,7 @@ struct LineSpeed {
         currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 2.5f);
         //Get the SpawnSpeed by dividing the distance of the line length by the velocity
         // and giving the spawn speed a little buffer time of 0.02 second
-        currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity) - 0.0255f);
+        currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity) - 0.03f);
     }
 }
 
@@ -485,6 +483,7 @@ struct LineSpeed {
     //Set the final score in the gameOver Scene to be the users current score
     newScene.finalScore = self.score;
     newScene.loosingLine = loosingLine;
+    newScene.colorPressed = self.currentColorBeingPressed;
     
     //Make the box flash between grey and active color so player knows where they lost
     [self schedule:@selector(makeBoxFlash) interval:0.2f];

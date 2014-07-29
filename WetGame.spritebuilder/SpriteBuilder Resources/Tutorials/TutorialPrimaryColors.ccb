@@ -93,6 +93,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>90</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ccbFile</string>
 						<key>type</key>
 						<string>CCBFile</string>
@@ -134,7 +142,7 @@
 						<key>value</key>
 						<array>
 							<real>50.106365203857422</real>
-							<real>120.19631958007812</real>
+							<real>119.19631958007812</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -159,7 +167,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>90</real>
+						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -241,9 +249,9 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Press and hold the colored button 
-that is the same color of the line
-once it is in the middle of the box.</string>
+							<string>Press and hold the colored button that is 
+the same color of the line once it is in the 
+middle of the box.</string>
 							<false/>
 						</array>
 					</dict>
@@ -253,7 +261,7 @@ once it is in the middle of the box.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -360,7 +368,7 @@ once it is in the middle of the box.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>

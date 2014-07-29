@@ -32,6 +32,8 @@
         newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
     }
     
+    
+    
     //Set up the transition
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     //Begin the tranistion made to go to Gameplay

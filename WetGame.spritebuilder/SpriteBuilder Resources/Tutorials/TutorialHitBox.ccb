@@ -72,7 +72,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>142</real>
+							<real>145</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -90,14 +90,6 @@
 							<false/>
 							<integer>0</integer>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>270</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -179,10 +171,9 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>If you notice that fancy little box 
-down there changes color 
-depending on the color you are 
-pressing!
+							<string>If you notice that fancy little box down
+there changes color depending on the 
+color you are pressing!
 Touch Anywhere to Continue.</string>
 							<false/>
 						</array>
@@ -193,7 +184,7 @@ Touch Anywhere to Continue.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>

@@ -14,5 +14,6 @@
 
 @property (nonatomic, assign) int finalScore;
 @property (nonatomic, strong) Line *loosingLine;
+@property (nonatomic, assign) ActiveColor colorPressed;
 
 @end

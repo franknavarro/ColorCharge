@@ -109,9 +109,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>You’re getting it! You now 
-have half of it done, so lets 
-run a practice round.
+							<string>You’re getting it! You now have half of it 
+done, so lets run a practice round.
 Touch Anywhere To Continue.</string>
 							<false/>
 						</array>
@@ -122,7 +121,7 @@ Touch Anywhere To Continue.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -131,7 +130,7 @@ Touch Anywhere To Continue.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>19</real>
+							<real>16</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -229,7 +228,7 @@ Touch Anywhere To Continue.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -248,8 +247,6 @@ Touch Anywhere To Continue.</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

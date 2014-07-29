@@ -10,11 +10,11 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>21</integer>
+	<integer>23</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -715,7 +715,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Molot/Molot.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -922,7 +922,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Molot/Molot.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1051,7 +1051,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>15</integer>
+				<integer>21</integer>
 				<key>baseClass</key>
 				<string>CCButton</string>
 				<key>children</key>
@@ -1059,7 +1059,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCButton - Play</string>
+				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1082,7 +1082,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.41851305961608887</real>
+							<real>0.41999998688697815</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1114,17 +1114,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>skew</string>
-						<key>type</key>
-						<string>FloatXY</string>
-						<key>value</key>
-						<array>
-							<real>30</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>block</string>
 						<key>type</key>
 						<string>Block</string>
@@ -1141,10 +1130,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>0.16600000858306885</real>
-							<integer>2</integer>
-							<integer>2</integer>
+							<real>384</real>
+							<real>87</real>
+							<integer>0</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1156,8 +1145,8 @@
 						<array>
 							<real>0.0</real>
 							<real>0.0</real>
-							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1175,7 +1164,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Play</string>
+							<string></string>
 							<false/>
 						</array>
 					</dict>
@@ -1187,16 +1176,8 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Assets/PlayButton.png</string>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>backgroundOpacity|Normal</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1206,16 +1187,8 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>Assets/PlatButtonPressed.png</string>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>backgroundOpacity|Highlighted</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1247,7 +1220,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1274,7 +1247,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1290,7 +1263,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Helvetica</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1299,7 +1272,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>17</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1364,7 +1337,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1374,7 +1347,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>1</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1398,7 +1371,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>5</real>
+							<real>2</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1420,7 +1393,7 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>18</integer>
+				<integer>22</integer>
 				<key>baseClass</key>
 				<string>CCButton</string>
 				<key>children</key>
@@ -1428,7 +1401,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCButton - Tutorial</string>
+				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1451,7 +1424,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.24928329885005951</real>
+							<real>0.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1483,17 +1456,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>skew</string>
-						<key>type</key>
-						<string>FloatXY</string>
-						<key>value</key>
-						<array>
-							<real>30</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>block</string>
 						<key>type</key>
 						<string>Block</string>
@@ -1510,10 +1472,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>1.2000000476837158</real>
-							<real>0.16600000858306885</real>
-							<integer>2</integer>
-							<integer>2</integer>
+							<real>384</real>
+							<real>75</real>
+							<integer>0</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1525,8 +1487,8 @@
 						<array>
 							<real>0.0</real>
 							<real>0.0</real>
-							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1544,7 +1506,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Tutorial</string>
+							<string></string>
 							<false/>
 						</array>
 					</dict>
@@ -1556,16 +1518,8 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Assets/TutorialButton.png</string>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>backgroundOpacity|Normal</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1575,16 +1529,8 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>Assets/TutorialButtonPressed.png</string>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>backgroundOpacity|Highlighted</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1612,14 +1558,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>backgroundOpacity|Disabled</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>labelOpacity|Disabled</string>
 						<key>type</key>
 						<string>Float</string>
@@ -1639,14 +1577,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>backgroundOpacity|Selected</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>labelOpacity|Selected</string>
 						<key>type</key>
 						<string>Float</string>
@@ -1659,7 +1589,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Helvetica</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1668,7 +1598,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>17</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1733,7 +1663,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1743,7 +1673,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>1</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1767,7 +1697,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>5</real>
+							<real>2</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1786,6 +1716,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

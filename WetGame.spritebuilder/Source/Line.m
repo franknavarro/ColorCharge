@@ -387,7 +387,7 @@ static GameDifficulty gameDifficulty;
     
     //if the same color line has now repeated more than 2 times then set
     //  the line instead to the the next color in the enum
-    if (sameLineCount >= 2) {
+    if (sameLineCount >= 1 && newColor == previousActiveColor) {
         //check to see if we are on easy
         if (gameDifficulty == GameEasy) {
             //if the new color is greater than yellow than set it to red
@@ -423,10 +423,13 @@ static GameDifficulty gameDifficulty;
     if (self.linesColor == previousActiveColor) {
         //if so set the same color as before varible to true
         self.sameColorAsBefore = YES;
+        //Keep track of how many of the same color we have had
         sameLineCount++;
     } else {
         //if not set the same color as before variable to false
         self.sameColorAsBefore = NO;
+        //Reset the same line count because the color has changed
+        sameLineCount = 0;
     }
     
     //the previous color is now the new lines color

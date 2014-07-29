@@ -97,7 +97,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>90</real>
+						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -167,7 +167,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>90</real>
+						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -233,6 +233,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>90</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ccbFile</string>
 						<key>type</key>
 						<string>CCBFile</string>
@@ -274,7 +282,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>10</real>
+							<real>20</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -311,9 +319,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Mix colors by touching the 
-appropriate colored buttons 
-on each side of the screen!</string>
+							<string>Mix colors by touching the appropriate 
+colored buttons on each side of the screen!</string>
 							<false/>
 						</array>
 					</dict>
@@ -323,7 +330,7 @@ on each side of the screen!</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -332,7 +339,7 @@ on each side of the screen!</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>19</real>
+							<real>16</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -430,7 +437,7 @@ on each side of the screen!</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -449,8 +456,6 @@ on each side of the screen!</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

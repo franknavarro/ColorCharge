@@ -46,6 +46,17 @@
         [UIScreen mainScreen].currentMode = [UIScreenMode emulatedMode:UIScreenScaledAspectFitEmulationMode];
 #endif
     
+//**********************************************************************************************************************************************
+// Added for MGWU SDK
+//
+//**********************************************************************************************************************************************
+    
+    [MGWU loadMGWU:@"JesusSaves7GodIsGood7"];
+    [MGWU preFacebook]; //Temporarily disables Facebook until you integrate it later
+
+//**********************************************************************************************************************************************
+
+    
     // Configure CCFileUtils to work with SpriteBuilder
     [CCBReader configureCCFileUtils];
     

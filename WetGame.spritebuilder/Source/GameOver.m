@@ -17,6 +17,8 @@
     CCLabelTTF *_gameOverLabel;
     
     CCSprite *_scoreBox;
+    CCSprite *_restartBackground;
+    CCSprite *_menuBackground;
     
     CCButton *_restartButton;
     CCButton *_menuButton;
@@ -99,6 +101,22 @@
     //reset the first line to not finished
     [Line resetFirstLineDone];
     
+    
+//**********************************************************************************************************************************************
+// Added for MGWU SDK
+//
+//**********************************************************************************************************************************************
+
+    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
+    NSNumber *loosingLinesColor = [NSNumber numberWithInt:self.loosingLine.linesColor];
+    NSNumber *loosingColorPressed = [NSNumber numberWithInt:self.colorPressed];
+    NSDictionary *loosingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", loosingLinesColor, @"Loosing_Lines_Color", loosingColorPressed, @"color_User_Pressed", nil];
+    
+    [MGWU logEvent:@"Game_Over" withParams:loosingConditions];
+    
+//**********************************************************************************************************************************************
+
+    
 }
 
 - (void) changeColorForFinishLines: (Line *) loosingLine {
@@ -109,6 +127,8 @@
     }
     
     [Color changeObject:_scoreBox withOffSetColor:loosingLine.linesColor];
+    [Color changeObject:_restartBackground withOffSetColor:loosingLine.linesColor];
+    [Color changeObject:_menuBackground withOffSetColor:loosingLine.linesColor];
 
     
 }

@@ -93,6 +93,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>90</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ccbFile</string>
 						<key>type</key>
 						<string>CCBFile</string>
@@ -100,6 +108,8 @@
 						<string>Arrow.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -171,8 +181,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>When a white line reaches the box
-you let go of everything!
+							<string>When a white line reaches the box you let 
+go of everything!
 Touch anywhere to continue.</string>
 							<false/>
 						</array>
@@ -183,7 +193,7 @@ Touch anywhere to continue.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -290,7 +300,7 @@ Touch anywhere to continue.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>

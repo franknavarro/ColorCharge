@@ -110,8 +110,6 @@
 						<key>value</key>
 						<array>
 							<string>Welcome to Color Charge!
-Are you ready to charge 
-through the colors at hand?
 Let’s get started with the Tutorial.
 Touch Anywhere To Continue</string>
 							<false/>
@@ -123,7 +121,7 @@ Touch Anywhere To Continue</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -230,7 +228,7 @@ Touch Anywhere To Continue</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -249,8 +247,6 @@ Touch Anywhere To Continue</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

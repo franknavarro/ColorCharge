@@ -110,8 +110,8 @@
 						<key>value</key>
 						<array>
 							<string>Thats all there is to it!
-Now go out and charge through
-the colored lines!
+Now go out and charge through the colored
+lines!
 Touch to return to menu.</string>
 							<false/>
 						</array>
@@ -122,7 +122,7 @@ Touch to return to menu.</string>
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Molot/Molot.ttf</string>
+						<string>Fonts/Amaranth/Amaranth-Bold.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -131,7 +131,7 @@ Touch to return to menu.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>18</real>
+							<real>16</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -229,7 +229,7 @@ Touch to return to menu.</string>
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
