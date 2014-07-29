@@ -107,12 +107,12 @@
 //
 //**********************************************************************************************************************************************
 
-    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
-    NSNumber *loosingLinesColor = [NSNumber numberWithInt:self.loosingLine.linesColor];
-    NSNumber *loosingColorPressed = [NSNumber numberWithInt:self.colorPressed];
-    NSDictionary *loosingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", loosingLinesColor, @"Loosing_Lines_Color", loosingColorPressed, @"color_User_Pressed", nil];
-    
-    [MGWU logEvent:@"Game_Over" withParams:loosingConditions];
+//    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
+//    NSNumber *loosingLinesColor = [NSNumber numberWithInt:self.loosingLine.linesColor];
+//    NSNumber *loosingColorPressed = [NSNumber numberWithInt:self.colorPressed];
+//    NSDictionary *loosingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", loosingLinesColor, @"Loosing_Lines_Color", loosingColorPressed, @"color_User_Pressed", nil];
+//    
+//    [MGWU logEvent:@"Game_Over" withParams:loosingConditions];
     
 //**********************************************************************************************************************************************
 
