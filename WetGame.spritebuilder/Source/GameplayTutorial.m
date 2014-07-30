@@ -516,7 +516,9 @@
 
 - (void) backToMenu {
     
-    [super backToMenu];
+    CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
     
     //Save that the tutorial has been done
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];
@@ -670,5 +672,13 @@
     
 }
 
+- (void) loadPauseScreen {
+    
+    //Save the Gameplay scene
+    self.pauseMenu = [CCBReader loadAsScene:@"PauseMenuTutorial" owner:self];
+    //Display pause box on top of the current scene
+    [self addChild: self.pauseMenu];
+    
+}
 
 @end

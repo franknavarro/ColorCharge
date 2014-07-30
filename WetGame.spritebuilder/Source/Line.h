@@ -27,6 +27,13 @@
 //Used to set the color of the line to a random color
 - (void) setRandomColor: (GameDifficulty) currentGameDifficulty;
 
+////********************************************************************************************
+////Simulate Game For ScreenShots
+//
+//- (void) spawnSimulation;
+//
+////********************************************************************************************
+
 + (void) resetFirstLineDone;
 + (BOOL) isFirstLineDone;
 

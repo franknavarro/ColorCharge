@@ -28,6 +28,8 @@
 //shows the current score on the screen
 @property (nonatomic, strong) CCLabelTTF *scoreLabel;
 
+@property (nonatomic, strong) CCScene *pauseMenu;
+
 //How much we count down from on countdowns
 @property (nonatomic, assign) int countDownNumber;
 
@@ -42,6 +44,5 @@
 - (void) spawnNewLine;
 - (void) keepSpawningNewLine;
 - (void) removeSceneBeforeCountDownStarts;
-- (void) backToMenu;
 
 @end

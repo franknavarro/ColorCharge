@@ -392,7 +392,7 @@ static GameDifficulty gameDifficulty;
         if (gameDifficulty == GameEasy) {
             //if the new color is greater than yellow than set it to red
             if (newColor >= ActiveColorYellow) {
-                newColor = ActiveColorRed;
+                newColor = ActiveColorNone;
             }
             //otherwise set to the next color
             else {
@@ -436,6 +436,17 @@ static GameDifficulty gameDifficulty;
     previousActiveColor = self.linesColor;
     
 }
+
+////********************************************************************************************
+////Simulate Game For ScreenShots
+//
+//- (void) spawnSimulation {
+//    
+//    [self changeToNewColor:previousActiveColor];
+//    
+//}
+////********************************************************************************************
+
 
 + (void) resetFirstLineDone {
     

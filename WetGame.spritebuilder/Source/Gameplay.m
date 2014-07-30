@@ -25,8 +25,6 @@ struct LineSpeed {
     NSMutableArray *_backgroundBoxes;
 
     CCNode *_lineSpawner; //Add the lines to the scene onto the scene through this node that encompases the screen size
-    
-    CCScene *_pauseMenu; //hold the pause menu
 
     CCSprite *_bottomHitBox;
     
@@ -52,6 +50,8 @@ struct LineSpeed {
     BOOL isGameOver; // check to see if the game is over
     
     BOOL isBoxGrey; //used to make box flash between grey and currentColor
+    
+    BOOL first, second, thrid;
     
 }
 
@@ -201,6 +201,26 @@ struct LineSpeed {
         if (line.position.y < -(line.boundingBox.size.height)) {
             [removeFromLines addObject:line];
         }
+        
+////********************************************************************************************
+////Simulate Game For ScreenShots
+//        
+//        int bottom = self.hitBox.position.y - 75 ;
+//        
+//        if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 152 && !first) {
+//            first = YES;
+//        }
+//        
+//        else if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 107 && !second) {
+//            second = YES;
+//        }
+//        
+//        else if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 61 && !thrid) {
+//            thrid = YES;
+//        }
+//
+////********************************************************************************************
+
         
         //Keep track of how many exisiting lines there are
         //CCLOG(@"%d", self.lines.count);
@@ -411,6 +431,14 @@ struct LineSpeed {
     //Randomly sets the color of the new line
     [newLine setRandomColor:self.currentGameDifficulty];
     
+////********************************************************************************************
+////Simulate Game For ScreenShots
+//
+//    [newLine spawnSimulation];
+//    
+////********************************************************************************************
+
+    
     //add the new line to the array of lines to be scrolled through
     [self.lines addObject:newLine];
     //add the line to the sceen
@@ -464,6 +492,17 @@ struct LineSpeed {
             //call in the gameover scene
             [self looser:line];
         }
+        
+////********************************************************************************************
+////Simulate Game For ScreenShots
+//
+//        //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
+//        if (self.hitBox.currentBoxColor != line.linesColor) {
+//            [Color changeObject:_bottomHitBox withColor:line.linesColor];
+//            [self.hitBox updateBoxColor:line.linesColor];
+//        }
+////********************************************************************************************
+        
     }
     
 }
@@ -565,12 +604,18 @@ struct LineSpeed {
     [Color changeObject:_bottomHitBox withColor:self.currentColorBeingPressed];
     [self.hitBox updateBoxColor:self.currentColorBeingPressed];
     
-    //Save the Gameplay scene
-    _pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
-    //Display pause box on top of the current scene
-    [self addChild: _pauseMenu];
+    [self loadPauseScreen];
     
     [[OALSimpleAudio sharedInstance] stopBg];
+}
+
+- (void) loadPauseScreen {
+    
+    //Save the Gameplay scene
+    self.pauseMenu = [CCBReader loadAsScene:@"PauseMenu" owner:self];
+    //Display pause box on top of the current scene
+    [self addChild: self.pauseMenu];
+    
 }
 
 - (void) resume {
@@ -611,15 +656,7 @@ struct LineSpeed {
 
 - (void) removeSceneBeforeCountDownStarts {
     //rmemove the pause screen to resume to the game
-    [_pauseMenu removeFromParent];
-}
-
-- (void) backToMenu {
-    
-    CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
-    [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
-    
+    [self.pauseMenu removeFromParent];
 }
 
 ////Test the beats of the line
