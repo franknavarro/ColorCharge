@@ -8,7 +8,20 @@
 
 #import "MainScene.h"
 
+GameCenterFiles *gameCenterManger;
+
 @implementation MainScene
+
+- (void) didLoadFromCCB {
+    
+    //check first to make sure the current iOS supports GameCenter
+    if ([GameCenterFiles isGameCenterAvailable]) {
+        
+        //get the manager and authenticate the player
+        [[GameCenterFiles getGameCenterManager] authenticateLocalPlayer];
+    }
+    
+}
 
 - (void) onEnter {
     

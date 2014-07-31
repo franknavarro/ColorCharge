@@ -9,22 +9,19 @@
 #import "GameOver.h"
 #import "Gameplay.h" //imported to access the score
 #import "NSUserDefaults+Encryption.h"
+#import "MainScene.h"
+#import "GameCenterFiles.h"
 
 @implementation GameOver {
     
     CCLabelTTF *_finalScoreNumber;
     CCLabelTTF *_highScoreNumber;
-    CCLabelTTF *_gameOverLabel;
     
     CCSprite *_scoreBox;
     CCSprite *_restartBackground;
     CCSprite *_menuBackground;
-    
-    CCButton *_restartButton;
-    CCButton *_menuButton;
-    CCButton *_leaderBoardButton;
-    CCButton *_shareButton;
-
+    CCSprite *_leaderBoardBackground;
+    CCSprite *_shareBackground;
     
     //All the lines that shoot up in the end
     CCNodeColor *_finishLine1;
@@ -36,6 +33,8 @@
     
 }
 
+#pragma mark - In the begining...
+
 -(void) didLoadFromCCB {
     
     //initialize the array of finish lines with the finish lines
@@ -45,19 +44,8 @@
 }
 
 -(void) onEnter {
-//    
-//    _restartButton.visible = NO;
-//    _menuButton.visible = NO;
-    
-    _restartButton.opacity = 0.f;
-    _menuButton.opacity = 0.f;
-    _leaderBoardButton.opacity = 0.f;
-    _shareButton.opacity = 0.f;
-    _gameOverLabel.opacity = 0.f;
     
     [super onEnter];
-    
-    [[OALSimpleAudio sharedInstance] stopBg];
 
     //Get the encrypted high score
     NSNumber *getHighScore = [[NSUserDefaults standardUserDefaults] objectEncryptedForKey:@"HighScore"];
@@ -89,17 +77,24 @@
     //Display the current final score
     _finalScoreNumber.string = [NSString stringWithFormat:@"%i", self.finalScore];
     
-    CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5f];
-    
-    [_gameOverLabel runAction:fadeIn];
+
     
     //change the color to the line that you lost on
     [self changeColorForFinishLines: self.loosingLine];
     [self runFinishLines];
-    [self scheduleOnce:@selector(showLabels) delay:0.6f];
+
     
     //reset the first line to not finished
     [Line resetFirstLineDone];
+    
+    //Report score to gamecenter
+    if (self.finalScore > 0 && [GameCenterFiles isGameCenterAvailable]) {
+    
+        int64_t reportScoreOf = self.finalScore;
+        
+        [[GameCenterFiles getGameCenterManager] reportScore:reportScoreOf forLeaderboardID:@"1a"];
+        
+    }
     
     
 //**********************************************************************************************************************************************
@@ -119,6 +114,8 @@
     
 }
 
+#pragma mark - Asthetics for running GameOver
+
 - (void) changeColorForFinishLines: (Line *) loosingLine {
     
     for (CCNodeColor *currentFinishLine in _finishLines) {
@@ -129,6 +126,8 @@
     [Color changeObject:_scoreBox withOffSetColor:loosingLine.linesColor];
     [Color changeObject:_restartBackground withOffSetColor:loosingLine.linesColor];
     [Color changeObject:_menuBackground withOffSetColor:loosingLine.linesColor];
+    [Color changeObject:_leaderBoardBackground withOffSetColor:loosingLine.linesColor];
+    [Color changeObject:_shareBackground withOffSetColor:loosingLine.linesColor];
 
     
 }
@@ -182,24 +181,7 @@
     
 }
 
-- (void) showLabels {
-    
-    CCActionFadeIn *fadeIn1 = [CCActionFadeIn actionWithDuration:0.5f];
-    CCActionFadeIn *fadeIn2 = [CCActionFadeIn actionWithDuration:0.5f];
-    CCActionFadeIn *fadeIn3 = [CCActionFadeIn actionWithDuration:0.5f];
-    CCActionFadeIn *fadeIn4 = [CCActionFadeIn actionWithDuration:0.5f];
-
-    CCAnimationManager *fadeIn = self.animationManager;
-    
-    [fadeIn runAnimationsForSequenceNamed:@"FadeIn"];
-    [_menuButton runAction:fadeIn1];
-    [_leaderBoardButton runAction:fadeIn2];
-    [_shareButton runAction:fadeIn3];
-    [_restartButton runAction:fadeIn4];
-    
-    
-    
-}
+#pragma mark - Buttons
 
 - (void) restart {
     
@@ -218,6 +200,73 @@
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
     
+}
+
+- (void) shareButton {
+    
+    //Text for the post to say
+    NSString *text = [NSString stringWithFormat:@"I just scored %i in Color Charge!", self.finalScore];
+    
+    //Insert these when I find out how to screen shot and when I know what the app store url is
+//    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+//    UIImage *image = [UIImage imageNamed:@"roadfire-icon-square-200"];
+    
+    //create the activity view controller to hold the text image and url we defined above
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text] //, url, image]
+     applicationActivities:nil];
+    
+    //Exlude all this stuff from sharing
+    controller.excludedActivityTypes = @[UIActivityTypePostToWeibo,
+                                         UIActivityTypePrint,
+                                         UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact,
+                                         UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList,
+                                         UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo,
+                                         UIActivityTypePostToTencentWeibo,
+                                         UIActivityTypeAirDrop];
+    
+    //present the view controller
+    [[CCDirector sharedDirector] presentViewController:controller animated:YES completion:nil];
+    
+}
+
+- (void) showLeaderboard {
+    
+    [self showLeaderboard:@"1a"];
+    
+}
+
+- (void) showLeaderboard: (NSString*) leaderboardID
+{
+    //Load in the view controller for the game center leaderboard
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    
+    //Check to make sure gameCenterController exists
+    if (gameCenterController != nil)
+    {
+        //Set all the values for the Leaderboard
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
+        gameCenterController.leaderboardTimeScope = GKLeaderboardTimeScopeWeek;
+        gameCenterController.leaderboardCategory = leaderboardID;
+        
+        //Stop the animation because the game crashes if we dont do this :P
+        [[CCDirector sharedDirector] stopAnimation];
+        //Present the gameCenter Leaderboard
+        [[CCDirector sharedDirector] presentViewController: gameCenterController animated: YES completion:nil];
+    }
+}
+
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    //Get rid of the gameCenter screne
+    [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
+    //resume animation we stopped when we first launched gameCenter 
+    [[CCDirector sharedDirector] startAnimation];
 }
 
 @end

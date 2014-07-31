@@ -626,7 +626,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/RestartBack.png</string>
+							<string>Assets/ButtonBack.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1041,7 +1041,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/RestartBack.png</string>
+							<string>Assets/ButtonBack.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1384,8 +1384,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

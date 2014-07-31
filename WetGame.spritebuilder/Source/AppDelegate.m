@@ -72,6 +72,7 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
     [super applicationWillResignActive:application];
     
     CCLOG(@"App will resign Active");

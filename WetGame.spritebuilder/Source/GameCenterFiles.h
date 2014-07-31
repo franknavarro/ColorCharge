@@ -10,4 +10,10 @@
 
 @interface GameCenterFiles : NSObject
 
+- (void) authenticateLocalPlayer;
+- (void) reportScore: (int64_t) score forLeaderboardID: (NSString*) category;
+
++ (BOOL) isGameCenterAvailable;
++ (GameCenterFiles *) getGameCenterManager;
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "CCNode.h"
+#import <GameKit/GameKit.h>
+#import "GameCenterFiles.h"
 
 @interface MainScene : CCNode
 

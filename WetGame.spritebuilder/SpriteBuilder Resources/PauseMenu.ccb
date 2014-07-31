@@ -626,7 +626,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/RestartBack.png</string>
+							<string>Assets/ButtonBack.png</string>
 						</array>
 					</dict>
 					<dict>
