@@ -11,9 +11,14 @@
 @interface GameCenterFiles : NSObject
 
 - (void) authenticateLocalPlayer;
+
 - (void) reportScore: (int64_t) score forLeaderboardID: (NSString*) category;
 
+- (void) reportAchievementIdentifier: (NSString*) identifier percentComplete: (float) percent;
+
 + (BOOL) isGameCenterAvailable;
++ (BOOL) isGameCenterActivated;
 + (GameCenterFiles *) getGameCenterManager;
++ (NSMutableDictionary *) sharedAchievements;
 
 @end

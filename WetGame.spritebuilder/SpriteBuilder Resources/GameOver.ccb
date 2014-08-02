@@ -14,7 +14,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -804,8 +804,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>50</real>
-													<real>25</real>
+													<real>50.5</real>
+													<real>24.5</real>
 													<integer>0</integer>
 													<integer>0</integer>
 													<integer>0</integer>
@@ -1017,7 +1017,7 @@
 												<key>value</key>
 												<array>
 													<real>50</real>
-													<real>71</real>
+													<real>70.5</real>
 													<integer>0</integer>
 													<integer>0</integer>
 													<integer>0</integer>
@@ -1315,8 +1315,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>41</real>
-													<real>25</real>
+													<real>40.5</real>
+													<real>24.5</real>
 													<integer>0</integer>
 													<integer>0</integer>
 													<integer>0</integer>
@@ -1527,8 +1527,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>41</real>
-													<real>71</real>
+													<real>40.5</real>
+													<real>70.5</real>
 													<integer>0</integer>
 													<integer>0</integer>
 													<integer>0</integer>
@@ -2086,7 +2086,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>Assets/RestartButton.png</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2115,6 +2115,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>labelOpacity|Disabled</string>
 								<key>type</key>
 								<string>Float</string>
@@ -2131,6 +2139,14 @@
 									<string></string>
 									<string>ccbResources/ccbButtonNormal.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>backgroundOpacity|Selected</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2244,7 +2260,7 @@
 									<real>0.0</real>
 									<real>0.0</real>
 									<real>0.0</real>
-									<real>127</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -2536,6 +2552,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>labelOpacity|Disabled</string>
 								<key>type</key>
 								<string>Float</string>
@@ -2552,6 +2576,14 @@
 									<string></string>
 									<string>ccbResources/ccbButtonNormal.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>backgroundOpacity|Selected</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3368,6 +3400,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>backgroundOpacity|Disabled</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>labelOpacity|Disabled</string>
 								<key>type</key>
 								<string>Float</string>
@@ -3384,6 +3424,14 @@
 									<string></string>
 									<string>ccbResources/ccbButtonNormal.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>backgroundOpacity|Selected</string>
+								<key>type</key>
+								<string>Float</string>
+								<key>value</key>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3526,6 +3574,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

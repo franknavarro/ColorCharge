@@ -8,41 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string></string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>AppLogo120x120</string>
-		<string>AppLogo114x114</string>
-		<string>AppLogo57x57</string>
-		<string>Settings</string>
-		<string>iPhone</string>
-		<string>iPhone-old</string>
-		<string>Icon.png</string>
-		<string>Icon@2x.png</string>
-		<string>Icon-72.png</string>
-		<string>Icon-Small-50.png</string>
-		<string>Icon-Small.png</string>
-		<string>Icon-Small@2x.png</string>
-	</array>
-	<key>CFBundleIconFiles~ipad</key>
-	<array>
-		<string>AppLogo152x152</string>
-		<string>AppLogo76x76</string>
-		<string>AppLogo144x144</string>
-		<string>AppLogo72x72</string>
-		<string>Settings</string>
-		<string>iPad</string>
-		<string>iPad-old</string>
-		<string>iPhone</string>
-		<string>iPhone-old</string>
-		<string>Icon.png</string>
-		<string>Icon@2x.png</string>
-		<string>Icon-72.png</string>
-		<string>Icon-Small-50.png</string>
-		<string>Icon-Small.png</string>
-		<string>Icon-Small@2x.png</string>
-	</array>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.Frank.ColorCharge</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -70,7 +39,6 @@
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>

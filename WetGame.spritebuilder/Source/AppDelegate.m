@@ -27,12 +27,26 @@
 
 #import "AppDelegate.h"
 #import "CCBuilderReader.h"
-#import "GameKit/GameKit.h"
+#import <GameKit/GameKit.h>
+#import "GameCenterFiles.h"
+
 
 @implementation AppController
 
+- (BOOL) application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //check first to make sure the current iOS supports GameCenter
+    if ([GameCenterFiles isGameCenterAvailable]) {
+        //get the manager and authenticate the player
+        [[GameCenterFiles getGameCenterManager] authenticateLocalPlayer];
+    }
+    
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];
@@ -79,10 +93,21 @@
     if (!self.gameplayScene.paused) {
         [self.gameplayScene pause];
     }
+    
+    //Stop the animation because the game crashes if we dont do this for gamecenter and share :P
+    [[CCDirector sharedDirector] stopAnimation];
 }
 
-- (CCScene*) startScene
-{
+-(void) applicationDidBecomeActive:(UIApplication *)application {
+    
+    [super applicationDidBecomeActive:application];
+    
+    //Resume the options stopped when we entered the background
+    [[CCDirector sharedDirector] startAnimation];
+    
+}
+
+- (CCScene*) startScene {
     return [CCBReader loadAsScene:@"MainScene"];
 }
 

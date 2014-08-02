@@ -9,37 +9,26 @@
 /* Begin PBXBuildFile section */
 		01066CF01970624F002FE039 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 01066CEF1970624F002FE039 /* GameOver.m */; };
 		01067226197DD09A0031D8B6 /* NSUserDefaults+Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */; };
+		013305D6198ACACB000E3A62 /* MarimbaC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D2198ACACB000E3A62 /* MarimbaC.mp3 */; };
+		013305D7198ACACB000E3A62 /* MarimbaC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D2198ACACB000E3A62 /* MarimbaC.mp3 */; };
+		013305D8198ACACB000E3A62 /* MarimbaCHigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */; };
+		013305D9198ACACB000E3A62 /* MarimbaCHigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */; };
+		013305DA198ACACB000E3A62 /* MarimbaE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D4198ACACB000E3A62 /* MarimbaE.mp3 */; };
+		013305DB198ACACB000E3A62 /* MarimbaE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D4198ACACB000E3A62 /* MarimbaE.mp3 */; };
+		013305DC198ACACB000E3A62 /* MarimbaG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D5198ACACB000E3A62 /* MarimbaG.mp3 */; };
+		013305DD198ACACB000E3A62 /* MarimbaG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D5198ACACB000E3A62 /* MarimbaG.mp3 */; };
+		014CC5B8198AF83400A518F1 /* YouSuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5B7198AF83400A518F1 /* YouSuck.mp3 */; };
+		014CC5B9198AF83400A518F1 /* YouSuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5B7198AF83400A518F1 /* YouSuck.mp3 */; };
+		014CC5BE198B09FD00A518F1 /* MarimbaCLow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BB198B09FD00A518F1 /* MarimbaCLow.mp3 */; };
+		014CC5BF198B09FD00A518F1 /* MarimbaCLow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BB198B09FD00A518F1 /* MarimbaCLow.mp3 */; };
+		014CC5C0198B09FD00A518F1 /* MarimbaELow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BC198B09FD00A518F1 /* MarimbaELow.mp3 */; };
+		014CC5C1198B09FD00A518F1 /* MarimbaELow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BC198B09FD00A518F1 /* MarimbaELow.mp3 */; };
+		014CC5C2198B09FD00A518F1 /* MarimbaGLow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BD198B09FD00A518F1 /* MarimbaGLow.mp3 */; };
+		014CC5C3198B09FD00A518F1 /* MarimbaGLow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 014CC5BD198B09FD00A518F1 /* MarimbaGLow.mp3 */; };
 		014E3AAB1976E3620045E55F /* HitBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E3AAA1976E3620045E55F /* HitBox.m */; };
+		015616B51989D3490068D8A9 /* SharedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 015616B41989D3490068D8A9 /* SharedImage.m */; };
 		015A14A7198446D700B08968 /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 015A14A6198446D700B08968 /* whoosh.wav */; };
 		015A14A8198446D700B08968 /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 015A14A6198446D700B08968 /* whoosh.wav */; };
-		018A0CA419880A8B004EFDA0 /* AppLogo114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9519880A8B004EFDA0 /* AppLogo114x114.png */; };
-		018A0CA519880A8B004EFDA0 /* AppLogo114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9519880A8B004EFDA0 /* AppLogo114x114.png */; };
-		018A0CA619880A8B004EFDA0 /* AppLogo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9619880A8B004EFDA0 /* AppLogo120x120.png */; };
-		018A0CA719880A8B004EFDA0 /* AppLogo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9619880A8B004EFDA0 /* AppLogo120x120.png */; };
-		018A0CA819880A8B004EFDA0 /* AppLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9719880A8B004EFDA0 /* AppLogo144x144.png */; };
-		018A0CA919880A8B004EFDA0 /* AppLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9719880A8B004EFDA0 /* AppLogo144x144.png */; };
-		018A0CAA19880A8B004EFDA0 /* AppLogo152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9819880A8B004EFDA0 /* AppLogo152x152.png */; };
-		018A0CAB19880A8B004EFDA0 /* AppLogo152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9819880A8B004EFDA0 /* AppLogo152x152.png */; };
-		018A0CAC19880A8B004EFDA0 /* AppLogo57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9919880A8B004EFDA0 /* AppLogo57x57.png */; };
-		018A0CAD19880A8B004EFDA0 /* AppLogo57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9919880A8B004EFDA0 /* AppLogo57x57.png */; };
-		018A0CAE19880A8B004EFDA0 /* AppLogo72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9A19880A8B004EFDA0 /* AppLogo72x72.png */; };
-		018A0CAF19880A8B004EFDA0 /* AppLogo72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9A19880A8B004EFDA0 /* AppLogo72x72.png */; };
-		018A0CB019880A8B004EFDA0 /* AppLogo76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9B19880A8B004EFDA0 /* AppLogo76x76.png */; };
-		018A0CB119880A8B004EFDA0 /* AppLogo76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9B19880A8B004EFDA0 /* AppLogo76x76.png */; };
-		018A0CB219880A8B004EFDA0 /* 2AppLogo114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9D19880A8B004EFDA0 /* 2AppLogo114x114.png */; };
-		018A0CB319880A8B004EFDA0 /* 2AppLogo114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9D19880A8B004EFDA0 /* 2AppLogo114x114.png */; };
-		018A0CB419880A8B004EFDA0 /* 2AppLogo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9E19880A8B004EFDA0 /* 2AppLogo120x120.png */; };
-		018A0CB519880A8B004EFDA0 /* 2AppLogo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9E19880A8B004EFDA0 /* 2AppLogo120x120.png */; };
-		018A0CB619880A8B004EFDA0 /* 2AppLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9F19880A8B004EFDA0 /* 2AppLogo144x144.png */; };
-		018A0CB719880A8B004EFDA0 /* 2AppLogo144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0C9F19880A8B004EFDA0 /* 2AppLogo144x144.png */; };
-		018A0CB819880A8B004EFDA0 /* 2AppLogo152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA019880A8B004EFDA0 /* 2AppLogo152x152.png */; };
-		018A0CB919880A8B004EFDA0 /* 2AppLogo152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA019880A8B004EFDA0 /* 2AppLogo152x152.png */; };
-		018A0CBA19880A8B004EFDA0 /* 2AppLogo57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA119880A8B004EFDA0 /* 2AppLogo57x57.png */; };
-		018A0CBB19880A8B004EFDA0 /* 2AppLogo57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA119880A8B004EFDA0 /* 2AppLogo57x57.png */; };
-		018A0CBC19880A8B004EFDA0 /* 2AppLogo72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA219880A8B004EFDA0 /* 2AppLogo72x72.png */; };
-		018A0CBD19880A8B004EFDA0 /* 2AppLogo72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA219880A8B004EFDA0 /* 2AppLogo72x72.png */; };
-		018A0CBE19880A8B004EFDA0 /* 2AppLogo76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA319880A8B004EFDA0 /* 2AppLogo76x76.png */; };
-		018A0CBF19880A8B004EFDA0 /* 2AppLogo76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CA319880A8B004EFDA0 /* 2AppLogo76x76.png */; };
 		018A0D0E198819E9004EFDA0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CC2198819E9004EFDA0 /* .gitignore */; };
 		018A0D0F198819E9004EFDA0 /* INSTRUCTIONS.html in Resources */ = {isa = PBXBuildFile; fileRef = 018A0CC3198819E9004EFDA0 /* INSTRUCTIONS.html */; };
 		018A0D10198819E9004EFDA0 /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A0CC5198819E9004EFDA0 /* mgwuSDK.framework */; };
@@ -138,21 +127,7 @@
 		01B2516A1983077A00C8DDCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		01B2516B1983077A00C8DDCE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		01B2516C1983077A00C8DDCE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
-		01B2516F1983077A00C8DDCE /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590F188484E7003F4D28 /* Settings.png */; };
-		01B251701983077A00C8DDCE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896E180762440076A88C /* Default@2x.png */; };
-		01B251711983077A00C8DDCE /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590A188484E7003F4D28 /* iPad@2x.png */; };
-		01B251721983077A00C8DDCE /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
-		01B251731983077A00C8DDCE /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
-		01B251741983077A00C8DDCE /* iPhone-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590C188484E7003F4D28 /* iPhone-old@2x.png */; };
 		01B251751983077A00C8DDCE /* Published-iOS in Resources */ = {isa = PBXBuildFile; fileRef = B737893A180761570076A88C /* Published-iOS */; };
-		01B251781983077A00C8DDCE /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5910188484E7003F4D28 /* Settings@2x.png */; };
-		01B251791983077A00C8DDCE /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896C180762440076A88C /* Default-Landscape~ipad.png */; };
-		01B2517A1983077A00C8DDCE /* iPhone-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590B188484E7003F4D28 /* iPhone-old.png */; };
-		01B2517B1983077A00C8DDCE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590D188484E7003F4D28 /* iPhone.png */; };
-		01B2517C1983077A00C8DDCE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896B180762440076A88C /* Default-568h@2x.png */; };
-		01B251801983077A00C8DDCE /* iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590E188484E7003F4D28 /* iPhone@2x.png */; };
-		01B251821983077A00C8DDCE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896D180762440076A88C /* Default.png */; };
-		01B251831983077A00C8DDCE /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		01B251A419830F0700C8DDCE /* BridgeKitV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B251A319830F0700C8DDCE /* BridgeKitV3.framework */; };
 		01B251A519830F1300C8DDCE /* libcocos2dAndroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B251431983073E00C8DDCE /* libcocos2dAndroid.a */; };
 		01B251AB198310C500C8DDCE /* WetGameActivity.java in Sources */ = {isa = PBXBuildFile; fileRef = 01B251AA198310C500C8DDCE /* WetGameActivity.java */; };
@@ -164,24 +139,12 @@
 		01C42743196F259D008E68EA /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C42742196F259D008E68EA /* Line.m */; };
 		01C8D741196B270800C51AAA /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C8D740196B270800C51AAA /* Gameplay.m */; };
 		01F2F124197050CE00F07E9D /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F2F123197050CE00F07E9D /* Color.m */; };
+		01F9828B198B29450012E176 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F9828A198B29450012E176 /* Images.xcassets */; };
+		01F9828C198B29450012E176 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F9828A198B29450012E176 /* Images.xcassets */; };
 		01F9E42D196F6FA2004D0475 /* PlayBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9E42C196F6FA2004D0475 /* PlayBar.m */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
-		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
-		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
-		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
-		B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590A188484E7003F4D28 /* iPad@2x.png */; };
-		B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590B188484E7003F4D28 /* iPhone-old.png */; };
-		B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590C188484E7003F4D28 /* iPhone-old@2x.png */; };
-		B71F5917188484E7003F4D28 /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590D188484E7003F4D28 /* iPhone.png */; };
-		B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590E188484E7003F4D28 /* iPhone@2x.png */; };
-		B71F5919188484E7003F4D28 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F590F188484E7003F4D28 /* Settings.png */; };
-		B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5910188484E7003F4D28 /* Settings@2x.png */; };
 		B737893B180761570076A88C /* Published-iOS in Resources */ = {isa = PBXBuildFile; fileRef = B737893A180761570076A88C /* Published-iOS */; };
 		B737893F1807617C0076A88C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
-		B7378975180762440076A88C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896B180762440076A88C /* Default-568h@2x.png */; };
-		B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896C180762440076A88C /* Default-Landscape~ipad.png */; };
-		B7378977180762440076A88C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896D180762440076A88C /* Default.png */; };
-		B7378978180762440076A88C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B737896E180762440076A88C /* Default@2x.png */; };
 		B73789871807631A0076A88C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B73789851807631A0076A88C /* main.m */; };
 		B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B737894B180761A90076A88C /* libcocos2d.a */; };
 		B7378994180767190076A88C /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
@@ -262,23 +225,19 @@
 		01066CEF1970624F002FE039 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		01067224197DD09A0031D8B6 /* NSUserDefaults+Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Encryption.h"; sourceTree = "<group>"; };
 		01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Encryption.m"; sourceTree = "<group>"; };
+		013305D2198ACACB000E3A62 /* MarimbaC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaC.mp3; sourceTree = "<group>"; };
+		013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaCHigh.mp3; sourceTree = "<group>"; };
+		013305D4198ACACB000E3A62 /* MarimbaE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaE.mp3; sourceTree = "<group>"; };
+		013305D5198ACACB000E3A62 /* MarimbaG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaG.mp3; sourceTree = "<group>"; };
+		014CC5B7198AF83400A518F1 /* YouSuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = YouSuck.mp3; sourceTree = "<group>"; };
+		014CC5BB198B09FD00A518F1 /* MarimbaCLow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaCLow.mp3; sourceTree = "<group>"; };
+		014CC5BC198B09FD00A518F1 /* MarimbaELow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaELow.mp3; sourceTree = "<group>"; };
+		014CC5BD198B09FD00A518F1 /* MarimbaGLow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaGLow.mp3; sourceTree = "<group>"; };
 		014E3AA91976E3620045E55F /* HitBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitBox.h; path = Source/HitBox.h; sourceTree = "<group>"; };
 		014E3AAA1976E3620045E55F /* HitBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HitBox.m; path = Source/HitBox.m; sourceTree = "<group>"; };
+		015616B31989D3490068D8A9 /* SharedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedImage.h; path = Source/SharedImage.h; sourceTree = "<group>"; };
+		015616B41989D3490068D8A9 /* SharedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedImage.m; path = Source/SharedImage.m; sourceTree = "<group>"; };
 		015A14A6198446D700B08968 /* whoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoosh.wav; sourceTree = "<group>"; };
-		018A0C9519880A8B004EFDA0 /* AppLogo114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo114x114.png; sourceTree = "<group>"; };
-		018A0C9619880A8B004EFDA0 /* AppLogo120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo120x120.png; sourceTree = "<group>"; };
-		018A0C9719880A8B004EFDA0 /* AppLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo144x144.png; sourceTree = "<group>"; };
-		018A0C9819880A8B004EFDA0 /* AppLogo152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo152x152.png; sourceTree = "<group>"; };
-		018A0C9919880A8B004EFDA0 /* AppLogo57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo57x57.png; sourceTree = "<group>"; };
-		018A0C9A19880A8B004EFDA0 /* AppLogo72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo72x72.png; sourceTree = "<group>"; };
-		018A0C9B19880A8B004EFDA0 /* AppLogo76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo76x76.png; sourceTree = "<group>"; };
-		018A0C9D19880A8B004EFDA0 /* 2AppLogo114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo114x114.png; sourceTree = "<group>"; };
-		018A0C9E19880A8B004EFDA0 /* 2AppLogo120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo120x120.png; sourceTree = "<group>"; };
-		018A0C9F19880A8B004EFDA0 /* 2AppLogo144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo144x144.png; sourceTree = "<group>"; };
-		018A0CA019880A8B004EFDA0 /* 2AppLogo152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo152x152.png; sourceTree = "<group>"; };
-		018A0CA119880A8B004EFDA0 /* 2AppLogo57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo57x57.png; sourceTree = "<group>"; };
-		018A0CA219880A8B004EFDA0 /* 2AppLogo72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo72x72.png; sourceTree = "<group>"; };
-		018A0CA319880A8B004EFDA0 /* 2AppLogo76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2AppLogo76x76.png; sourceTree = "<group>"; };
 		018A0CC2198819E9004EFDA0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		018A0CC3198819E9004EFDA0 /* INSTRUCTIONS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = INSTRUCTIONS.html; sourceTree = "<group>"; };
 		018A0CC5198819E9004EFDA0 /* mgwuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mgwuSDK.framework; sourceTree = "<group>"; };
@@ -383,27 +342,14 @@
 		01C8D740196B270800C51AAA /* Gameplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gameplay.m; path = Source/Gameplay.m; sourceTree = "<group>"; };
 		01F2F122197050CE00F07E9D /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = Source/Color.h; sourceTree = "<group>"; };
 		01F2F123197050CE00F07E9D /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Color.m; path = Source/Color.m; sourceTree = "<group>"; };
+		01F9828A198B29450012E176 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		01F9E42B196F6FA2004D0475 /* PlayBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayBar.h; sourceTree = "<group>"; };
 		01F9E42C196F6FA2004D0475 /* PlayBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayBar.m; sourceTree = "<group>"; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
-		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
-		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
-		B71F590A188484E7003F4D28 /* iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad@2x.png"; path = "Icons/iPad@2x.png"; sourceTree = "<group>"; };
-		B71F590B188484E7003F4D28 /* iPhone-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone-old.png"; path = "Icons/iPhone-old.png"; sourceTree = "<group>"; };
-		B71F590C188484E7003F4D28 /* iPhone-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone-old@2x.png"; path = "Icons/iPhone-old@2x.png"; sourceTree = "<group>"; };
-		B71F590D188484E7003F4D28 /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = Icons/iPhone.png; sourceTree = "<group>"; };
-		B71F590E188484E7003F4D28 /* iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone@2x.png"; path = "Icons/iPhone@2x.png"; sourceTree = "<group>"; };
-		B71F590F188484E7003F4D28 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.png; path = Icons/Settings.png; sourceTree = "<group>"; };
-		B71F5910188484E7003F4D28 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings@2x.png"; path = "Icons/Settings@2x.png"; sourceTree = "<group>"; };
 		B737893A180761570076A88C /* Published-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Published-iOS"; path = "Source/Resources/Published-iOS"; sourceTree = SOURCE_ROOT; };
 		B737893D1807617C0076A88C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Source/AppDelegate.h; sourceTree = "<group>"; };
 		B737893E1807617C0076A88C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Source/AppDelegate.m; sourceTree = "<group>"; };
 		B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cocos2d-ios.xcodeproj"; path = "Source/libs/cocos2d-iphone/cocos2d-ios.xcodeproj"; sourceTree = SOURCE_ROOT; };
-		B737896B180762440076A88C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Source/Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
-		B737896C180762440076A88C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Source/Resources/Default-Landscape~ipad.png"; sourceTree = SOURCE_ROOT; };
-		B737896D180762440076A88C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Source/Resources/Default.png; sourceTree = SOURCE_ROOT; };
-		B737896E180762440076A88C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Source/Resources/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		B73789851807631A0076A88C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = SOURCE_ROOT; };
 		B73789861807631A0076A88C /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Source/Prefix.pch; sourceTree = SOURCE_ROOT; };
 		B7378992180767190076A88C /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Source/MainScene.h; sourceTree = "<group>"; };
@@ -477,32 +423,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		018A0C9419880A8B004EFDA0 /* Logo 1 */ = {
+		013305D1198ACACB000E3A62 /* MarimbaSounds */ = {
 			isa = PBXGroup;
 			children = (
-				018A0C9519880A8B004EFDA0 /* AppLogo114x114.png */,
-				018A0C9619880A8B004EFDA0 /* AppLogo120x120.png */,
-				018A0C9719880A8B004EFDA0 /* AppLogo144x144.png */,
-				018A0C9819880A8B004EFDA0 /* AppLogo152x152.png */,
-				018A0C9919880A8B004EFDA0 /* AppLogo57x57.png */,
-				018A0C9A19880A8B004EFDA0 /* AppLogo72x72.png */,
-				018A0C9B19880A8B004EFDA0 /* AppLogo76x76.png */,
+				014CC5BB198B09FD00A518F1 /* MarimbaCLow.mp3 */,
+				014CC5BC198B09FD00A518F1 /* MarimbaELow.mp3 */,
+				014CC5BD198B09FD00A518F1 /* MarimbaGLow.mp3 */,
+				013305D2198ACACB000E3A62 /* MarimbaC.mp3 */,
+				013305D4198ACACB000E3A62 /* MarimbaE.mp3 */,
+				013305D5198ACACB000E3A62 /* MarimbaG.mp3 */,
+				013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */,
+				014CC5B7198AF83400A518F1 /* YouSuck.mp3 */,
 			);
-			path = "Logo 1";
-			sourceTree = "<group>";
-		};
-		018A0C9C19880A8B004EFDA0 /* Logo2 */ = {
-			isa = PBXGroup;
-			children = (
-				018A0C9D19880A8B004EFDA0 /* 2AppLogo114x114.png */,
-				018A0C9E19880A8B004EFDA0 /* 2AppLogo120x120.png */,
-				018A0C9F19880A8B004EFDA0 /* 2AppLogo144x144.png */,
-				018A0CA019880A8B004EFDA0 /* 2AppLogo152x152.png */,
-				018A0CA119880A8B004EFDA0 /* 2AppLogo57x57.png */,
-				018A0CA219880A8B004EFDA0 /* 2AppLogo72x72.png */,
-				018A0CA319880A8B004EFDA0 /* 2AppLogo76x76.png */,
-			);
-			path = Logo2;
+			path = MarimbaSounds;
 			sourceTree = "<group>";
 		};
 		018A0CC1198819E9004EFDA0 /* mgwuSDK-master */ = {
@@ -671,6 +604,8 @@
 				01F2F123197050CE00F07E9D /* Color.m */,
 				01066CEE1970624F002FE039 /* GameOver.h */,
 				01066CEF1970624F002FE039 /* GameOver.m */,
+				015616B31989D3490068D8A9 /* SharedImage.h */,
+				015616B41989D3490068D8A9 /* SharedImage.m */,
 				01067224197DD09A0031D8B6 /* NSUserDefaults+Encryption.h */,
 				01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */,
 				01B251A6198310C500C8DDCE /* java */,
@@ -686,29 +621,6 @@
 				01B251451983073E00C8DDCE /* cocos2dJava.jar */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B73789911807667A0076A88C /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				018A0C9419880A8B004EFDA0 /* Logo 1 */,
-				018A0C9C19880A8B004EFDA0 /* Logo2 */,
-				B71F5907188484E7003F4D28 /* iPad-old.png */,
-				B71F5908188484E7003F4D28 /* iPad-old@2x.png */,
-				B71F5909188484E7003F4D28 /* iPad.png */,
-				B71F590A188484E7003F4D28 /* iPad@2x.png */,
-				B71F590B188484E7003F4D28 /* iPhone-old.png */,
-				B71F590C188484E7003F4D28 /* iPhone-old@2x.png */,
-				B71F590D188484E7003F4D28 /* iPhone.png */,
-				B71F590E188484E7003F4D28 /* iPhone@2x.png */,
-				B71F590F188484E7003F4D28 /* Settings.png */,
-				B71F5910188484E7003F4D28 /* Settings@2x.png */,
-				B737896B180762440076A88C /* Default-568h@2x.png */,
-				B737896C180762440076A88C /* Default-Landscape~ipad.png */,
-				B737896D180762440076A88C /* Default.png */,
-				B737896E180762440076A88C /* Default@2x.png */,
-			);
-			name = Icons;
 			sourceTree = "<group>";
 		};
 		B77F1B2517B978D7009739AE = {
@@ -768,9 +680,10 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01F9828A198B29450012E176 /* Images.xcassets */,
+				013305D1198ACACB000E3A62 /* MarimbaSounds */,
 				01B251881983077F00C8DDCE /* Android-Info.plist */,
 				015A14A6198446D700B08968 /* whoosh.wav */,
-				B73789911807667A0076A88C /* Icons */,
 				B737893A180761570076A88C /* Published-iOS */,
 			);
 			name = Resources;
@@ -922,36 +835,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018A0CA919880A8B004EFDA0 /* AppLogo144x144.png in Resources */,
-				018A0CBB19880A8B004EFDA0 /* 2AppLogo57x57.png in Resources */,
-				01B2516F1983077A00C8DDCE /* Settings.png in Resources */,
-				01B251701983077A00C8DDCE /* Default@2x.png in Resources */,
-				018A0CB319880A8B004EFDA0 /* 2AppLogo114x114.png in Resources */,
-				018A0CAB19880A8B004EFDA0 /* AppLogo152x152.png in Resources */,
-				018A0CB119880A8B004EFDA0 /* AppLogo76x76.png in Resources */,
-				01B251711983077A00C8DDCE /* iPad@2x.png in Resources */,
-				018A0CB919880A8B004EFDA0 /* 2AppLogo152x152.png in Resources */,
-				01B251721983077A00C8DDCE /* iPad.png in Resources */,
-				01B251731983077A00C8DDCE /* iPad-old@2x.png in Resources */,
-				018A0CA719880A8B004EFDA0 /* AppLogo120x120.png in Resources */,
+				014CC5C1198B09FD00A518F1 /* MarimbaELow.mp3 in Resources */,
+				014CC5B9198AF83400A518F1 /* YouSuck.mp3 in Resources */,
+				013305D7198ACACB000E3A62 /* MarimbaC.mp3 in Resources */,
+				013305D9198ACACB000E3A62 /* MarimbaCHigh.mp3 in Resources */,
+				01F9828C198B29450012E176 /* Images.xcassets in Resources */,
+				014CC5C3198B09FD00A518F1 /* MarimbaGLow.mp3 in Resources */,
+				014CC5BF198B09FD00A518F1 /* MarimbaCLow.mp3 in Resources */,
 				015A14A8198446D700B08968 /* whoosh.wav in Resources */,
-				01B251741983077A00C8DDCE /* iPhone-old@2x.png in Resources */,
 				01B251751983077A00C8DDCE /* Published-iOS in Resources */,
-				01B251781983077A00C8DDCE /* Settings@2x.png in Resources */,
-				01B251791983077A00C8DDCE /* Default-Landscape~ipad.png in Resources */,
-				018A0CAF19880A8B004EFDA0 /* AppLogo72x72.png in Resources */,
-				01B2517A1983077A00C8DDCE /* iPhone-old.png in Resources */,
-				01B2517B1983077A00C8DDCE /* iPhone.png in Resources */,
-				018A0CB519880A8B004EFDA0 /* 2AppLogo120x120.png in Resources */,
-				018A0CAD19880A8B004EFDA0 /* AppLogo57x57.png in Resources */,
-				018A0CBD19880A8B004EFDA0 /* 2AppLogo72x72.png in Resources */,
-				018A0CBF19880A8B004EFDA0 /* 2AppLogo76x76.png in Resources */,
-				01B2517C1983077A00C8DDCE /* Default-568h@2x.png in Resources */,
-				01B251801983077A00C8DDCE /* iPhone@2x.png in Resources */,
-				01B251821983077A00C8DDCE /* Default.png in Resources */,
-				018A0CA519880A8B004EFDA0 /* AppLogo114x114.png in Resources */,
-				01B251831983077A00C8DDCE /* iPad-old.png in Resources */,
-				018A0CB719880A8B004EFDA0 /* 2AppLogo144x144.png in Resources */,
+				013305DB198ACACB000E3A62 /* MarimbaE.mp3 in Resources */,
+				013305DD198ACACB000E3A62 /* MarimbaG.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,34 +853,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018A0CA819880A8B004EFDA0 /* AppLogo144x144.png in Resources */,
 				018A0D3A198819E9004EFDA0 /* MGWUBackgroundDark-Landscape@2x~ipad.png in Resources */,
+				013305DC198ACACB000E3A62 /* MarimbaG.mp3 in Resources */,
 				018A0D33198819E9004EFDA0 /* MGWUBackground-Landscape@2x~iphone.png in Resources */,
 				018A0D38198819E9004EFDA0 /* MGWUBackground-Portrait~ipad.png in Resources */,
 				018A0D1D198819E9004EFDA0 /* FBNoThanksButtonPressed.png in Resources */,
-				018A0CBA19880A8B004EFDA0 /* 2AppLogo57x57.png in Resources */,
-				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
-				B7378978180762440076A88C /* Default@2x.png in Resources */,
-				018A0CB219880A8B004EFDA0 /* 2AppLogo114x114.png in Resources */,
-				018A0CAA19880A8B004EFDA0 /* AppLogo152x152.png in Resources */,
+				013305DA198ACACB000E3A62 /* MarimbaE.mp3 in Resources */,
 				018A0D1F198819E9004EFDA0 /* green.png in Resources */,
 				018A0D1C198819E9004EFDA0 /* FBNoThanksButton@2x.png in Resources */,
-				018A0CB019880A8B004EFDA0 /* AppLogo76x76.png in Resources */,
-				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				018A0D2D198819E9004EFDA0 /* MGWUAboutFooter-Landscape~iphone.png in Resources */,
+				01F9828B198B29450012E176 /* Images.xcassets in Resources */,
 				018A0D16198819E9004EFDA0 /* fb_connect.png in Resources */,
 				018A0D53198819E9004EFDA0 /* send-button-active.png in Resources */,
-				018A0CB819880A8B004EFDA0 /* 2AppLogo152x152.png in Resources */,
 				018A0D56198819E9004EFDA0 /* send-field-landscape.png in Resources */,
 				018A0D4F198819E9004EFDA0 /* mgwuPlaceholderIconDark@2x.png in Resources */,
 				018A0D21198819E9004EFDA0 /* hipmob.back.btn.png in Resources */,
 				018A0D17198819E9004EFDA0 /* FBLoginButton.png in Resources */,
 				018A0D0F198819E9004EFDA0 /* INSTRUCTIONS.html in Resources */,
-				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
-				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				018A0D49198819E9004EFDA0 /* mgwuLogo@2x.png in Resources */,
 				018A0D46198819E9004EFDA0 /* MGWUFacebookLoginPortrait.nib in Resources */,
-				018A0CA619880A8B004EFDA0 /* AppLogo120x120.png in Resources */,
 				018A0D3F198819E9004EFDA0 /* MGWUBackgroundDark-Portrait@2x~iphone.png in Resources */,
 				018A0D43198819E9004EFDA0 /* MGWUClose@2x.png in Resources */,
 				018A0D30198819E9004EFDA0 /* MGWUAboutFooter-Portrait~ipad.png in Resources */,
@@ -997,38 +882,31 @@
 				018A0D32198819E9004EFDA0 /* MGWUBackground-Landscape@2x~ipad.png in Resources */,
 				018A0D0E198819E9004EFDA0 /* .gitignore in Resources */,
 				018A0D11198819E9004EFDA0 /* aqua.png in Resources */,
+				014CC5B8198AF83400A518F1 /* YouSuck.mp3 in Resources */,
 				018A0D27198819E9004EFDA0 /* mgwu-m.png in Resources */,
 				018A0D50198819E9004EFDA0 /* operator.available.png in Resources */,
 				018A0D57198819E9004EFDA0 /* README.md in Resources */,
 				015A14A7198446D700B08968 /* whoosh.wav in Resources */,
 				018A0D31198819E9004EFDA0 /* MGWUAboutFooter-Portrait~iphone.png in Resources */,
-				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				018A0D41198819E9004EFDA0 /* MGWUBackgroundDark-Portrait~iphone.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
-				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				018A0D35198819E9004EFDA0 /* MGWUBackground-Landscape~iphone.png in Resources */,
-				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
 				018A0D18198819E9004EFDA0 /* FBLoginButton@2x.png in Resources */,
 				018A0D55198819E9004EFDA0 /* send-button-instate.png in Resources */,
 				018A0D20198819E9004EFDA0 /* grey-background.png in Resources */,
-				018A0CAE19880A8B004EFDA0 /* AppLogo72x72.png in Resources */,
-				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				018A0D14198819E9004EFDA0 /* FacebookIcon.png in Resources */,
 				018A0D36198819E9004EFDA0 /* MGWUBackground-Portrait@2x~ipad.png in Resources */,
 				018A0D48198819E9004EFDA0 /* mgwuLogo.png in Resources */,
 				018A0D4C198819E9004EFDA0 /* mgwuPlaceholderIcon.png in Resources */,
-				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
+				013305D8198ACACB000E3A62 /* MarimbaCHigh.mp3 in Resources */,
 				018A0D23198819E9004EFDA0 /* hipmobsend_field.png in Resources */,
-				018A0CB419880A8B004EFDA0 /* 2AppLogo120x120.png in Resources */,
+				014CC5C0198B09FD00A518F1 /* MarimbaELow.mp3 in Resources */,
 				018A0D28198819E9004EFDA0 /* mgwu-m@2x.png in Resources */,
 				018A0D19198819E9004EFDA0 /* FBLoginButtonPressed.png in Resources */,
 				018A0D34198819E9004EFDA0 /* MGWUBackground-Landscape~ipad.png in Resources */,
 				018A0D2B198819E9004EFDA0 /* MGWUAboutFooter-Landscape@2x~iphone.png in Resources */,
 				018A0D29198819E9004EFDA0 /* MGWUAboutFooter-Landscape-568h@2x~iphone.png in Resources */,
-				018A0CAC19880A8B004EFDA0 /* AppLogo57x57.png in Resources */,
-				018A0CBC19880A8B004EFDA0 /* 2AppLogo72x72.png in Resources */,
 				018A0D40198819E9004EFDA0 /* MGWUBackgroundDark-Portrait~ipad.png in Resources */,
-				018A0CBE19880A8B004EFDA0 /* 2AppLogo76x76.png in Resources */,
 				018A0D4D198819E9004EFDA0 /* mgwuPlaceholderIcon@2x.png in Resources */,
 				018A0D45198819E9004EFDA0 /* MGWUFacebookLoginLandscapeDark.nib in Resources */,
 				018A0D44198819E9004EFDA0 /* MGWUFacebookLoginLandscape.nib in Resources */,
@@ -1039,28 +917,25 @@
 				018A0D4E198819E9004EFDA0 /* mgwuPlaceholderIconDark.png in Resources */,
 				018A0D3C198819E9004EFDA0 /* MGWUBackgroundDark-Landscape~ipad.png in Resources */,
 				018A0D37198819E9004EFDA0 /* MGWUBackground-Portrait@2x~iphone.png in Resources */,
+				014CC5C2198B09FD00A518F1 /* MarimbaGLow.mp3 in Resources */,
 				018A0D24198819E9004EFDA0 /* hipmobsend_field@2x.png in Resources */,
 				018A0D2C198819E9004EFDA0 /* MGWUAboutFooter-Landscape~ipad.png in Resources */,
 				018A0D1E198819E9004EFDA0 /* FBNoThanksButtonPressed@2x.png in Resources */,
 				018A0D39198819E9004EFDA0 /* MGWUBackground-Portrait~iphone.png in Resources */,
-				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				018A0D54198819E9004EFDA0 /* send-button-inactive.png in Resources */,
-				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
+				013305D6198ACACB000E3A62 /* MarimbaC.mp3 in Resources */,
 				018A0D1A198819E9004EFDA0 /* FBLoginButtonPressed@2x.png in Resources */,
-				B7378977180762440076A88C /* Default.png in Resources */,
 				018A0D4A198819E9004EFDA0 /* mgwuLogoDark.png in Resources */,
 				018A0D52198819E9004EFDA0 /* operator.unavailable.png in Resources */,
 				018A0D4B198819E9004EFDA0 /* mgwuLogoDark@2x.png in Resources */,
 				018A0D15198819E9004EFDA0 /* FacebookSDKResources.bundle in Resources */,
 				018A0D3D198819E9004EFDA0 /* MGWUBackgroundDark-Landscape~iphone.png in Resources */,
+				014CC5BE198B09FD00A518F1 /* MarimbaCLow.mp3 in Resources */,
 				018A0D42198819E9004EFDA0 /* MGWUClose.png in Resources */,
 				018A0D1B198819E9004EFDA0 /* FBNoThanksButton.png in Resources */,
 				018A0D47198819E9004EFDA0 /* MGWUFacebookLoginPortraitDark.nib in Resources */,
 				018A0D26198819E9004EFDA0 /* mgwu-gk-notification@2x.png in Resources */,
 				018A0D3B198819E9004EFDA0 /* MGWUBackgroundDark-Landscape@2x~iphone.png in Resources */,
-				018A0CA419880A8B004EFDA0 /* AppLogo114x114.png in Resources */,
-				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
-				018A0CB619880A8B004EFDA0 /* 2AppLogo144x144.png in Resources */,
 				018A0D13198819E9004EFDA0 /* CrossPromoViewController.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1140,6 +1015,7 @@
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				01F2F124197050CE00F07E9D /* Color.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				015616B51989D3490068D8A9 /* SharedImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1371,6 +1247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1408,6 +1285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

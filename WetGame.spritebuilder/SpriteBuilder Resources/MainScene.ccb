@@ -1059,7 +1059,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCButton</string>
+				<string>CCButton - Play</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1401,7 +1401,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCButton</string>
+				<string>CCButton - Tutorial</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1461,7 +1461,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string>tutorial</string>
+							<string>showAchievements</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1518,7 +1518,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/TutorialButton.png</string>
+							<string>Assets/AchievementsButton.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1529,7 +1529,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/TutorialButtonPressed.png</string>
+							<string>Assets/AchievementsButtonPressed.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1716,8 +1716,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

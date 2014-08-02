@@ -13,7 +13,7 @@
 @interface GameOver : CCNode
 
 @property (nonatomic, assign) int finalScore;
-@property (nonatomic, strong) Line *loosingLine;
+@property (nonatomic, strong) Line *losingLine;
 @property (nonatomic, assign) ActiveColor colorPressed;
 
 @end

@@ -18,6 +18,7 @@
 @property (assign) BOOL sameColorAsBefore;
 //To know if this lines score has already been counted
 @property (assign) BOOL scoreCounted;
+@property (assign) BOOL soundPlayed;
 
 //Used for testing time
 @property (assign) BOOL passedMidBox;

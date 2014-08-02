@@ -359,7 +359,7 @@
 
 #pragma mark - Missing
 
-- (void) looser: (Line *) loosingLine {
+- (void) loser: (Line *) losingLine {
     
     //Stop the line from moving
     self.paused = YES;
@@ -375,17 +375,17 @@
     //if the right Bar is on the screen add the arrows poistions
     if (isRightBarOnScreen) {
         //Set both arrows positions prompting the player which color to press
-        [self positionBothButtonArrows:loosingLine];
+        [self positionBothButtonArrows:losingLine];
         
     } else {
         [_rightColorArrow removeFromParent];
-        [self positionLeftButtonArrow:loosingLine];
+        [self positionLeftButtonArrow:losingLine];
     }
     
     //add the notification to the screen
     [self addChild:_missedColorScene];
     
-    if (loosingLine.linesColor == ActiveColorNone) {
+    if (losingLine.linesColor == ActiveColorNone) {
         _missedColorMessage.string = [NSString stringWithFormat:@"For White lines you let go of\neverything!"];
         [self scheduleOnce:@selector(startUpGameByPressingColor) delay:0.1f];
     } else {

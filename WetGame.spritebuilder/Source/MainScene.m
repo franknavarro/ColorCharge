@@ -7,29 +7,23 @@
 //
 
 #import "MainScene.h"
-
-GameCenterFiles *gameCenterManger;
+#import <GameKit/GameKit.h>
+#import "GameCenterFiles.h"
 
 @implementation MainScene
 
 - (void) didLoadFromCCB {
     
-    //check first to make sure the current iOS supports GameCenter
-    if ([GameCenterFiles isGameCenterAvailable]) {
-        
-        //get the manager and authenticate the player
-        [[GameCenterFiles getGameCenterManager] authenticateLocalPlayer];
-    }
-    
-}
-
-- (void) onEnter {
-    
-    [super onEnter];
-    
     [[OALSimpleAudio sharedInstance] preloadEffect:@"whoosh.wav"];
-    //[[OALSimpleAudio sharedInstance] preloadBg:@"ProjectGame1.mp3"];
-    
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCLow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaELow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaGLow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaC.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaE.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaG.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCHigh.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"YouSuck.mp3"];
+
 }
 
 -(void) startPlay {
@@ -51,6 +45,22 @@ GameCenterFiles *gameCenterManger;
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     //Begin the tranistion made to go to Gameplay
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+}
+
+- (void) showAchievements
+{
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    if (gameCenterController != nil)
+    {
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateAchievements;
+        [[CCDirector sharedDirector] presentViewController: gameCenterController animated: YES completion:nil];
+    }
+}
+
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) tutorial {

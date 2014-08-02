@@ -11,6 +11,7 @@
 #import "Color.h"
 #import "GameOver.h"
 #import "AppDelegate.h"
+#import "GameCenterFiles.h"
 
 //Defines how fast the lines will fall down the screen and how quickly they will appear at the top of the screen
 struct LineSpeed {
@@ -161,7 +162,7 @@ struct LineSpeed {
             [_backgroundBoxes removeObjectAtIndex:0];
         }
         
-        CCLOG(@"%i", [_backgroundBoxes count]);
+        CCLOG(@"%lu", (unsigned long)[_backgroundBoxes count]);
         
         //Unschedule and schedule to make a new box
         [self unschedule:@selector(spawnNewBackgroundBox)];
@@ -175,6 +176,45 @@ struct LineSpeed {
 }
 
 #pragma mark - Update Methods
+
+- (void) playScoreSound: (ActiveColor) scoreColor {
+    
+    switch (scoreColor) {
+            
+        case ActiveColorBlue:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaCLow.mp3"];
+            break;
+            
+        case ActiveColorRed:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaELow.mp3"];
+            break;
+            
+        case ActiveColorYellow:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaGLow.mp3"];
+            break;
+            
+        case ActiveColorGreen:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaE.mp3"];
+            break;
+            
+        case ActiveColorPurple:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaG.mp3"];
+            break;
+            
+        case ActiveColorOrange:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaCHigh.mp3"];
+            break;
+            
+        case ActiveColorNone:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaC.mp3"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
 
 //calls every frame
 - (void) update:(CCTime)delta {
@@ -200,6 +240,13 @@ struct LineSpeed {
         //If the line is completely outside the screen add it to the array of lines to be taken out
         if (line.position.y < -(line.boundingBox.size.height)) {
             [removeFromLines addObject:line];
+        }
+        
+        if (line.position.y < CGRectGetMaxY(self.hitBox.boundingBox) && !line.sameColorAsBefore) {
+            if (self.currentColorBeingPressed == line.linesColor && !line.soundPlayed) {
+                [self playScoreSound:line.linesColor];
+                line.soundPlayed = YES;
+            }
         }
         
 ////********************************************************************************************
@@ -260,6 +307,7 @@ struct LineSpeed {
                         _addToScore = 0;
                         //Update the score value
                         self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+                        [self updateScoreAchievements];
                     } else {
                         //If so update the score and let the game know that the score has been counted for this line
                         line.scoreCounted = YES;
@@ -393,7 +441,7 @@ struct LineSpeed {
 -(void) updateLineSpeed {
     
     //Only upadate the velocity if it less than or equal to 320
-    if (currentLineSpeed.fallVelocity < 320) {
+    if (currentLineSpeed.fallVelocity < 300) {
         //Increase the velocity downwards by 2.5
         currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 2.5f);
         //Get the SpawnSpeed by dividing the distance of the line length by the velocity
@@ -418,6 +466,59 @@ struct LineSpeed {
         }
     }
     
+}
+
+- (void) updateScoreAchievements {
+    
+    // if gameCenter was not activated dont run any of the achievements updater so dont activate achievements
+    if (![GameCenterFiles isGameCenterActivated]) {
+        return;
+    }
+    
+    //Go through the scores and check for the achievement conditions
+    //  We set a ranged value because players can get more than one point at a time
+    //  So we check within a range to see if the player has gotten the score or a little over
+    switch (self.score) {
+        case 777 ... 778:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score777" percentComplete:100.0f];
+            break;
+            
+        case 500 ... 501:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score500" percentComplete:100.0f];
+            break;
+           
+        case 300 ... 301:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score300" percentComplete:100.0f];
+            break;
+            
+        case 200 ... 201:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score200" percentComplete:100.0f];
+            break;
+            
+        case 150 ... 151:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score150" percentComplete:100.0f];
+            break;
+            
+        case 100 ... 101:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score100" percentComplete:100.0f];
+            break;
+            
+        case 75 ... 76:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score75" percentComplete:100.0f];
+            break;
+            
+        case 50 ... 51:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score50" percentComplete:100.0f];
+            break;
+            
+        case 25 ... 26:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score25" percentComplete:100.0f];
+            break;
+            
+        case 5 ... 6:
+            [[GameCenterFiles getGameCenterManager] reportAchievementIdentifier:@"score5" percentComplete:100.0f];
+            break;
+    }
 }
 
 #pragma mark - Spawning Line
@@ -490,7 +591,7 @@ struct LineSpeed {
         if (line.linesColor != self.currentColorBeingPressed) {
             CCLOG(@"Player Lost");
             //call in the gameover scene
-            [self looser:line];
+            [self loser:line];
         }
         
 ////********************************************************************************************
@@ -508,7 +609,9 @@ struct LineSpeed {
 }
 
 //Switches to the Gameover scene
-- (void) looser: (Line *) loosingLine {
+- (void) loser: (Line *) losingLine {
+    
+    [[OALSimpleAudio sharedInstance] playEffect:@"YouSuck.mp3"];
     
     //We've reached the end friends
     isGameOver = YES;
@@ -517,11 +620,11 @@ struct LineSpeed {
     //make it so the user can't touch the pause button
     self.pauseButton.userInteractionEnabled = NO;
     
-    //Save the Gameplay scene
+    //Save the GameOver scene
     GameOver *newScene = (GameOver *)[CCBReader load:@"GameOver" owner:self];
     //Set the final score in the gameOver Scene to be the users current score
     newScene.finalScore = self.score;
-    newScene.loosingLine = loosingLine;
+    newScene.losingLine = losingLine;
     newScene.colorPressed = self.currentColorBeingPressed;
     
     //Make the box flash between grey and active color so player knows where they lost

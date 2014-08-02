@@ -10,7 +10,9 @@
 #import "Gameplay.h" //imported to access the score
 #import "NSUserDefaults+Encryption.h"
 #import "MainScene.h"
+#import <GameKit/GameKit.h>
 #import "GameCenterFiles.h"
+#import "SharedImage.h"
 
 @implementation GameOver {
     
@@ -80,7 +82,7 @@
 
     
     //change the color to the line that you lost on
-    [self changeColorForFinishLines: self.loosingLine];
+    [self changeColorForFinishLines: self.losingLine];
     [self runFinishLines];
 
     
@@ -103,11 +105,11 @@
 //**********************************************************************************************************************************************
 
 //    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
-//    NSNumber *loosingLinesColor = [NSNumber numberWithInt:self.loosingLine.linesColor];
-//    NSNumber *loosingColorPressed = [NSNumber numberWithInt:self.colorPressed];
-//    NSDictionary *loosingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", loosingLinesColor, @"Loosing_Lines_Color", loosingColorPressed, @"color_User_Pressed", nil];
+//    NSNumber *losingLinesColor = [NSNumber numberWithInt:self.losingLine.linesColor];
+//    NSNumber *losingColorPressed = [NSNumber numberWithInt:self.colorPressed];
+//    NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
 //    
-//    [MGWU logEvent:@"Game_Over" withParams:loosingConditions];
+//    [MGWU logEvent:@"Game_Over" withParams:losingConditions];
     
 //**********************************************************************************************************************************************
 
@@ -116,18 +118,18 @@
 
 #pragma mark - Asthetics for running GameOver
 
-- (void) changeColorForFinishLines: (Line *) loosingLine {
+- (void) changeColorForFinishLines: (Line *) losingLine {
     
     for (CCNodeColor *currentFinishLine in _finishLines) {
         currentFinishLine.cascadeColorEnabled = YES;
-        [Color changeObject:currentFinishLine withColor:loosingLine.linesColor];
+        [Color changeObject:currentFinishLine withColor:losingLine.linesColor];
     }
     
-    [Color changeObject:_scoreBox withOffSetColor:loosingLine.linesColor];
-    [Color changeObject:_restartBackground withOffSetColor:loosingLine.linesColor];
-    [Color changeObject:_menuBackground withOffSetColor:loosingLine.linesColor];
-    [Color changeObject:_leaderBoardBackground withOffSetColor:loosingLine.linesColor];
-    [Color changeObject:_shareBackground withOffSetColor:loosingLine.linesColor];
+    [Color changeObject:_scoreBox withOffSetColor:losingLine.linesColor];
+    [Color changeObject:_restartBackground withOffSetColor:losingLine.linesColor];
+    [Color changeObject:_menuBackground withOffSetColor:losingLine.linesColor];
+    [Color changeObject:_leaderBoardBackground withOffSetColor:losingLine.linesColor];
+    [Color changeObject:_shareBackground withOffSetColor:losingLine.linesColor];
 
     
 }
@@ -162,7 +164,7 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav" volume:0.5f pitch:1.f pan:0.f loop:NO];
+            [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav"];
             
         });
         
@@ -202,38 +204,6 @@
     
 }
 
-- (void) shareButton {
-    
-    //Text for the post to say
-    NSString *text = [NSString stringWithFormat:@"I just scored %i in Color Charge!", self.finalScore];
-    
-    //Insert these when I find out how to screen shot and when I know what the app store url is
-//    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
-//    UIImage *image = [UIImage imageNamed:@"roadfire-icon-square-200"];
-    
-    //create the activity view controller to hold the text image and url we defined above
-    UIActivityViewController *controller =
-    [[UIActivityViewController alloc]
-     initWithActivityItems:@[text] //, url, image]
-     applicationActivities:nil];
-    
-    //Exlude all this stuff from sharing
-    controller.excludedActivityTypes = @[UIActivityTypePostToWeibo,
-                                         UIActivityTypePrint,
-                                         UIActivityTypeCopyToPasteboard,
-                                         UIActivityTypeAssignToContact,
-                                         UIActivityTypeSaveToCameraRoll,
-                                         UIActivityTypeAddToReadingList,
-                                         UIActivityTypePostToFlickr,
-                                         UIActivityTypePostToVimeo,
-                                         UIActivityTypePostToTencentWeibo,
-                                         UIActivityTypeAirDrop];
-    
-    //present the view controller
-    [[CCDirector sharedDirector] presentViewController:controller animated:YES completion:nil];
-    
-}
-
 - (void) showLeaderboard {
     
     [self showLeaderboard:@"1a"];
@@ -254,8 +224,6 @@
         gameCenterController.leaderboardTimeScope = GKLeaderboardTimeScopeWeek;
         gameCenterController.leaderboardCategory = leaderboardID;
         
-        //Stop the animation because the game crashes if we dont do this :P
-        [[CCDirector sharedDirector] stopAnimation];
         //Present the gameCenter Leaderboard
         [[CCDirector sharedDirector] presentViewController: gameCenterController animated: YES completion:nil];
     }
@@ -265,8 +233,81 @@
 {
     //Get rid of the gameCenter screne
     [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
-    //resume animation we stopped when we first launched gameCenter 
-    [[CCDirector sharedDirector] startAnimation];
+    
+}
+
+- (void) shareButton {
+    
+    //Create the image that we want to share
+    SharedImage *shareThisImage = (SharedImage *) [CCBReader load:@"SharedImage"];
+    //set up the image to show your score and the color lost on
+    [shareThisImage setUpImageWithColor:self.losingLine.linesColor andScore:self.finalScore];
+    
+    //add the child to the self all the way in the back behind everything
+    //  this is because when we render this node as a texture to make it an image it needs a parents timeline
+    //  to follow so this gives it the timeline of this class for funsies
+    //  p.s. this is super hacky
+    [self addChild:shareThisImage z:-1];
+    CCNode *node = [shareThisImage.children objectAtIndex:0];
+    
+    
+    //Text for the post to say
+    NSString *text = [NSString stringWithFormat:@"I just scored %i in Color Charge!", self.finalScore];
+    //Save the image of the share image we are going to send
+    UIImage *image = [GameOver screenshotWithStartNode:node];
+    
+    //Insert these when I find out how to screen shot and when I know what the app store url is
+    //    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+    
+    //create the activity view controller to hold the text image and url we defined above
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text, image] //, url]
+     applicationActivities:nil];
+    
+    //Exlude all this stuff from sharing
+    controller.excludedActivityTypes = @[UIActivityTypePostToWeibo,
+                                         UIActivityTypePrint,
+                                         UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact,
+                                         UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList,
+                                         UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo,
+                                         UIActivityTypePostToTencentWeibo,
+                                         UIActivityTypeAirDrop];
+
+    //present the view controller
+    [[CCDirector sharedDirector] presentViewController:controller animated:YES completion:nil];
+    
+  
+    
+}
+
++(UIImage *) screenshotWithStartNode: (CCNode *) startNode {
+    
+    //I have no clue what this does but it works
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    
+//    CGSize winSize = [[CCDirector sharedDirector] viewSize];
+//    
+//    //Start making a new texture with the size of the node we are making an image of
+//    CCRenderTexture *rtx =
+//    [CCRenderTexture renderTextureWithWidth:winSize.width height:winSize.height];
+    
+    
+    
+    CCRenderTexture *rtx =
+    [CCRenderTexture renderTextureWithWidth:startNode.contentSize.width height:startNode.contentSize.height];
+    
+    
+    [rtx begin];    //Begin making the texture
+    [startNode visit];  //have the node we want to make an image of start drawing on the texture
+    [rtx end];  //Stop making the texture
+    
+    //make the texture an image and return it
+    return [rtx getUIImage];
+    
 }
 
 @end

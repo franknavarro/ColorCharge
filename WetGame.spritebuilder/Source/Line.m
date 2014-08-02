@@ -389,7 +389,7 @@ static GameDifficulty gameDifficulty;
     //  the line instead to the the next color in the enum
     if (sameLineCount >= 1 && newColor == previousActiveColor) {
         //check to see if we are on easy
-        if (gameDifficulty == GameEasy) {
+        if (gameDifficulty == GameEasy || gameDifficulty == GameTutorialPrimaryColors || gameDifficulty == GameTutorialWhite) {
             //if the new color is greater than yellow than set it to red
             if (newColor >= ActiveColorYellow) {
                 newColor = ActiveColorNone;
