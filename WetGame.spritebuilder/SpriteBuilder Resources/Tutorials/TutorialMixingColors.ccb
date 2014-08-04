@@ -191,7 +191,7 @@
 				<key>displayName</key>
 				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
-				<string>_lineArrow</string>
+				<string>_boxArrow</string>
 				<key>memberVarAssignmentType</key>
 				<integer>2</integer>
 				<key>properties</key>
@@ -211,10 +211,10 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>187.97177124023438</real>
-							<real>349.26748657226562</real>
+							<real>0.5</real>
+							<real>145</real>
 							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -230,14 +230,6 @@
 							<false/>
 							<integer>0</integer>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>90</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -282,7 +274,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>20</real>
+							<real>60</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -296,7 +288,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>1</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>

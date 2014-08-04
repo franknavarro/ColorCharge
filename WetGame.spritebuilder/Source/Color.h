@@ -26,5 +26,6 @@ typedef NS_ENUM(int, ActiveColor) {
 
 + (void) changeObject: (id) objectToChange withColor: (ActiveColor) newColor;
 + (void) changeObject: (id) objectToChange withOffSetColor: (ActiveColor) newColor;
++ (void) playSound;
 
 @end

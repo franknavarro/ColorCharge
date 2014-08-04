@@ -236,13 +236,31 @@ struct LineSpeed {
             //make the lines scroll down the screen
             line.position = ccp(line.position.x, line.position.y + currentLineSpeed.fallVelocity * delta);
         }
+        
+        if (line.position.y <= CGRectGetMaxY(self.hitBox.boundingBox)) {
+            //Make sure the score for this line has not yet been counted
+            if (!line.scoreCounted) {
+                //If so update the score and let the game know that the score has been counted for this line
+                line.scoreCounted = YES;
+                //Increment the score by one for the line that  was scored
+                self.score++;
+//                //Add the amount extra for longer lines
+//                self.score+=_addToScore;
+//                //Reset the value for adding to score for longer lines
+//                _addToScore = 0;
+                //Update the score value
+                self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+                [self updateScoreAchievements];
+            }
+        }
+
     
         //If the line is completely outside the screen add it to the array of lines to be taken out
         if (line.position.y < -(line.boundingBox.size.height)) {
             [removeFromLines addObject:line];
         }
         
-        if (line.position.y < CGRectGetMaxY(self.hitBox.boundingBox) && !line.sameColorAsBefore) {
+        if (line.position.y <= CGRectGetMaxY(self.hitBox.boundingBox) && !line.sameColorAsBefore) {
             if (self.currentColorBeingPressed == line.linesColor && !line.soundPlayed) {
                 [self playScoreSound:line.linesColor];
                 line.soundPlayed = YES;
@@ -281,49 +299,50 @@ struct LineSpeed {
         [removeLine removeFromParent];
     }
     
-    //Keep count of how many objects are in lines
-    int n = (int)[self.lines count];
-    //Iterate through every object in the array self.lines in order to add up score
-    for (int i=0; i<n; i++) {
-        //Saves the current line into a variable of the object Line
-        Line *line = self.lines[i];
-        //If the top of the line is less than or equal to the middle of the hit box then go onto next check
-        if (CGRectGetMaxY(line.boundingBox) <= self.hitBox.position.y) {
-            //Make sure the score for this line has not yet been counted
-            if (!line.scoreCounted) {
-                //Check to see if another line after exists within the array
-                if ([self.lines count] > 1) {
-                    //Save the line after the current one being checked into a variable
-                    Line *lineAfter = self.lines[i+1];
-                    //Make sure that the cuurent lines color and the color of the line after arent the same
-                    if (line.linesColor != lineAfter.linesColor) {
-                        //If so update the score and let the game know that the score has been counted for this line
-                        line.scoreCounted = YES;
-                        //Increment the score by one for the line that  was scored
-                        self.score++;
-                        //Add the amount extra for longer lines
-                        self.score+=_addToScore;
-                        //Reset the value for adding to score for longer lines
-                        _addToScore = 0;
-                        //Update the score value
-                        self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
-                        [self updateScoreAchievements];
-                    } else {
-                        //If so update the score and let the game know that the score has been counted for this line
-                        line.scoreCounted = YES;
-                        _addToScore++;
-                    }
-                } else {
-                    line.scoreCounted = YES;
-                    //Increment the score by one for the line that  was scored
-                    self.score++;
-                    //Update the score value
-                    self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+//    //Keep count of how many objects are in lines
+//    int n = (int)[self.lines count];
+//    //Iterate through every object in the array self.lines in order to add up score
+//    for (int i=0; i<n; i++) {
+//        //Saves the current line into a variable of the object Line
+//        Line *line = self.lines[i];
+//        //If the top of the line is less than or equal to the middle of the hit box then go onto next check
+//        if (CGRectGetMaxY(line.boundingBox) <= self.hitBox.position.y) {
+//            //Make sure the score for this line has not yet been counted
+//            if (!line.scoreCounted) {
+//                //Check to see if another line after exists within the array
+//                if ([self.lines count] > 1) {
+//                    //Save the line after the current one being checked into a variable
+//                    Line *lineAfter = self.lines[i+1];
+//                    //Make sure that the cuurent lines color and the color of the line after arent the same
+//                    if (line.linesColor != lineAfter.linesColor) {
+//                        //If so update the score and let the game know that the score has been counted for this line
+//                        line.scoreCounted = YES;
+//                        //Increment the score by one for the line that  was scored
+//                        self.score++;
+//                        //Add the amount extra for longer lines
+//                        self.score+=_addToScore;
+//                        //Reset the value for adding to score for longer lines
+//                        _addToScore = 0;
+//                        //Update the score value
+//                        self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+//                        [self updateScoreAchievements];
+//                    } else {
+//                        //If so update the score and let the game know that the score has been counted for this line
+//                        line.scoreCounted = YES;
+//                        _addToScore++;
+//                    }
+//                } else {
+//                    line.scoreCounted = YES;
+//                    //Increment the score by one for the line that  was scored
+//                    self.score++;
+//                    //Update the score value
+//                    self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
+//
+//                }
+//            }
+//        }
+//      }
 
-                }
-            }
-        }
-        
         //        //Use visuals and audio to check the beat at which a line hits the middle of the self.hitBox
         //        //Check to see if the line is at or a little bellow the middle of self.hitBox
         //        if (line.position.y <= self.hitBox.position.y && !line.passedMidBox) {
@@ -343,7 +362,6 @@ struct LineSpeed {
         //            }
         //
         //        }
-    }
 }
 
 
@@ -420,19 +438,19 @@ struct LineSpeed {
         self.currentGameDifficulty = GameMedium;
     }
     
-    else if (self.currentGameDifficulty == GameMedium && self.score >=20) {
+    else if (self.currentGameDifficulty == GameMedium && self.score >=50) {
         self.currentGameDifficulty = GameHard;
     }
     
-    else if (self.currentGameDifficulty == GameHard && self.score >= 50) {
+    else if (self.currentGameDifficulty == GameHard && self.score >= 100) {
         self.currentGameDifficulty = GameExpert;
     }
     
-    else if (self.currentGameDifficulty == GameExpert && self.score >= 75) {
+    else if (self.currentGameDifficulty == GameExpert && self.score >= 150) {
         self.currentGameDifficulty = GameIntense;
     }
     
-    else if (self.currentGameDifficulty == GameIntense && self.score >=100) {
+    else if (self.currentGameDifficulty == GameIntense && self.score >=200) {
         self.currentGameDifficulty = GameHowAreYouStillPlaying;
     }
     

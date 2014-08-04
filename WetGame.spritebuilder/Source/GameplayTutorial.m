@@ -297,6 +297,14 @@
     
 }
 
+//We override this function to not do anything because we dont want any score achievements to be
+//  eraned in tutorials
+- (void) updateScoreAchievements {
+    
+    return;
+    
+}
+
 #pragma mark -  Handling Whites
 
 - (void) tutorialWhites: (Line *) whiteLine {
@@ -516,9 +524,8 @@
 
 - (void) backToMenu {
     
-    CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
-    [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
+    CCScene *gameStart = [CCBReader loadAsScene:@"Gameplay"];
+    [[CCDirector sharedDirector] presentScene:gameStart];
     
     //Save that the tutorial has been done
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];

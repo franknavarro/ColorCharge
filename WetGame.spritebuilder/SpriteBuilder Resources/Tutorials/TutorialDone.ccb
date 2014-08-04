@@ -72,7 +72,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>10</real>
+							<real>60</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -86,7 +86,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>1</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -110,9 +110,7 @@
 						<key>value</key>
 						<array>
 							<string>Thats all there is to it!
-Now go out and charge through the colored
-lines!
-Touch to return to menu.</string>
+Touch to start game.</string>
 							<false/>
 						</array>
 					</dict>

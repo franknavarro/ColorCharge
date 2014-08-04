@@ -9,6 +9,7 @@
 #import "MainScene.h"
 #import <GameKit/GameKit.h>
 #import "GameCenterFiles.h"
+#import "Color.h"
 
 @implementation MainScene
 
@@ -39,7 +40,8 @@
         newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
     }
     
-    
+    //Play a random marimba sound
+    [Color playSound];
     
     //Set up the transition
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
@@ -49,6 +51,10 @@
 
 - (void) showAchievements
 {
+    
+    //Play a random marimba sound
+    [Color playSound];
+    
     GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
     if (gameCenterController != nil)
     {
@@ -63,13 +69,14 @@
     [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) tutorial {
+- (void) options {
     
-    CCScene *newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
-    //Set up the transition
-    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    //Play a random marimba sound
+    [Color playSound];
+    
+    CCScene *newScene = [CCBReader loadAsScene:@"OptionsMenu"];
     //Begin the tranistion made to go to Gameplay
-    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+    [[CCDirector sharedDirector] presentScene:newScene];
     
 }
 

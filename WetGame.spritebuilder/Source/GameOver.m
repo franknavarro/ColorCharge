@@ -104,12 +104,12 @@
 //
 //**********************************************************************************************************************************************
 
-//    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
-//    NSNumber *losingLinesColor = [NSNumber numberWithInt:self.losingLine.linesColor];
-//    NSNumber *losingColorPressed = [NSNumber numberWithInt:self.colorPressed];
-//    NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
-//    
-//    [MGWU logEvent:@"Game_Over" withParams:losingConditions];
+    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
+    NSNumber *losingLinesColor = [NSNumber numberWithInt:self.losingLine.linesColor];
+    NSNumber *losingColorPressed = [NSNumber numberWithInt:self.colorPressed];
+    NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
+    
+    [MGWU logEvent:@"Game_Over" withParams:losingConditions];
     
 //**********************************************************************************************************************************************
 
@@ -187,6 +187,9 @@
 
 - (void) restart {
     
+    //Play a random marimba sound
+    [Color playSound];
+    
     //Save the Gameplay scene
     CCScene *newScene = [CCBReader loadAsScene:@"Gameplay"];
     //Set up the transition
@@ -194,17 +197,30 @@
     //Begin the tranistion made to go to Gameplay
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
     
+    [MGWU logEvent:@"Restart_Pressed" withParams:nil];
+    
 }
 
 - (void) backToMenu {
+    
+    //Play a random marimba sound
+    [Color playSound];
     
     CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
     
+    [MGWU logEvent:@"Menu_Pressed" withParams:nil];
+
+    
 }
 
 - (void) showLeaderboard {
+    
+    //Play a random marimba sound
+    [Color playSound];
+    
+    [MGWU logEvent:@"Restart_Pressed" withParams:nil];
     
     [self showLeaderboard:@"1a"];
     
@@ -237,6 +253,9 @@
 }
 
 - (void) shareButton {
+    
+    //Play a random marimba sound
+    [Color playSound];
     
     //Create the image that we want to share
     SharedImage *shareThisImage = (SharedImage *) [CCBReader load:@"SharedImage"];

@@ -134,7 +134,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>10</real>
+							<real>60</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -148,7 +148,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>1</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -171,9 +171,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>If you notice that fancy little box down
-there changes color depending on the 
-color you are pressing!
+							<string>Tip: That fancy little box down there 
+changes to whatever color you are pressing!
 Touch Anywhere to Continue.</string>
 							<false/>
 						</array>

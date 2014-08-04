@@ -184,4 +184,26 @@
     
 }
 
++ (void) playSound {
+    
+    int sound = arc4random()%5;
+    
+    switch (sound) {
+        case 1:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaCLow.mp3"];
+            break;
+        case 2:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaELow.mp3"];
+            break;
+        case 3:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaGLow.mp3"];
+            break;
+        default:
+            [[OALSimpleAudio sharedInstance] playEffect:@"MarimbaC.mp3"];
+            break;
+    }
+    
+    
+}
+
 @end
