@@ -566,7 +566,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>60</real>
+							<real>75</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -835,7 +835,7 @@
 						<key>value</key>
 						<array>
 							<real>55</real>
-							<real>60</real>
+							<real>75</real>
 							<integer>2</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1127,8 +1127,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

@@ -7,7 +7,8 @@
 //
 
 #import "CCNode.h"
+#import <iAd/iAd.h>
 
-@interface MainScene : CCNode
+@interface MainScene : CCNode <ADBannerViewDelegate>
 
 @end

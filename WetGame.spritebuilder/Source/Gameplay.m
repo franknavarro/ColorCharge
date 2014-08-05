@@ -60,10 +60,8 @@ struct LineSpeed {
 
 #pragma mark - Setting Up the Start
 
-//When the Gameplay is initialized initialize the self.lines array
-- (id)init
+- (instancetype)init
 {
-    //Conventional crap
     self = [super init];
     if (self) {
         //Initialize the self.lines array
@@ -71,7 +69,6 @@ struct LineSpeed {
         self.lines = [NSMutableArray array];
         
         _backgroundBoxes = [NSMutableArray array];
-        
     }
     return self;
 }

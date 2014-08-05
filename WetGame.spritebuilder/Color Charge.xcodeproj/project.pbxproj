@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01066CF01970624F002FE039 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 01066CEF1970624F002FE039 /* GameOver.m */; };
 		01067226197DD09A0031D8B6 /* NSUserDefaults+Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */; };
+		0131F3AF199140F8001D48DD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0131F3AE199140F8001D48DD /* iAd.framework */; };
 		013305D6198ACACB000E3A62 /* MarimbaC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D2198ACACB000E3A62 /* MarimbaC.mp3 */; };
 		013305D7198ACACB000E3A62 /* MarimbaC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D2198ACACB000E3A62 /* MarimbaC.mp3 */; };
 		013305D8198ACACB000E3A62 /* MarimbaCHigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */; };
@@ -291,6 +292,7 @@
 		01066CEF1970624F002FE039 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		01067224197DD09A0031D8B6 /* NSUserDefaults+Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Encryption.h"; sourceTree = "<group>"; };
 		01067225197DD09A0031D8B6 /* NSUserDefaults+Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Encryption.m"; sourceTree = "<group>"; };
+		0131F3AE199140F8001D48DD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		013305D2198ACACB000E3A62 /* MarimbaC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaC.mp3; sourceTree = "<group>"; };
 		013305D3198ACACB000E3A62 /* MarimbaCHigh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaCHigh.mp3; sourceTree = "<group>"; };
 		013305D4198ACACB000E3A62 /* MarimbaE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MarimbaE.mp3; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0131F3AF199140F8001D48DD /* iAd.framework in Frameworks */,
 				01799A1919900C23005792EF /* mgwuSDK.framework in Frameworks */,
 				01C0520D19897DCD008D4C40 /* GameKit.framework in Frameworks */,
 				0194B9D01982F45700062B2D /* Accounts.framework in Frameworks */,
@@ -707,6 +710,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0131F3AE199140F8001D48DD /* iAd.framework */,
 				0179994419900C13005792EF /* mgwuSDK-master */,
 				01C0520C19897DCD008D4C40 /* GameKit.framework */,
 				01C052071989635A008D4C40 /* StoreKit.framework */,

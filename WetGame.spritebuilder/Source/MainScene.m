@@ -17,8 +17,86 @@
     CCButton *_optionsButton;
     CCButton *_backButton;
     
+    ADBannerView *_bannerView;
+    
 }
 
+#pragma mark - iAd implementation
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {        
+        
+        //In iOS 6.0 add banner is initialized in a new effecient way so inititialize it here
+        if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
+            _bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+        }
+        else {
+            _bannerView = [[ADBannerView alloc] init];
+        }
+        
+        //Set which size ads can play in this ad banner
+        _bannerView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
+        //Set the size of the banner itself
+        _bannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+        //add the banner as a subview of the scene
+        [[[CCDirector sharedDirector] view] addSubview:_bannerView];
+        //Set the view to be transparent background so we can still interact with the game
+        [_bannerView setBackgroundColor:[UIColor clearColor]];
+        [[[CCDirector sharedDirector] view] addSubview:_bannerView];
+        //Set so we can access the methods called for opening and closing ads here
+        _bannerView.delegate = self;
+        
+    }
+    
+    //Add the ad view to the very front
+    [[[CCDirector sharedDirector] view] bringSubviewToFront:_bannerView];
+    
+    [self layoutAnimated:YES];
+    return self;
+}
+
+- (void) layoutAnimated:(BOOL)animated {
+    
+    // As of iOS 6.0, the banner will automatically resize itself based on its width.
+    // To support iOS 5.0 however, we continue to set the currentContentSizeIdentifier appropriately.
+    CGSize contentFrame = [[CCDirector sharedDirector] viewSize];
+    
+    if (contentFrame.width < contentFrame.height) {
+        _bannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+    }
+    else {
+        _bannerView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierLandscape;
+    }
+    
+    //Get the frame for the banner
+    CGRect bannerFrame = _bannerView.frame;
+    if (_bannerView.bannerLoaded) {
+        bannerFrame.origin.y = 0;
+    } else {
+        bannerFrame.origin.y -= bannerFrame.size.height;
+    }
+    
+    [UIView animateWithDuration: animated ? 0.25 : 0.0 animations:^{
+        
+        _bannerView.frame = bannerFrame;
+        
+    }];
+    
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    [self layoutAnimated:YES];
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    [self layoutAnimated:YES];
+}
+
+
+
+#pragma mark - Set Up
 - (void) didLoadFromCCB {
     
     NSNumber *soundsOff = [[NSUserDefaults standardUserDefaults] objectForKey:@"SoundsOff"];
@@ -38,6 +116,8 @@
     
     
 }
+
+#pragma mark - Main Menu buttons
 
 -(void) startPlay {
     
