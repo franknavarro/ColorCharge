@@ -41,6 +41,17 @@
         [[GameCenterFiles getGameCenterManager] authenticateLocalPlayer];
     }
     
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"whoosh.wav"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCLow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaELow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaGLow.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaC.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaE.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaG.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCHigh.mp3"];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"YouSuck.mp3"];
+
+    
     return YES;
 }
 

@@ -7,26 +7,13 @@
 		<key>Assets/AchievementsButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{341, 1}, {294, 36}}</string>
+			<string>{{303, 1}, {294, 36}}</string>
 			<key>offset</key>
 			<string>{0, -1}</string>
 			<key>rotated</key>
 			<true/>
 			<key>sourceColorRect</key>
 			<string>{{45, 20}, {294, 36}}</string>
-			<key>sourceSize</key>
-			<string>{384, 75}</string>
-		</dict>
-		<key>Assets/AchievementsButtonPressed.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{303, 1}, {310, 36}}</string>
-			<key>offset</key>
-			<string>{1, -1}</string>
-			<key>rotated</key>
-			<true/>
-			<key>sourceColorRect</key>
-			<string>{{38, 20}, {310, 36}}</string>
 			<key>sourceSize</key>
 			<string>{384, 75}</string>
 		</dict>
@@ -46,11 +33,11 @@
 		<key>Assets/BackButtonButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{425, 287}, {134, 45}}</string>
+			<string>{{458, 608}, {134, 45}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
-			<true/>
+			<false/>
 			<key>sourceColorRect</key>
 			<string>{{125, 15}, {134, 45}}</string>
 			<key>sourceSize</key>
@@ -59,7 +46,7 @@
 		<key>Assets/BackButtonPressed.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{354, 297}, {155, 45}}</string>
+			<string>{{303, 297}, {155, 45}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -72,7 +59,7 @@
 		<key>Assets/ButtonBack.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{463, 451}, {175, 50}}</string>
+			<string>{{416, 431}, {175, 50}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -98,7 +85,7 @@
 		<key>Assets/HitTarget.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{28, 912}, {104, 104}}</string>
+			<string>{{369, 668}, {104, 104}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -111,7 +98,7 @@
 		<key>Assets/HitTarget2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{493, 655}, {104, 104}}</string>
+			<string>{{392, 893}, {104, 104}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -124,7 +111,7 @@
 		<key>Assets/HitTargetEdited.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{443, 765}, {104, 104}}</string>
+			<string>{{28, 912}, {104, 104}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -150,7 +137,7 @@
 		<key>Assets/LeaderBoardButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{401, 287}, {165, 22}}</string>
+			<string>{{350, 287}, {165, 22}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -163,7 +150,7 @@
 		<key>Assets/MenuButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{443, 871}, {79, 25}}</string>
+			<string>{{419, 864}, {79, 25}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -176,7 +163,7 @@
 		<key>Assets/OptionsButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{416, 454}, {212, 45}}</string>
+			<string>{{369, 454}, {212, 45}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -189,13 +176,13 @@
 		<key>Assets/OptionsButtonPressed.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{345, 779}, {232, 45}}</string>
+			<string>{{345, 779}, {231, 45}}</string>
 			<key>offset</key>
-			<string>{2, 0}</string>
+			<string>{-1, 0}</string>
 			<key>rotated</key>
 			<true/>
 			<key>sourceColorRect</key>
-			<string>{{78, 15}, {232, 45}}</string>
+			<string>{{75, 15}, {231, 45}}</string>
 			<key>sourceSize</key>
 			<string>{384, 75}</string>
 		</dict>
@@ -228,26 +215,13 @@
 		<key>Assets/PauseButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{392, 937}, {80, 54}}</string>
-			<key>offset</key>
-			<string>{0, 0}</string>
-			<key>rotated</key>
-			<true/>
-			<key>sourceColorRect</key>
-			<string>{{0, 0}, {80, 54}}</string>
-			<key>sourceSize</key>
-			<string>{80, 54}</string>
-		</dict>
-		<key>Assets/PauseButtonPressed.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{369, 709}, {80, 54}}</string>
+			<string>{{416, 608}, {40, 46}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
 			<false/>
 			<key>sourceColorRect</key>
-			<string>{{0, 0}, {80, 54}}</string>
+			<string>{{20, 4}, {40, 46}}</string>
 			<key>sourceSize</key>
 			<string>{80, 54}</string>
 		</dict>
@@ -264,23 +238,10 @@
 			<key>sourceSize</key>
 			<string>{384, 512}</string>
 		</dict>
-		<key>Assets/PlatButtonPressed.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{392, 765}, {170, 49}}</string>
-			<key>offset</key>
-			<string>{2, 0}</string>
-			<key>rotated</key>
-			<true/>
-			<key>sourceColorRect</key>
-			<string>{{109, 19}, {170, 49}}</string>
-			<key>sourceSize</key>
-			<string>{384, 87}</string>
-		</dict>
 		<key>Assets/PlayButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{303, 313}, {142, 49}}</string>
+			<string>{{374, 287}, {142, 49}}</string>
 			<key>offset</key>
 			<string>{1, 0}</string>
 			<key>rotated</key>
@@ -293,7 +254,7 @@
 		<key>Assets/Playbars.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{379, 1}, {80, 284}}</string>
+			<string>{{341, 1}, {80, 284}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
@@ -319,11 +280,11 @@
 		<key>Assets/RestartButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{463, 628}, {117, 25}}</string>
+			<string>{{392, 774}, {117, 25}}</string>
 			<key>offset</key>
 			<string>{0, 0}</string>
 			<key>rotated</key>
-			<false/>
+			<true/>
 			<key>sourceColorRect</key>
 			<string>{{29, 12}, {117, 25}}</string>
 			<key>sourceSize</key>
@@ -358,11 +319,11 @@
 		<key>Assets/ShareButton.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{425, 423}, {88, 26}}</string>
+			<string>{{419, 774}, {88, 26}}</string>
 			<key>offset</key>
 			<string>{0, 2}</string>
 			<key>rotated</key>
-			<false/>
+			<true/>
 			<key>sourceColorRect</key>
 			<string>{{43, 10}, {88, 26}}</string>
 			<key>sourceSize</key>
@@ -384,11 +345,11 @@
 		<key>Assets/SoundsButtonOff.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{416, 668}, {75, 36}}</string>
+			<string>{{447, 774}, {75, 36}}</string>
 			<key>offset</key>
 			<string>{0, -1}</string>
 			<key>rotated</key>
-			<false/>
+			<true/>
 			<key>sourceColorRect</key>
 			<string>{{1, 20}, {75, 36}}</string>
 			<key>sourceSize</key>
@@ -417,19 +378,6 @@
 			<true/>
 			<key>sourceColorRect</key>
 			<string>{{72, 13}, {241, 45}}</string>
-			<key>sourceSize</key>
-			<string>{384, 75}</string>
-		</dict>
-		<key>Assets/TutorialButtonPressed.png</key>
-		<dict>
-			<key>frame</key>
-			<string>{{369, 454}, {253, 45}}</string>
-			<key>offset</key>
-			<string>{0, 1}</string>
-			<key>rotated</key>
-			<true/>
-			<key>sourceColorRect</key>
-			<string>{{65, 13}, {253, 45}}</string>
 			<key>sourceSize</key>
 			<string>{384, 75}</string>
 		</dict>

@@ -940,7 +940,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/PauseButtonPressed.png</string>
+							<string>Assets/PauseButton.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1127,6 +1127,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1406,8 +1408,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

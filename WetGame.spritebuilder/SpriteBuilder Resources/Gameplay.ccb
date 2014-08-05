@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>101</integer>
+	<integer>121</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -565,7 +565,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>53</real>
 							<real>60</real>
 							<integer>1</integer>
 							<integer>0</integer>
@@ -834,8 +834,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>55</real>
-							<real>60</real>
+							<real>53</real>
+							<real>62</real>
 							<integer>2</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -940,7 +940,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/PauseButtonPressed.png</string>
+							<string>Assets/PauseButton.png</string>
 						</array>
 					</dict>
 					<dict>

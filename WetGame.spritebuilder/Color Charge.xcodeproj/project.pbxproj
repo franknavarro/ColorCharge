@@ -29,7 +29,6 @@
 		015616B51989D3490068D8A9 /* SharedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 015616B41989D3490068D8A9 /* SharedImage.m */; };
 		015A14A7198446D700B08968 /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 015A14A6198446D700B08968 /* whoosh.wav */; };
 		015A14A8198446D700B08968 /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 015A14A6198446D700B08968 /* whoosh.wav */; };
-		01712E5B198C6C8F00DE6CCD /* OptionsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 01712E5A198C6C8F00DE6CCD /* OptionsMenu.m */; };
 		0179998E19900C13005792EF /* mgwuSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0179994619900C13005792EF /* mgwuSDK.framework */; };
 		0179998F19900C13005792EF /* aqua.png in Resources */ = {isa = PBXBuildFile; fileRef = 0179994819900C13005792EF /* aqua.png */; };
 		0179999019900C13005792EF /* aqua.png in Resources */ = {isa = PBXBuildFile; fileRef = 0179994819900C13005792EF /* aqua.png */; };
@@ -305,8 +304,6 @@
 		015616B31989D3490068D8A9 /* SharedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedImage.h; path = Source/SharedImage.h; sourceTree = "<group>"; };
 		015616B41989D3490068D8A9 /* SharedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedImage.m; path = Source/SharedImage.m; sourceTree = "<group>"; };
 		015A14A6198446D700B08968 /* whoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoosh.wav; sourceTree = "<group>"; };
-		01712E59198C6C8F00DE6CCD /* OptionsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsMenu.h; path = Source/OptionsMenu.h; sourceTree = "<group>"; };
-		01712E5A198C6C8F00DE6CCD /* OptionsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsMenu.m; path = Source/OptionsMenu.m; sourceTree = "<group>"; };
 		0179994619900C13005792EF /* mgwuSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mgwuSDK.framework; sourceTree = "<group>"; };
 		0179994819900C13005792EF /* aqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aqua.png; sourceTree = "<group>"; };
 		0179994919900C13005792EF /* bluechatbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluechatbubble.png; sourceTree = "<group>"; };
@@ -649,8 +646,6 @@
 				01B251B11983164800C8DDCE /* WetGameActivity.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
-				01712E59198C6C8F00DE6CCD /* OptionsMenu.h */,
-				01712E5A198C6C8F00DE6CCD /* OptionsMenu.m */,
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
 				01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
@@ -1135,7 +1130,6 @@
 				01C42743196F259D008E68EA /* Line.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				01C0520B19896F39008D4C40 /* GameCenterFiles.m in Sources */,
-				01712E5B198C6C8F00DE6CCD /* OptionsMenu.m in Sources */,
 				01C8D741196B270800C51AAA /* Gameplay.m in Sources */,
 				01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */,
 				01066CF01970624F002FE039 /* GameOver.m in Sources */,

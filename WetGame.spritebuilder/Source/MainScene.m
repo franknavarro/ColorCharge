@@ -11,23 +11,38 @@
 #import "GameCenterFiles.h"
 #import "Color.h"
 
-@implementation MainScene
+@implementation MainScene {
+    
+    CCButton *_soundsButton;
+    CCButton *_optionsButton;
+    CCButton *_backButton;
+    
+}
 
 - (void) didLoadFromCCB {
     
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"whoosh.wav"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCLow.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaELow.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaGLow.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaC.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaE.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaG.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"MarimbaCHigh.mp3"];
-    [[OALSimpleAudio sharedInstance] preloadEffect:@"YouSuck.mp3"];
+    NSNumber *soundsOff = [[NSUserDefaults standardUserDefaults] objectForKey:@"SoundsOff"];
+    
+    //If soundsOff is YES then leave the selected state for soundsOFF to YES
+    if ([soundsOff boolValue]) {
+        _soundsButton.selected = YES;
+    }
 
 }
 
+-(void) onEnter {
+    
+    [super onEnter];
+    
+    [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav"];
+    
+    
+}
+
 -(void) startPlay {
+    
+    CCAnimationManager *animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"StartPlay"];
     
     NSNumber *tutorialHasRan = [[NSUserDefaults standardUserDefaults] objectForKey:@"TutroialHasRan"];
     CCScene *newScene;
@@ -71,13 +86,80 @@
 
 - (void) options {
     
+    _optionsButton.userInteractionEnabled = NO;
+    _backButton.userInteractionEnabled = YES;
+
+//    //Play a random marimba sound
+//    [Color playSound];
+
+    [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav"];
+    
+//    CCScene *newScene = [CCBReader loadAsScene:@"OptionsMenu"];
+//    //Begin the tranistion made to go to Gameplay
+//    [[CCDirector sharedDirector] presentScene:newScene];
+    
+    CCAnimationManager *animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"OpenOptions"];
+    
+}
+
+
+#pragma mark - Options Menu
+
+- (void) back {
+    
+    _optionsButton.userInteractionEnabled = YES;
+    _backButton.userInteractionEnabled = NO;
+
+    
+//    //Play a random marimba sound
+//    [Color playSound];
+    
+    [[OALSimpleAudio sharedInstance] playEffect:@"whoosh.wav"];
+
+    
+//    CCScene *newScene = [CCBReader loadAsScene:@"MainScene"];
+//    //Begin the tranistion made to go to Gameplay
+//    [[CCDirector sharedDirector] presentScene:newScene];
+
+    CCAnimationManager *animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"BackToMain"];
+
+}
+
+- (void) tutorial {
+    
     //Play a random marimba sound
     [Color playSound];
     
-    CCScene *newScene = [CCBReader loadAsScene:@"OptionsMenu"];
-    //Begin the tranistion made to go to Gameplay
-    [[CCDirector sharedDirector] presentScene:newScene];
+    CCAnimationManager *animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"StartTutorial"];
+
     
+    CCScene *newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
+    //Set up the transition
+    CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
+    //Begin the tranistion made to go to Gameplay
+    [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
+    
+}
+
+- (void) sounds {
+    
+    //Play a random marimba sound
+    [Color playSound];
+    
+    //Read in the default on whether the sound is on or off
+    NSNumber *soundsOff = [[NSUserDefaults standardUserDefaults] objectForKey:@"SoundsOff"];
+    
+    //Make is sound off the oposite of the bool storded in soundsOff
+    //  because we are changing its value when we press this button
+    BOOL isSoundOff = ![soundsOff boolValue];
+    
+    //Turn muted wo whatever our new state for isSoundOff
+    [[OALSimpleAudio sharedInstance] setMuted:isSoundOff];
+    //Save whether the sound is on or off
+    [[NSUserDefaults standardUserDefaults] setObject:@(isSoundOff) forKey:@"SoundsOff"];
 }
 
 @end
