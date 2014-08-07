@@ -100,8 +100,6 @@
 						<string>Arrow.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -276,10 +274,10 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>60</real>
+							<real>0.15000000596046448</real>
 							<integer>1</integer>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -451,6 +449,8 @@ Do so to resume.</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

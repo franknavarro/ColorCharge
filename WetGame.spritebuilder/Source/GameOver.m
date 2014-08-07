@@ -13,6 +13,7 @@
 #import <GameKit/GameKit.h>
 #import "GameCenterFiles.h"
 #import "SharedImage.h"
+#import "iAdSingleton.h"
 
 @implementation GameOver {
     
@@ -34,6 +35,23 @@
     NSMutableArray *_finishLines;
     
 }
+
+
+#pragma mark - iAd implementation
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        //add a banner onto the screen once GameOver initialized
+        [[iAdSingleton sharedInstanceOfiAd] addBannerToScreen];
+        
+    }
+    
+    return self;
+}
+
 
 #pragma mark - In the begining...
 
@@ -110,6 +128,8 @@
     NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
     
     [MGWU logEvent:@"Game_Over" withParams:losingConditions];
+    
+    [MGWU setAppiraterAppId:@"904481467" andAppName:@"Color Charge"];
     
 //**********************************************************************************************************************************************
 
@@ -198,6 +218,9 @@
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
     
     [MGWU logEvent:@"Restart_Pressed" withParams:nil];
+    
+    //remove the banner from the screen if we are going back into Gameplay
+    [[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
     
 }
 

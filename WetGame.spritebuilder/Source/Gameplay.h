@@ -8,6 +8,7 @@
 
 #import "CCNode.h"
 #import "ColorSelectionDelegate.h"
+#import "MainScene.h"
 
 
 typedef NS_ENUM(NSInteger, GameDifficulty) {

@@ -274,10 +274,10 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>60</real>
+							<real>0.15000000596046448</real>
 							<integer>1</integer>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -311,8 +311,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Mix colors by touching the appropriate 
-colored buttons on each side of the screen!</string>
+							<string>Mix colors by touching the right colored 
+buttons. One on each side of the screen!</string>
 							<false/>
 						</array>
 					</dict>
@@ -448,6 +448,8 @@ colored buttons on each side of the screen!</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -180,6 +180,9 @@
 		0194B9E11982F54B00062B2D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194B9D71982F54B00062B2D /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0194B9E31982F54B00062B2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194B9D91982F54B00062B2D /* SystemConfiguration.framework */; };
 		0194B9E41982F54B00062B2D /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194B9DA1982F54B00062B2D /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		019B78031991FC2700F28B53 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019B78021991FC2600F28B53 /* Crashlytics.framework */; };
+		019B78041991FC2700F28B53 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019B78021991FC2600F28B53 /* Crashlytics.framework */; };
+		01A3FE181993076E0017AE71 /* iAdSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A3FE171993076E0017AE71 /* iAdSingleton.m */; };
 		01A66E98197997B70048A2F7 /* GameplayTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A66E97197997B70048A2F7 /* GameplayTutorial.m */; };
 		01B2514B1983077A00C8DDCE /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C42742196F259D008E68EA /* Line.m */; };
 		01B2514D1983077A00C8DDCE /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C8D740196B270800C51AAA /* Gameplay.m */; };
@@ -386,6 +389,9 @@
 		0194B9D71982F54B00062B2D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0194B9D91982F54B00062B2D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0194B9DA1982F54B00062B2D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		019B78021991FC2600F28B53 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		01A3FE161993076E0017AE71 /* iAdSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iAdSingleton.h; path = Source/iAdSingleton.h; sourceTree = "<group>"; };
+		01A3FE171993076E0017AE71 /* iAdSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iAdSingleton.m; path = Source/iAdSingleton.m; sourceTree = "<group>"; };
 		01A66E96197997B70048A2F7 /* GameplayTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayTutorial.h; path = Source/GameplayTutorial.h; sourceTree = "<group>"; };
 		01A66E97197997B70048A2F7 /* GameplayTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameplayTutorial.m; path = Source/GameplayTutorial.m; sourceTree = "<group>"; };
 		01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gameplay_Protected.h; path = Source/Gameplay_Protected.h; sourceTree = "<group>"; };
@@ -438,6 +444,7 @@
 			files = (
 				01B251A519830F1300C8DDCE /* libcocos2dAndroid.a in Frameworks */,
 				01B251A419830F0700C8DDCE /* BridgeKitV3.framework in Frameworks */,
+				019B78041991FC2700F28B53 /* Crashlytics.framework in Frameworks */,
 				01B251661983077A00C8DDCE /* OpenAL.framework in Frameworks */,
 				01B2516A1983077A00C8DDCE /* Foundation.framework in Frameworks */,
 				01B2516B1983077A00C8DDCE /* CoreGraphics.framework in Frameworks */,
@@ -460,6 +467,7 @@
 			files = (
 				0131F3AF199140F8001D48DD /* iAd.framework in Frameworks */,
 				01799A1919900C23005792EF /* mgwuSDK.framework in Frameworks */,
+				019B78031991FC2700F28B53 /* Crashlytics.framework in Frameworks */,
 				01C0520D19897DCD008D4C40 /* GameKit.framework in Frameworks */,
 				0194B9D01982F45700062B2D /* Accounts.framework in Frameworks */,
 				0194B9DB1982F54B00062B2D /* AdSupport.framework in Frameworks */,
@@ -649,6 +657,8 @@
 				01B251B11983164800C8DDCE /* WetGameActivity.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				01A3FE161993076E0017AE71 /* iAdSingleton.h */,
+				01A3FE171993076E0017AE71 /* iAdSingleton.m */,
 				01C8D73F196B270800C51AAA /* Gameplay.h */,
 				01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */,
 				01C8D740196B270800C51AAA /* Gameplay.m */,
@@ -710,6 +720,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				019B78021991FC2600F28B53 /* Crashlytics.framework */,
 				0131F3AE199140F8001D48DD /* iAd.framework */,
 				0179994419900C13005792EF /* mgwuSDK-master */,
 				01C0520C19897DCD008D4C40 /* GameKit.framework */,
@@ -811,6 +822,7 @@
 				B77F1B2A17B978D7009739AE /* Sources */,
 				B77F1B2B17B978D7009739AE /* Frameworks */,
 				B77F1B2C17B978D7009739AE /* Resources */,
+				019B78011991FBC000F28B53 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1071,6 +1083,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		019B78011991FBC000F28B53 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 5b878ffe150db90b1c46f45d66c0ed0b587a0881 9cc451cd414405fd41808ad9b533be1ef0a88865d0e048e6964c2195cb63fcf6";
+		};
 		01B251491983077A00C8DDCE /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,6 +1156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A3FE181993076E0017AE71 /* iAdSingleton.m in Sources */,
 				01C42743196F259D008E68EA /* Line.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				01C0520B19896F39008D4C40 /* GameCenterFiles.m in Sources */,
@@ -1192,6 +1218,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mgwuSDK.embeddedframework",
 					"$(PROJECT_DIR)/mgwuSDK-master/mgwuSDK.embeddedframework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1240,6 +1267,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mgwuSDK.embeddedframework",
 					"$(PROJECT_DIR)/mgwuSDK-master/mgwuSDK.embeddedframework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
@@ -1398,6 +1426,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/mgwuSDK-master/mgwuSDK.embeddedframework",
 					"$(PROJECT_DIR)/mgwuSDK.embeddedframework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1419,7 +1448,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1432,13 +1461,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Frank Navarro-Velasco (U59SGRG9Y4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Frank Navarro-Velasco (U59SGRG9Y4)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/mgwuSDK-master/mgwuSDK.embeddedframework",
 					"$(PROJECT_DIR)/mgwuSDK.embeddedframework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Prefix.pch;
@@ -1452,13 +1482,14 @@
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3.0",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

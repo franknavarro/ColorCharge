@@ -72,7 +72,7 @@
 						<key>value</key>
 						<array>
 							<real>70</real>
-							<real>60</real>
+							<real>50</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -379,6 +379,8 @@ Touch Anywhere To Continue</string>
 						<string>Arrow.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

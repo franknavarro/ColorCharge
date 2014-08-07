@@ -80,7 +80,7 @@
     [self addChild:_tutorialStart];
     
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:3.f];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:2.5f];
     
     
 }
@@ -222,7 +222,7 @@
     
     [self addChild:_tutorialPrimaryColors];
     
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.5f];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:2.5];
 
 }
 
@@ -244,7 +244,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
 }
 
 - (void) tutorialHitBox {
@@ -265,7 +265,7 @@
     
     //Enable user interaction so they can touch anywhere to continue
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
     
 }
 
@@ -281,7 +281,7 @@
 //    
 //    //enable user interaction so that the player can press anywhere to continue
 //    self.userInteractionEnabled = YES;
-//    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
+//    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f1.f];
 //
 //    
 //}
@@ -318,7 +318,7 @@
     self.scoreLabel.visible = NO;
     //let touches on the screen continue the game
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.5f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
 
     
     //load up the tutorial
@@ -360,7 +360,7 @@
     //add the scene
     [self addChild:_tutorialMixing];
     
-    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:1.5f];
+    [self scheduleOnce:@selector(startUpGameByPressingColor) delay:2.5];
 
     
 }
@@ -518,7 +518,7 @@
     [self addChild:_tutorialDone];
     
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
     
 }
 

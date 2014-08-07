@@ -69,8 +69,9 @@ struct LineSpeed {
         self.lines = [NSMutableArray array];
         
         _backgroundBoxes = [NSMutableArray array];
+        
     }
-    return self;
+        return self;
 }
 
 //As soon as the file is loaded
@@ -252,14 +253,21 @@ struct LineSpeed {
 ////********************************************************************************************
 ////Simulate Game For ScreenShots
 //        
-//        int bottom = self.hitBox.position.y - 75 ;
+//        CGFloat bottom = CGRectGetMinY(self.hitBox.boundingBox) - 25;
+//        int mid = self.hitBox.position.y;
 //        
 //        if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 152 && !first) {
 //            first = YES;
 //        }
 //        
-//        else if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 107 && !second) {
+//        else if (line.position.y < mid && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 107
+//                 && !second) {
 //            second = YES;
+//            if (self.hitBox.currentBoxColor != line.linesColor) {
+//                [Color changeObject:_bottomHitBox withColor:line.linesColor];
+//                [self.hitBox updateBoxColor:line.linesColor];
+//            }
+//
 //        }
 //        
 //        else if (line.position.y < bottom && CGRectGetMaxY(line.boundingBox) > CGRectGetMaxY(self.hitBox.boundingBox) && self.score >= 61 && !thrid) {
@@ -608,7 +616,7 @@ struct LineSpeed {
 ////********************************************************************************************
 ////Simulate Game For ScreenShots
 //
-//        //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
+////        //Update the box's color to the current color being pressed unless the current color being pressed is already the boxes color
 //        if (self.hitBox.currentBoxColor != line.linesColor) {
 //            [Color changeObject:_bottomHitBox withColor:line.linesColor];
 //            [self.hitBox updateBoxColor:line.linesColor];

@@ -29,6 +29,7 @@
 #import "CCBuilderReader.h"
 #import <GameKit/GameKit.h>
 #import "GameCenterFiles.h"
+#import <Crashlytics/Crashlytics.h>
 
 
 @implementation AppController
@@ -57,6 +58,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Crash Analytics
+    [Crashlytics startWithAPIKey:@"5b878ffe150db90b1c46f45d66c0ed0b587a0881"];
         
     //Check if sounds are off when we run the app
     NSNumber *soundsOff = [[NSUserDefaults standardUserDefaults] objectForKey:@"SoundsOff"];
