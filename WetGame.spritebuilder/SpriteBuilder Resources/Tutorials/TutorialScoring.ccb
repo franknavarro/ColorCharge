@@ -180,7 +180,7 @@
 						<key>value</key>
 						<array>
 							<string>Good Job! You got your first point!
-Get points the longer you last.
+Get points for every completed line.
 Touch Anywhere To Continue</string>
 							<false/>
 						</array>
@@ -317,6 +317,8 @@ Touch Anywhere To Continue</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -379,8 +381,6 @@ Touch Anywhere To Continue</string>
 						<string>Arrow.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

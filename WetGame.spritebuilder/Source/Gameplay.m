@@ -469,11 +469,13 @@ struct LineSpeed {
     }
     else if (currentLineSpeed.fallVelocity > -500) {
         //Increase the velocity downwards by 2.5
-        currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 0.15f);
+        currentLineSpeed.fallVelocity = (currentLineSpeed.fallVelocity - 0.1f);
         //Get the SpawnSpeed by dividing the distance of the line length by the velocity
         // and giving the spawn speed a little buffer time of 0.02 second
         currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity) - 0.03f);
     }
+    
+    CCLOG(@"%f", currentLineSpeed.fallVelocity);
 }
 
 - (void) updateBackground {

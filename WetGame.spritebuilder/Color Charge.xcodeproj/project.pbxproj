@@ -1448,7 +1448,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1489,7 +1489,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
