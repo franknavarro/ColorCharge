@@ -316,10 +316,6 @@
     self.pauseButton.userInteractionEnabled = NO;
     //clean up the screen and make it look not cluttered
     self.scoreLabel.visible = NO;
-    //let touches on the screen continue the game
-    self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
-
     
     //load up the tutorial
     _tutorialWhites = [CCBReader loadAsScene:@"Tutorials/TutorialWhite" owner:self];
@@ -330,6 +326,8 @@
     //add the scene
     [self addChild:_tutorialWhites];
     
+    self.userInteractionEnabled = YES;
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
     
 }
 
@@ -584,9 +582,7 @@
                 //unschedule itself if we have met the condition
                 [self unschedule:@selector(startUpGameByPressingColor)];
                 //scenes to remove after color is pressed
-                [_missedColorScene removeFromParent];
-                [_tutorialPrimaryColors removeFromParent];
-                [_tutorialMixing removeFromParent];
+                [self removeAllPosibleTutorialScreens];
                  //stop running so we dont reschedule this method after
                 return;
             }
@@ -622,10 +618,6 @@
         //Add the stuff we removed in the whites tutorial
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
-        //remove the white tutorial
-        [_tutorialWhites removeFromParent];
-        //stop the code so the rest doesn't start
-        return;
     }
     
 //    //if the practice is now starting
@@ -643,9 +635,6 @@
     
     //Check if the Hitbox tutorial ran
     else if (didHitbox) {
-        
-        //remove the hit box tutorial
-        [_tutorialHitBox removeFromParent];
         //Show the HUD again
         self.pauseButton.visible = YES;
         self.scoreLabel.visible = YES;
@@ -653,19 +642,17 @@
         self.pauseButton.userInteractionEnabled = YES;
 //        //Let the user know we are now starting practice rounds
 //        [self practiceRounds];
-        
+        [_tutorialHitBox removeFromParent];
+
     }
     
     //Check if we are now within the first point tutorial
     else if (isTheirFirstPoint) {
-        [_tutorialScoring removeFromParent];
         //resume the tutorial
         [self tutorialHitBox];
     }
     
     else {
-        //remove these scenes to continue
-        [_tutorialStart removeFromParent];
         //Stop the line from moving
         self.paused = NO;
         //Make it so the player can't hit the pause button because it wigs out
@@ -677,6 +664,20 @@
     
     }
     
+    [self removeAllPosibleTutorialScreens];
+
+}
+
+-(void) removeAllPosibleTutorialScreens {
+    //remove these scenes to continue
+    [_tutorialStart removeFromParent];
+    [_tutorialScoring removeFromParent];
+    //remove the hit box tutorial
+    //remove the white tutorial
+    [_tutorialWhites removeFromParent];
+    [_missedColorScene removeFromParent];
+    [_tutorialPrimaryColors removeFromParent];
+    [_tutorialMixing removeFromParent];
 }
 
 - (void) loadPauseScreen {

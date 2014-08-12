@@ -649,10 +649,10 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				01C0520919896F39008D4C40 /* GameCenterFiles.h */,
-				01C0520A19896F39008D4C40 /* GameCenterFiles.m */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
+				01C0520919896F39008D4C40 /* GameCenterFiles.h */,
+				01C0520A19896F39008D4C40 /* GameCenterFiles.m */,
 				01B251B01983164800C8DDCE /* WetGameActivity.h */,
 				01B251B11983164800C8DDCE /* WetGameActivity.m */,
 				B7378992180767190076A88C /* MainScene.h */,
