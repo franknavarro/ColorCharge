@@ -294,17 +294,16 @@
     
     
     //Text for the post to say
-    NSString *text = [NSString stringWithFormat:@"I just scored %i in Color Charge!", self.finalScore];
+    NSString *text = [NSString stringWithFormat:@"I just scored %i in Color Charge! Try and beat my score!\n", self.finalScore];
+    //Insert these when I find out how to screen shot and when I know what the app store url is
+    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/color-charge/id904481467"];
     //Save the image of the share image we are going to send
     UIImage *image = [GameOver screenshotWithStartNode:node];
-    
-    //Insert these when I find out how to screen shot and when I know what the app store url is
-    //    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
     
     //create the activity view controller to hold the text image and url we defined above
     UIActivityViewController *controller =
     [[UIActivityViewController alloc]
-     initWithActivityItems:@[text, image] //, url]
+     initWithActivityItems:@[text, url, image]
      applicationActivities:nil];
     
     //Exlude all this stuff from sharing
