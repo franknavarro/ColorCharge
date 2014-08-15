@@ -14,7 +14,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
@@ -270,10 +270,10 @@
 						<key>value</key>
 						<array>
 							<real>53</real>
-							<real>0.40000000596046448</real>
+							<real>192</real>
 							<integer>3</integer>
 							<integer>0</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -332,10 +332,10 @@
 						<key>value</key>
 						<array>
 							<real>53</real>
-							<real>0.40000000596046448</real>
+							<real>192</real>
 							<integer>0</integer>
 							<integer>0</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
