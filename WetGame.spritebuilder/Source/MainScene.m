@@ -81,6 +81,7 @@
     else {
         //Save the Gameplay scene
         newScene = [CCBReader loadAsScene:@"GameplayTutorial"];
+        [MGWU logEvent:@"First_Time_Tutorial" withParams:nil];
     }
     
     //Play a random marimba sound
@@ -94,6 +95,8 @@
 
 - (void) showAchievements
 {
+    
+    [MGWU logEvent:@"Checked_Achievements" withParams:nil];
     
     //Play a random marimba sound
     [Color playSound];

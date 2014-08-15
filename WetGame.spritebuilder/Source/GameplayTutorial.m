@@ -57,6 +57,10 @@
     
     [self tutorialStarts];
     
+    [MGWU logEvent:@"Tutorial_Started" withParams:nil];
+    CCLOG(@"Tutorial Started");
+
+    
 }
 
 //Overwrite the this method to do nothing so we start spawning lines at a
@@ -516,14 +520,27 @@
     [self addChild:_tutorialDone];
     
     self.userInteractionEnabled = YES;
-    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:2.5f];
+    [self scheduleOnce:@selector(colorPressedInsteadOfScreen) delay:1.f];
     
 }
 
 - (void) backToMenu {
     
-    CCScene *gameStart = [CCBReader loadAsScene:@"Gameplay"];
-    [[CCDirector sharedDirector] presentScene:gameStart];
+    CCScene *newScene;
+    
+    if (didFinalScreen) {
+        newScene = [CCBReader loadAsScene:@"Gameplay"];
+        [MGWU logEvent:@"Tutorial_Finished" withParams:nil];
+        CCLOG(@"Tutorial Finished");
+        
+    } else {
+        newScene = [CCBReader loadAsScene:@"MainScene"];
+        [MGWU logEvent:@"Tutorial_Skipped" withParams:nil];
+        CCLOG(@"Tutorial Skipped");
+    }
+    
+    
+    [[CCDirector sharedDirector] presentScene:newScene];
     
     //Save that the tutorial has been done
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"TutroialHasRan"];

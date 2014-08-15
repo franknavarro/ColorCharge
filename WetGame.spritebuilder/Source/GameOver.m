@@ -243,7 +243,7 @@
     //Play a random marimba sound
     [Color playSound];
     
-    [MGWU logEvent:@"Restart_Pressed" withParams:nil];
+    [MGWU logEvent:@"Checked_Leaderboards" withParams:nil];
     
     [self showLeaderboard:@"1a"];
     
@@ -276,6 +276,8 @@
 }
 
 - (void) shareButton {
+    
+    [MGWU logEvent:@"Used_Share_Button" withParams:nil];
     
     //Play a random marimba sound
     [Color playSound];
