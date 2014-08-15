@@ -475,7 +475,7 @@ struct LineSpeed {
         currentLineSpeed.spawnSpeed = (fabs(200.0f/currentLineSpeed.fallVelocity) - 0.03f);
     }
     
-    CCLOG(@"%f", currentLineSpeed.fallVelocity);
+//    CCLOG(@"%f", currentLineSpeed.fallVelocity);
 }
 
 - (void) updateBackground {
