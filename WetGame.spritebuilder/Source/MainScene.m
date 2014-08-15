@@ -28,7 +28,7 @@
     if (self) {
         
         //add the banner to the screen
-        [[iAdSingleton sharedInstanceOfiAd] addBannerToScreen];
+        //[[iAdSingleton sharedInstanceOfiAd] addBannerToScreen];
         
     }
     return self;
@@ -39,7 +39,7 @@
     [super onExit];
     
     //remove the banner from the screen
-    [[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
+    //[[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
 
 }
 

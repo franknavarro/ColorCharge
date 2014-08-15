@@ -315,7 +315,7 @@ struct LineSpeed {
                         _addToScore = 0;
                         //Update the score value
                         self.scoreLabel.string = [NSString stringWithFormat:@"%i", self.score];
-                        [self updateScoreAchievements];
+                        //[self updateScoreAchievements];
                     } else {
                         //If so update the score and let the game know that the score has been counted for this line
                         line.scoreCounted = YES;

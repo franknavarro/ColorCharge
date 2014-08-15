@@ -45,7 +45,7 @@
     if (self) {
         
         //add a banner onto the screen once GameOver initialized
-        [[iAdSingleton sharedInstanceOfiAd] addBannerToScreen];
+        //[[iAdSingleton sharedInstanceOfiAd] addBannerToScreen];
         
     }
     
@@ -110,9 +110,9 @@
     //Report score to gamecenter
     if (self.finalScore > 0 && [GameCenterFiles isGameCenterAvailable]) {
     
-        int64_t reportScoreOf = self.finalScore;
+        //int64_t reportScoreOf = self.finalScore;
         
-        [[GameCenterFiles getGameCenterManager] reportScore:reportScoreOf forLeaderboardID:@"1a"];
+        //[[GameCenterFiles getGameCenterManager] reportScore:reportScoreOf forLeaderboardID:@"1a"];
         
     }
     
@@ -220,7 +220,7 @@
     [MGWU logEvent:@"Restart_Pressed" withParams:nil];
     
     //remove the banner from the screen if we are going back into Gameplay
-    [[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
+    //[[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
     
 }
 
