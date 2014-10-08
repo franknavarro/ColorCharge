@@ -397,7 +397,7 @@
 		01A66E9A1979C4130048A2F7 /* Gameplay_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gameplay_Protected.h; path = Source/Gameplay_Protected.h; sourceTree = "<group>"; };
 		01B251871983077A00C8DDCE /* WetGame Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WetGame Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B251881983077F00C8DDCE /* Android-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Android-Info.plist"; path = "/Users/Frank/Documents/MakeGamesWithUs Projects/Wet-Game/WetGame.spritebuilder/Android-Info.plist"; sourceTree = "<absolute>"; };
-		01B2519B19830DD600C8DDCE /* WetGame Java.jar */ = {isa = PBXFileReference; explicitFileType = compiled.java.jar; includeInIndex = 0; path = "WetGame Java.jar"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01B2519B19830DD600C8DDCE /* WetGame Java.jar */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = file; path = "WetGame Java.jar"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B251A319830F0700C8DDCE /* BridgeKitV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BridgeKitV3.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/ApportableSDK1.0.sdk/System/Library/Frameworks/BridgeKitV3.framework"; sourceTree = "<group>"; };
 		01B251AA198310C500C8DDCE /* WetGameActivity.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = WetGameActivity.java; sourceTree = "<group>"; };
 		01B251B01983164800C8DDCE /* WetGameActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WetGameActivity.h; path = Source/WetGameActivity.h; sourceTree = SOURCE_ROOT; };
@@ -891,7 +891,7 @@
 		};
 		01B251451983073E00C8DDCE /* cocos2dJava.jar */ = {
 			isa = PBXReferenceProxy;
-			fileType = compiled.java.jar;
+			fileType = file;
 			path = cocos2dJava.jar;
 			remoteRef = 01B251441983073E00C8DDCE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1122,7 +1122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "osascript -e 'tell application \"System Events\"' -e 'set ProcessList to name of every process' -e 'if \"SpriteBuilder\" is in ProcessList then' -e 'tell application \"SpriteBuilder\" to publish' -e 'end if' -e 'end tell'";
+			shellScript = "./Crashlytics.framework/run 5b878ffe150db90b1c46f45d66c0ed0b587a0881 9cc451cd414405fd41808ad9b533be1ef0a88865d0e048e6964c2195cb63fcf6";
 		};
 /* End PBXShellScriptBuildPhase section */
 
