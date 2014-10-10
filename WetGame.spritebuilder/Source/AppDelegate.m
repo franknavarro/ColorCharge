@@ -97,12 +97,12 @@
 // Added for MGWU SDK
 //
 //**********************************************************************************************************************************************
-    
-    [MGWU loadMGWU:@"JesusSaves7GodIsGood7"];
-    [MGWU preFacebook]; //Temporarily disables Facebook until you integrate it later
-    
-    //Reminder to play
-    [MGWU setReminderMessage:@"Your device must be feeling a little blue. Play Color Charge to make it feel colorful again!"];
+//    
+//    [MGWU loadMGWU:@"JesusSaves7GodIsGood7"];
+//    [MGWU preFacebook]; //Temporarily disables Facebook until you integrate it later
+//    
+//    //Reminder to play
+//    [MGWU setReminderMessage:@"Your device must be feeling a little blue. Play Color Charge to make it feel colorful again!"];
 
 //**********************************************************************************************************************************************
 
@@ -151,22 +151,22 @@
 //**********************************************************************************************************************************************
 
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)tokenId {
-    [MGWU registerForPush:tokenId];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [MGWU gotPush:userInfo];
-}
-
-
-- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error{
-    [MGWU failedPush:error];
-}
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [MGWU gotLocalPush:notification];
-}
+//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)tokenId {
+//    [MGWU registerForPush:tokenId];
+//}
+//
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    [MGWU gotPush:userInfo];
+//}
+//
+//
+//- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error{
+//    [MGWU failedPush:error];
+//}
+//
+//- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+//    [MGWU gotLocalPush:notification];
+//}
 
 //**********************************************************************************************************************************************
 

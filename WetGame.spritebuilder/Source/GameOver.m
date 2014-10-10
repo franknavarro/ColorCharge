@@ -122,14 +122,14 @@
 //
 //**********************************************************************************************************************************************
 
-    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
-    NSNumber *losingLinesColor = [NSNumber numberWithInt:self.losingLine.linesColor];
-    NSNumber *losingColorPressed = [NSNumber numberWithInt:self.colorPressed];
-    NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
-    
-    [MGWU logEvent:@"Game_Over" withParams:losingConditions];
-    
-    [MGWU setAppiraterAppId:@"904481467" andAppName:@"Color Charge"];
+//    NSNumber *score =  [NSNumber numberWithInt:self.finalScore];
+//    NSNumber *losingLinesColor = [NSNumber numberWithInt:self.losingLine.linesColor];
+//    NSNumber *losingColorPressed = [NSNumber numberWithInt:self.colorPressed];
+//    NSDictionary *losingConditions = [[NSDictionary alloc] initWithObjectsAndKeys:score, @"score", losingLinesColor, @"losing_Lines_Color", losingColorPressed, @"color_User_Pressed", nil];
+//    
+//    [MGWU logEvent:@"Game_Over" withParams:losingConditions];
+//    
+//    [MGWU setAppiraterAppId:@"904481467" andAppName:@"Color Charge"];
     
 //**********************************************************************************************************************************************
 
@@ -217,7 +217,7 @@
     //Begin the tranistion made to go to Gameplay
     [[CCDirector sharedDirector] presentScene:newScene withTransition:transition];
     
-    [MGWU logEvent:@"Restart_Pressed" withParams:nil];
+//    [MGWU logEvent:@"Restart_Pressed" withParams:nil];
     
     //remove the banner from the screen if we are going back into Gameplay
     [[iAdSingleton sharedInstanceOfiAd] removeBannerFromScreen];
@@ -233,7 +233,7 @@
     CCTransition *transition = [CCTransition transitionFadeWithDuration:1.f];
     [[CCDirector sharedDirector] presentScene:mainMenu withTransition:transition];
     
-    [MGWU logEvent:@"Menu_Pressed" withParams:nil];
+//    [MGWU logEvent:@"Menu_Pressed" withParams:nil];
 
     
 }
@@ -243,7 +243,7 @@
     //Play a random marimba sound
     [Color playSound];
     
-    [MGWU logEvent:@"Checked_Leaderboards" withParams:nil];
+//    [MGWU logEvent:@"Checked_Leaderboards" withParams:nil];
     
     [self showLeaderboard:@"1a"];
     
@@ -277,7 +277,7 @@
 
 - (void) shareButton {
     
-    [MGWU logEvent:@"Used_Share_Button" withParams:nil];
+//    [MGWU logEvent:@"Used_Share_Button" withParams:nil];
     
     //Play a random marimba sound
     [Color playSound];

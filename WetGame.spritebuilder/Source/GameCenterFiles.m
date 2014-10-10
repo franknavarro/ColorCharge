@@ -9,6 +9,12 @@
 #import "GameCenterFiles.h"
 #import <GameKit/GameKit.h>
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion
+
 static GameCenterFiles *gameCenterManager = nil;
 static NSMutableDictionary *achievementsDictionary;
 BOOL isGameCenterActive;
@@ -19,22 +25,45 @@ BOOL isGameCenterActive;
 
 - (void) authenticateLocalPlayer
 {
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        if (localPlayer.isAuthenticated)
-        {
-            // Player was successfully authenticated.
-            // Perform additional tasks for the authenticated player.
-            CCLOG(@"Game Center is working!");
-            //If GameCenter is activated then load in the achievements
-            [self loadAchievements];
-            isGameCenterActive = YES;
-        }
-        else {
-            CCLOG(@"Game Center is NOT working!");
-            isGameCenterActive = NO;
-        }
-    }];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+    {
+        GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+        [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+            if (localPlayer.isAuthenticated)
+            {
+                // Player was successfully authenticated.
+                // Perform additional tasks for the authenticated player.
+                CCLOG(@"Game Center is working!");
+                //If GameCenter is activated then load in the achievements
+                [self loadAchievements];
+                isGameCenterActive = YES;
+            }
+            else {
+                CCLOG(@"Game Center is NOT working!");
+                isGameCenterActive = NO;
+            }
+        }];
+    }
+    else {
+        GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+        localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+            if (viewController != nil)
+            {
+                //showAuthenticationDialogWhenReasonable: is an example method name. Create your own method that displays an authentication view when appropriate for your app.
+                isGameCenterActive =YES;
+            }
+            else if (localPlayer.isAuthenticated)
+            {
+                //authenticatedPlayer: is an example method name. Create your own method that is called after the loacal player is authenticated.
+            }
+            else
+            {
+                isGameCenterActive = NO;
+            }
+        };
+
+    }
 }
 
 //Check the system version of the device to make sure that GameCenter is supported

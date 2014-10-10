@@ -616,7 +616,7 @@ struct LineSpeed {
     //  check to see if the right color is being pressed
     if (line.position.y < CGRectGetMinY(self.hitBox.boundingBox) && CGRectGetMaxY(self.hitBox.boundingBox)+5 < CGRectGetMaxY(line.boundingBox))
     {
-        if (line.linesColor != self.currentColorBeingPressed) {
+        if (self.currentColorBeingPressed != ActiveColorBlue) {
             CCLOG(@"Player Lost");
             //call in the gameover scene
             [self loser:line];

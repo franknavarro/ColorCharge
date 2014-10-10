@@ -1122,7 +1122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 5b878ffe150db90b1c46f45d66c0ed0b587a0881 9cc451cd414405fd41808ad9b533be1ef0a88865d0e048e6964c2195cb63fcf6";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1448,7 +1448,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1489,7 +1489,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Color Charge";
-				PROVISIONING_PROFILE = "3A269290-675F-4E78-845B-850162FFB3E6";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

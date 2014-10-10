@@ -57,7 +57,7 @@
     
     [self tutorialStarts];
     
-    [MGWU logEvent:@"Tutorial_Started" withParams:nil];
+//    [MGWU logEvent:@"Tutorial_Started" withParams:nil];
     CCLOG(@"Tutorial Started");
 
     
@@ -530,12 +530,12 @@
     
     if (didFinalScreen) {
         newScene = [CCBReader loadAsScene:@"Gameplay"];
-        [MGWU logEvent:@"Tutorial_Finished" withParams:nil];
+//        [MGWU logEvent:@"Tutorial_Finished" withParams:nil];
         CCLOG(@"Tutorial Finished");
         
     } else {
         newScene = [CCBReader loadAsScene:@"MainScene"];
-        [MGWU logEvent:@"Tutorial_Skipped" withParams:nil];
+//        [MGWU logEvent:@"Tutorial_Skipped" withParams:nil];
         CCLOG(@"Tutorial Skipped");
     }
     
